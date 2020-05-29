@@ -11,8 +11,11 @@ class Globals:
         self.Settings_data = self._Settings_data()
 
     class _User_data(EventDispatcher):
-        Default_data = {"timesCrashed": 0,
-                        "layout": {}}
+        Default_data = {
+                        "intoFinished": 0,
+                        "timesCrashed": 0,
+                        "layout":       {}
+                       }
 
         save_path = StringProperty()
         data = {}
@@ -51,9 +54,25 @@ class Globals:
             Logger.info("Application: Created new user data file")
             self.save(self.Default_data)
 
+        def set(self, key, value):
+            if key in self.data.keys:
+                self.data[key] = value
+
+            else:
+                Logger.warn("Application: \"" + str(key) + "\" is an invalid key for User data")
+
+        def get(self, key):
+            if key in self.data.keys:
+                return self.data[key]
+
+            else:
+                Logger.warn("Application: \"" + str(key) + "\" is an invalid key for User data")
+
 
     class _Settings_data(EventDispatcher):
-        Default_data = {"buttonSize": 10}
+        Default_data = {
+                        "buttonSize": 10
+                       }
 
         save_path = StringProperty()
         data = {}
@@ -89,6 +108,20 @@ class Globals:
             open(self.save_path, "a").close()
             Logger.info("Application: Created new settings data file")
             self.save(self.Default_data)
+
+        def set(self, key, value):
+            if key in self.data.keys:
+                self.data[key] = value
+
+            else:
+                Logger.warn("Application: \"" + str(key) + "\" is an invalid key for Settings data")
+
+        def get(self, key):
+            if key in self.data.keys:
+                return self.data[key]
+
+            else:
+                Logger.warn("Application: \"" + str(key) + "\" is an invalid key for Settings data")
 
 
 
