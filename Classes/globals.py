@@ -12,10 +12,10 @@ class Globals:
 
     class _User_data(EventDispatcher):
         Default_data = {
-                        "intoFinished": 0,
-                        "timesCrashed": 0,
-                        "layout":       {}
-                       }
+            "intoFinished": 0,
+            "timesCrashed": 0,
+            "layout": {}
+        }
 
         save_path = StringProperty()
         data = {}
@@ -24,7 +24,6 @@ class Globals:
             super().__init__(*args, **kwargs)
 
             self.bind(save_path=self.load)
-
 
         def load(self, _, callback):
             Logger.info("Application: App data save path: " + str(callback))
@@ -42,7 +41,6 @@ class Globals:
 
             Logger.info("Application: Loaded user data")
 
-
         def save(self, out):
             with open(self.save_path, "w", encoding='utf-8') as file:
                 json.dump(out, file, ensure_ascii=True, indent=4)
@@ -55,24 +53,23 @@ class Globals:
             self.save(self.Default_data)
 
         def set(self, key, value):
-            if key in self.data.keys:
+            if key in self.data:
                 self.data[key] = value
 
             else:
                 Logger.warn("Application: \"" + str(key) + "\" is an invalid key for User data")
 
         def get(self, key):
-            if key in self.data.keys:
+            if key in self.data:
                 return self.data[key]
 
             else:
                 Logger.warn("Application: \"" + str(key) + "\" is an invalid key for User data")
 
-
     class _Settings_data(EventDispatcher):
         Default_data = {
-                        "buttonSize": 10
-                       }
+            "buttonSize": 10
+        }
 
         save_path = StringProperty()
         data = {}
@@ -110,18 +107,16 @@ class Globals:
             self.save(self.Default_data)
 
         def set(self, key, value):
-            if key in self.data.keys:
+            if key in self.data:
                 self.data[key] = value
 
             else:
                 Logger.warn("Application: \"" + str(key) + "\" is an invalid key for Settings data")
 
         def get(self, key):
-            if key in self.data.keys:
+            if key in self.data:
                 return self.data[key]
 
             else:
                 Logger.warn("Application: \"" + str(key) + "\" is an invalid key for Settings data")
-
-
 

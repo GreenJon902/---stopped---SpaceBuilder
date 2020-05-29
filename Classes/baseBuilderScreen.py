@@ -1,5 +1,5 @@
 from kivy.uix.screenmanager import Screen
 
 
-class BaseBuildScreen(Screen):
+class BaseBuilderScreen(Screen):
     pass
