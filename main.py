@@ -1,10 +1,10 @@
 import os
 
 from kivy.app import App
-from kivy.uix.label import Label
 from kivy.logger import Logger
-import Global
 
+import Global
+from Classes.screenController import ScreenController
 
 Globals = Global.Globals()
 
@@ -25,7 +25,7 @@ class SpaceBuilder(App):
         Logger.info("Application: Finished setup")
 
     def build(self):
-        return Label(text="Hello World")
+        return ScreenController()
 
 
 
