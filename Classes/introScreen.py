@@ -2,6 +2,7 @@ import random
 import threading
 
 from kivy import Logger
+from kivy.animation import Animation
 from kivy.clock import Clock
 from kivy.uix.screenmanager import Screen
 from kivy.graphics import *
@@ -84,8 +85,17 @@ class IntroScreen(Screen):
 
             positions.append(pos)
 
+        animation = Animation(pos=self.shakeScreenLayout.pos, duration=0)
 
-            print(positions)
+        for pos in positions:
+            animation += Animation(pos=pos, duration=1)
+
+
+        animation += Animation(pos=(0, 0), duration=1)
+        print("start")
+        animation.start(self.shakeScreenLayout)
+        print("done")
+
 
     def on_leave(self, *args):
         self.starClock.cancel()
