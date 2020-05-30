@@ -123,6 +123,6 @@ class Globals:
             else:
                 Logger.warn("Application: \"" + str(key) + "\" is an invalid key for Settings data")
 
-        class Game_Data:
+        class GameSettings:
             star_amount = 10
 

@@ -20,7 +20,7 @@ class IntroScreen(Screen):
 
         Globals = self.Globals
 
-        for i in range(self.Globals.gameSettings.star_amount):
+        for i in range(self.Globals.GameSettings.star_amount):
             with self.canvas:
                 Color(1, 1, 1)
 
