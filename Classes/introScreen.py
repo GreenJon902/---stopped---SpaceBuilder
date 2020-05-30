@@ -27,11 +27,17 @@ class IntroScreen(Screen):
         self.starsLayout = self.ids["stars"]
         self.tintLayout = self.ids["tint"]
 
+        Logger.info("Application: Intro Screen setup")
+
     def on_enter(self, *args):
+        Logger.info("Application: Intro Screen entered")
+
         self.starClock = Clock.schedule_interval(self.draw_star, self.Globals.GameSettings.intro_star_new_frame_delay)
         self.shipClock = Clock.schedule_interval(self.draw_ship, self.Globals.GameSettings.intro_ship_new_frame_delay)
         self.tintClock = Clock.schedule_once(self.start_alarm, self.Globals.GameSettings.intro_alarm_delay)
         self.shakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
+
+        Logger.info("Application: Intro Screen clocks created")
 
     def draw_star(self, _):
         self.starsLayout.canvas.clear()
@@ -67,8 +73,11 @@ class IntroScreen(Screen):
         animation += Animation(pos=(0, 0), duration=self.Globals.GameSettings.intro_ship_shake_shake_length)
         animation.start(self.shipLayout)
 
+        Logger.info("Application: Intro Screen ship shake started")
+
     def start_alarm(self, _):
         self.tintClock2 = Clock.schedule_interval(self.do_alarm, self.Globals.GameSettings.intro_alarm_length * 2)
+        Logger.info("Application: Intro Screen ship alarm stated")
 
     def do_alarm(self, _):
         with self.tintLayout.canvas:
@@ -79,5 +88,8 @@ class IntroScreen(Screen):
 
 
     def on_leave(self, *args):
+        Logger.info("Application: Intro Screen exited")
+
         self.starClock.cancel()
         self.shipClock.cancel()
+

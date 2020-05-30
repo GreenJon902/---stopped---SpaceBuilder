@@ -5,13 +5,13 @@ from Classes.baseBuilderScreen import BaseBuilderScreen
 from Classes.introScreen import IntroScreen
 
 
-class ScreenController(ScreenManager):
+class ScreenManager(ScreenManager):
     def __init__(self, Globals):
-        super(ScreenController, self).__init__()
+        super(ScreenManager, self).__init__()
 
 
         introScreen = IntroScreen(Globals, name="IntroScreen")
-        baseBuildScreen = BaseBuilderScreen(name="BaseBuildScreen")
+        baseBuildScreen = BaseBuilderScreen(name="BaseBuilderScreen")
 
 
         self.add_widget(introScreen)
@@ -19,9 +19,11 @@ class ScreenController(ScreenManager):
 
 
         if Globals.User_data.get("introFinished"):
-            self.current = "BaseBuildScreen"
-            Logger.info("Application: Starting in Intro")
+            self.current = "BaseBuilderScreen"
+            Logger.info("Application: Starting in BaseBuilder")
 
         else:
-            Logger.info("Application: Starting in BaseBuilder")
+            Logger.info("Application: Starting in Intro")
             self.current = "IntroScreen"
+
+        Logger.info("Application: Screen Manager setup")
