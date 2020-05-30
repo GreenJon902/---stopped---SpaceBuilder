@@ -14,6 +14,8 @@ class IntroScreen(Screen):
         self.starClock = None
         self.shipClock = None
         self.shakeClock = None
+        self.tintClock = None
+        self.tintClock2 = None
         self.Globals = Globals
 
         self.shakeScreenX = Globals.width / Globals.GameSettings.intro_ship_shake_amount_divider * -1
@@ -24,10 +26,12 @@ class IntroScreen(Screen):
         self.shakeScreenHeight = Globals.height - (self.shakeScreenY * 2)
         self.shipLayout = self.ids["ship"]
         self.starsLayout = self.ids["stars"]
+        self.tintLayout = self.ids["tint"]
 
     def on_enter(self, *args):
         self.starClock = Clock.schedule_interval(self.draw_star, self.Globals.GameSettings.intro_star_new_frame_delay)
         self.shipClock = Clock.schedule_interval(self.draw_ship, self.Globals.GameSettings.intro_ship_new_frame_delay)
+        self.tintClock = Clock.schedule_once(self.start_make_ship_red, self.Globals.GameSettings.intro_alarm_delay)
         self.shakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
 
     def draw_star(self, _):
@@ -65,6 +69,9 @@ class IntroScreen(Screen):
         print("start")
         animation.start(self.shipLayout)
         print("done")
+
+    def start_make_ship_red(self, _):
+        self.shipClock = Clock.schedule_interval(self.make_ship_red, self.Globals.GameSettings.intro_alarm_length)
 
     def make_ship_red(self, _):
         with self.tintLayout.canvas:
