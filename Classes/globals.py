@@ -128,9 +128,10 @@ class Globals:
         intro_star_width_divider = 20
         intro_star_height_divider = 100
         intro_star_new_frame_delay = 0.1
-        intro_ship_shake_amount_divider = 10
+        intro_ship_shake_amount_divider = 5
         intro_ship_shake_repeats = 3
         intro_ship_shake_delay = 2
-        intro_ship_shake_shake_length = 1
-        intro_ship_shake_positions = [(0, 1), (1, -1), (-1, 0)]
+        intro_ship_shake_shake_length = 0.1
+        intro_ship_new_frame_delay = 0.01
+        intro_ship_shake_positions = [(0, 1), (0, 1), (1, -1), (1, -1), (-1, 0), (-1, 0)]
 

@@ -12,6 +12,7 @@ class IntroScreen(Screen):
     def __init__(self, Globals, *args, **kwargs):
         super(IntroScreen, self).__init__(*args, **kwargs)
         self.starClock = None
+        self.shipClock = None
         self.shakeClock = None
         self.Globals = Globals
 
@@ -21,19 +22,21 @@ class IntroScreen(Screen):
         self.shakeDistanceY = self.shakeScreenX * -1
         self.shakeScreenWidth = Globals.width - (self.shakeScreenX * 2)
         self.shakeScreenHeight = Globals.height - (self.shakeScreenY * 2)
-        self.shakeScreenLayout = self.ids["shakeScreen"]
+        self.shipLayout = self.ids["ship"]
+        self.starsLayout = self.ids["stars"]
 
     def on_enter(self, *args):
-        self.starClock = Clock.schedule_interval(self.draw, self.Globals.GameSettings.intro_star_new_frame_delay)
+        self.starClock = Clock.schedule_interval(self.draw_star, self.Globals.GameSettings.intro_star_new_frame_delay)
+        self.shipClock = Clock.schedule_interval(self.draw_ship, self.Globals.GameSettings.intro_ship_new_frame_delay)
         self.shakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
 
-    def draw(self, _):
-        self.shakeScreenLayout.canvas.clear()
+    def draw_star(self, _):
+        self.starsLayout.canvas.clear()
 
         Globals = self.Globals
 
         for i in range(Globals.GameSettings.intro_star_amount):
-            with self.shakeScreenLayout.canvas:
+            with self.starsLayout.canvas:
                 Color(1, 1, 1)
 
                 x, y = random.randint(0, Globals.width), random.randint(0, Globals.height / 2) + Globals.height / 2
@@ -41,17 +44,18 @@ class IntroScreen(Screen):
                 Rectangle(pos=(x, y), size=(Globals.width / Globals.GameSettings.intro_star_width_divider,
                                             Globals.height / Globals.GameSettings.intro_star_height_divider))
 
-                # Rectangle(pos=(x - 10, y - 10), size=(Globals.width / 10 + 10, Globals.height / 50 + 10),
-                #         color=Color(1, 0, 0, 0.1))
 
-        with self.shakeScreenLayout.canvas:
-            Rectangle(pos=(self.shakeScreenX + self.shakeScreenLayout.pos[0],
-                           self.shakeScreenY + self.shakeScreenLayout.pos[1]), size=(self.shakeScreenWidth,
+    def draw_ship(self, _):
+        self.shipLayout.canvas.clear()
+
+        with self.shipLayout.canvas:
+            Rectangle(pos=(self.shakeScreenX + self.shipLayout.pos[0],
+                           self.shakeScreenY + self.shipLayout.pos[1]), size=(self.shakeScreenWidth,
                                                                                      self.shakeScreenHeight),
                       source="textures/shipInside.png")
 
     def shake(self, _):
-        animation = Animation(pos=self.shakeScreenLayout.pos, duration=0)
+        animation = Animation(pos=self.shipLayout.pos, duration=0)
 
         for pos in self.Globals.GameSettings.intro_ship_shake_positions:
             animation += Animation(pos=(self.shakeScreenX * pos[0], self.shakeScreenY * pos[1]),
@@ -59,8 +63,9 @@ class IntroScreen(Screen):
 
         animation += Animation(pos=(0, 0), duration=self.Globals.GameSettings.intro_ship_shake_shake_length)
         print("start")
-        animation.start(self.shakeScreenLayout)
+        animation.start(self.shipLayout)
         print("done")
 
     def on_leave(self, *args):
         self.starClock.cancel()
+        self.shipClock.cancel()
