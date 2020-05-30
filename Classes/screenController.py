@@ -1,9 +1,7 @@
 from kivy.uix.screenmanager import ScreenManager
-from kivy.lang import Builder
 
 from Classes.baseBuilderScreen import BaseBuilderScreen
 from Classes.introScreen import IntroScreen
-
 
 
 class ScreenController(ScreenManager):
@@ -13,7 +11,7 @@ class ScreenController(ScreenManager):
 
 
 
-        introScreen = IntroScreen(name="IntroScreen")
+        introScreen = IntroScreen(Globals, name="IntroScreen")
         baseBuildScreen = BaseBuilderScreen(name="BaseBuildScreen")
 
 
