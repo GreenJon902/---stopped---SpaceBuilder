@@ -131,4 +131,6 @@ class Globals:
         intro_ship_shake_amount_divider = 10
         intro_ship_shake_repeats = 3
         intro_ship_shake_delay = 2
+        intro_ship_shake_shake_length = 1
+        intro_ship_shake_positions = [(0, 1), (1, -1), (-1, 0)]
 

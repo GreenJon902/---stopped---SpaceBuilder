@@ -19,9 +19,6 @@ class IntroScreen(Screen):
         self.shakeScreenY = Globals.height / Globals.GameSettings.intro_ship_shake_amount_divider * -1
         self.shakeDistanceX = self.shakeScreenX * -1
         self.shakeDistanceY = self.shakeScreenX * -1
-        self.shakeScreenMoveDirections = random.choices(["up", "down", "left", "right", "upLeft", "upRight", "downLeft",
-                                                         "downRight"],
-                                                        k=self.Globals.GameSettings.intro_ship_shake_repeats)
         self.shakeScreenWidth = Globals.width - (self.shakeScreenX * 2)
         self.shakeScreenHeight = Globals.height - (self.shakeScreenY * 2)
         self.shakeScreenLayout = self.ids["shakeScreen"]
@@ -51,47 +48,14 @@ class IntroScreen(Screen):
                 #         color=Color(1, 0, 0, 0.1))
 
     def shake(self, _):
-        positions = list()
-
-        for direction in self.shakeScreenMoveDirections:
-            if direction == "up":
-                pos = (0, 0 + self.shakeDistanceY)
-
-            elif direction == "down":
-                pos = (0, 0 - self.shakeDistanceY)
-
-            elif direction == "left":
-                pos = (0 - self.shakeDistanceX, 0)
-
-            elif direction == "right":
-                pos = (0 + self.shakeDistanceX, 0)
-
-            elif direction == "upLeft":
-                pos = (0 - self.shakeDistanceX, 0 + self.shakeDistanceY)
-
-            elif direction == "upRight":
-                pos = (0 + self.shakeDistanceX, 0 + self.shakeDistanceY)
-
-            elif direction == "downLeft":
-                pos = (0 - self.shakeDistanceX, 0 - self.shakeDistanceY)
-
-            elif direction == "downRight":
-                pos = (0 + self.shakeDistanceX, 0 - self.shakeDistanceY)
-
-            else:
-                Logger.warn("Application: Direction " + str(direction) + " is not valid, defaulting to up")
-
-                pos = (0, 0 + self.shakeDistanceY)
-
-            positions.append(pos)
-
         animation = Animation(pos=self.shakeScreenLayout.pos, duration=0)
 
-        for pos in positions:
-            animation += Animation(pos=pos, duration=1)
+        for pos in self.Globals.GameSettings.intro_ship_shake_positions:
+            animation += Animation(pos=(self.shakeScreenX * pos[0], self.shakeScreenY * pos[1]),
+                                   duration=self.Globals.GameSettings.intro_ship_shake_shake_length)
 
 
-        animation += Animation(pos=(0, 0), duration=1)
+        animation += Animation(pos=(0, 0), duration=self.Globals.GameSettings.intro_ship_shake_shake_length)
         print("start")
         animation.start(self.shakeScreenLayout)
         print("done")
