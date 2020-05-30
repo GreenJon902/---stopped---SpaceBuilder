@@ -125,4 +125,6 @@ class Globals:
 
     class GameSettings:
         star_amount = 10
+        star_width_divider = 20
+        star_height_divider = 100
 

@@ -20,14 +20,16 @@ class IntroScreen(Screen):
 
         Globals = self.Globals
 
-        for i in range(self.Globals.GameSettings.star_amount):
+        for i in range(Globals.GameSettings.star_amount):
             with self.canvas:
                 Color(1, 1, 1)
 
-                x, y = random.randint(0, Globals.width), random.randint(0, Globals.height / 2) + Globals.height / 2
+                x, y = Globals.width / 10
+                x2, y2 = random.randint(0, Globals.width), random.randint(0, Globals.height / 2) + Globals.height / 2
 
-                Rectangle(pos=(x, y), size=(Globals.width / 20, Globals.height / 100), color=Color(1, 1, 1))
-                Rectangle(pos=(0, 0), size=(Globals.width, Globals.height), source="textures/shipInside.png")
+                Rectangle(pos=(x2, y2), size=(Globals.width / Globals.GameSettings.star_width_divider, Globals.height /
+                                              Globals.GameSettings.star_width_height), color=Color(1, 1, 1))
+                Rectangle(pos=(x, y), size=(Globals.width, Globals.height), source="textures/shipInside.png")
                 # Rectangle(pos=(x - 10, y - 10), size=(Globals.width / 10 + 10, Globals.height / 50 + 10),
                 #         color=Color(1, 0, 0, 0.1))
 
