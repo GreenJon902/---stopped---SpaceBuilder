@@ -130,5 +130,5 @@ class Globals:
         intro_star_new_frame_delay = 0.1
         intro_ship_shake_amount_divider = 10
         intro_ship_shake_repeats = 3
-        intro_ship_shake_delay = 5
+        intro_ship_shake_delay = 2
 
