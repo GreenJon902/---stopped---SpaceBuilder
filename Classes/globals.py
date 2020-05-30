@@ -1,9 +1,8 @@
 import json
 
 from kivy.event import EventDispatcher
-from kivy.graphics.context_instructions import Color
-from kivy.properties import StringProperty, Property, NumericProperty
 from kivy.logger import Logger
+from kivy.properties import StringProperty
 
 
 class Globals:

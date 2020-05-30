@@ -3,8 +3,8 @@ import random
 from kivy import Logger
 from kivy.animation import Animation
 from kivy.clock import Clock
-from kivy.uix.screenmanager import Screen
 from kivy.graphics import *
+from kivy.uix.screenmanager import Screen
 
 
 class IntroScreen(Screen):
