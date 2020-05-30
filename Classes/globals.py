@@ -135,7 +135,7 @@ class Globals:
         intro_ship_shake_shake_length = 0.05
         intro_ship_new_frame_delay = 0.01
         intro_ship_shake_positions = [(-0.75, 1), (-1, 0.75)]
-        intro_alarm_color = Color(1, 0, 0, 0.5)
-        intro_alarm_delay = 6
-        intro_alarm_length = 0.5
+        intro_alarm_color = 1, 0, 0, 0.5
+        intro_alarm_delay = 5.1
+        intro_alarm_length = 0.6
 

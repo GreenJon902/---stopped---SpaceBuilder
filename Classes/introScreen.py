@@ -31,7 +31,7 @@ class IntroScreen(Screen):
     def on_enter(self, *args):
         self.starClock = Clock.schedule_interval(self.draw_star, self.Globals.GameSettings.intro_star_new_frame_delay)
         self.shipClock = Clock.schedule_interval(self.draw_ship, self.Globals.GameSettings.intro_ship_new_frame_delay)
-        self.tintClock = Clock.schedule_once(self.start_make_ship_red, self.Globals.GameSettings.intro_alarm_delay)
+        self.tintClock = Clock.schedule_once(self.start_alarm, self.Globals.GameSettings.intro_alarm_delay)
         self.shakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
 
     def draw_star(self, _):
@@ -70,13 +70,16 @@ class IntroScreen(Screen):
         animation.start(self.shipLayout)
         print("done")
 
-    def start_make_ship_red(self, _):
-        self.shipClock = Clock.schedule_interval(self.make_ship_red, self.Globals.GameSettings.intro_alarm_length)
+    def start_alarm(self, _):
+        self.tintClock2 = Clock.schedule_interval(self.do_alarm, self.Globals.GameSettings.intro_alarm_length * 2)
 
-    def make_ship_red(self, _):
+    def do_alarm(self, _):
         with self.tintLayout.canvas:
             Rectangle(pos=(0, 0), size=(self.Globals.width, self.Globals.height),
-                      color=self.Globals.GameSettings.intro_alarm_color)
+                      color=Color(*self.Globals.GameSettings.intro_alarm_color))
+
+        Clock.schedule_once(lambda _: self.tintLayout.canvas.clear(), self.Globals.GameSettings.intro_alarm_length)
+
 
     def on_leave(self, *args):
         self.starClock.cancel()
