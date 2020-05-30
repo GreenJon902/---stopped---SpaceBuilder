@@ -1,3 +1,4 @@
+from kivy import Logger
 from kivy.uix.screenmanager import ScreenManager
 
 from Classes.baseBuilderScreen import BaseBuilderScreen
@@ -19,6 +20,8 @@ class ScreenController(ScreenManager):
 
         if Globals.User_data.get("introFinished"):
             self.current = "BaseBuildScreen"
+            Logger.info("Application: Starting in Intro")
 
         else:
+            Logger.info("Application: Starting in BaseBuilder")
             self.current = "IntroScreen"
