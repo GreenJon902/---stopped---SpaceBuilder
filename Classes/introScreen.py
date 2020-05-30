@@ -14,6 +14,8 @@ class IntroScreen(Screen):
 
         self.shakeScreenX = Globals.width / Globals.GameSettings.intro_ship_shake_amount_divider * -1
         self.shakeScreenY = Globals.height / Globals.GameSettings.intro_ship_shake_amount_divider * -1
+        self.shakeScreenMoveDirection = random.choice(["up", "down", "left", "right", "upLeft", "upRight", "downLeft",
+                                                       "downRight"])
         self.shakeScreenWidth = Globals.width - (self.shakeScreenX * 2)
         self.shakeScreenHeight = Globals.height - (self.shakeScreenY * 2)
         self.shakeScreenLayout = self.ids["shakeScreen"]
