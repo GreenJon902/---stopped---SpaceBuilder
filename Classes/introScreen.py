@@ -66,9 +66,7 @@ class IntroScreen(Screen):
                                    duration=self.Globals.GameSettings.intro_ship_shake_shake_length)
 
         animation += Animation(pos=(0, 0), duration=self.Globals.GameSettings.intro_ship_shake_shake_length)
-        print("start")
         animation.start(self.shipLayout)
-        print("done")
 
     def start_alarm(self, _):
         self.tintClock2 = Clock.schedule_interval(self.do_alarm, self.Globals.GameSettings.intro_alarm_length * 2)
