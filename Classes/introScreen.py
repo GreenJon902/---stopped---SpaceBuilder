@@ -11,6 +11,7 @@ class IntroScreen(Screen):
     def __init__(self, Globals, *args, **kwargs):
         super(IntroScreen, self).__init__(*args, **kwargs)
         self.starClock = None
+        self.shakeClock = None
         self.Globals = Globals
 
         self.shakeScreenX = Globals.width / Globals.GameSettings.intro_ship_shake_amount_divider * -1
@@ -25,7 +26,8 @@ class IntroScreen(Screen):
         self.shake()
 
     def on_enter(self, *args):
-        self.starClock = Clock.schedule_interval(self.draw, 0.1)
+        self.starClock = Clock.schedule_interval(self.draw, self.Globals.GameSettings.intro_star_new_frame_delay)
+        self.shakeClock = Clock.schedule_interval(self.draw, self.Globals.GameSettings.intro_ship_shake_delay)
 
     def draw(self, _):
         self.shakeScreenLayout.canvas.clear()
