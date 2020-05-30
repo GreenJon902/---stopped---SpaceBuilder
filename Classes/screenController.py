@@ -9,8 +9,6 @@ class ScreenController(ScreenManager):
         super(ScreenController, self).__init__()
 
 
-
-
         introScreen = IntroScreen(Globals, name="IntroScreen")
         baseBuildScreen = BaseBuilderScreen(name="BaseBuildScreen")
 

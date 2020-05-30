@@ -13,17 +13,23 @@ class IntroScreen(Screen):
         self.Globals = Globals
 
     def on_enter(self, *args):
-        self.clock = Clock.schedule_interval(lambda x: self.draw(self.Globals), 0.5)
+        self.clock = Clock.schedule_interval(self.draw, 0.1)
 
-    def draw(self, Globals):
-        with self.canvas:
-            self.canvas.clear()
+    def draw(self, _):
+        self.canvas.clear()
 
-            Color(1, 1, 1)
+        Globals = self.Globals
 
-            x, y = random.randint(0, Globals.width), random.randint(0, Globals.height)
+        for i in range(self.Globals.gameSettings.star_amount):
+            with self.canvas:
+                Color(1, 1, 1)
 
-            Rectangle(pos=(x, y), size=(Globals.width / 10, Globals.height / 50))
+                x, y = random.randint(0, Globals.width), random.randint(0, Globals.height / 2) + Globals.height / 2
+
+                Rectangle(pos=(x, y), size=(Globals.width / 20, Globals.height / 100), color=Color(1, 1, 1))
+                Rectangle(pos=(0, 0), size=(Globals.width, Globals.height), source="textures/shipInside.png")
+                # Rectangle(pos=(x - 10, y - 10), size=(Globals.width / 10 + 10, Globals.height / 50 + 10),
+                #         color=Color(1, 0, 0, 0.1))
 
     def on_leave(self, *args):
         self.clock.cancel()
