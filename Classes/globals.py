@@ -128,5 +128,5 @@ class Globals:
         intro_star_width_divider = 20
         intro_star_height_divider = 100
         intro_ship_shake_amount_divider = 10
-        intro_ship_shake_repeats = 1
+        intro_ship_shake_repeats = 3
 

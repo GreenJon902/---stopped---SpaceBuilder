@@ -1,6 +1,7 @@
 import random
 import threading
 
+from kivy import Logger
 from kivy.clock import Clock
 from kivy.uix.screenmanager import Screen
 from kivy.graphics import *
@@ -47,7 +48,32 @@ class IntroScreen(Screen):
 
     def shake(self):
         for n, direction in enumerate(self.shakeScreenMoveDirections):
-            print(n, direction)
+            if direction == "up":
+                pos = (0, 0)
+
+            elif direction == "down":
+                pos = (0, 0)
+
+            elif direction == "left":
+                pos = (0, 0)
+
+            elif direction == "right":
+                pos = (0, 0)
+
+            elif direction == "upLeft":
+                pos = (0, 0)
+
+            elif direction == "upRight":
+                pos = (0, 0)
+
+            elif direction == "downLeft":
+                pos = (0, 0)
+
+            elif direction == "downRight":
+                pos = (0, 0)
+
+            else:
+                Logger.warn("Application: Direction " + str(direction) + " is not valid")
 
     def on_leave(self, *args):
         self.clock.cancel()
