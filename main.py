@@ -1,6 +1,8 @@
 import os
+import sys
 
 from kivy.app import App
+from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.logger import Logger
 
@@ -26,6 +28,11 @@ class SpaceBuilder(App):
 
     def build(self):
         return ScreenController(Globals)
+
+    def on_stop(self):
+        sys.exit()
+
+
 
 
 if __name__ == '__main__':
