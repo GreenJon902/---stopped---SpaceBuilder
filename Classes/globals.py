@@ -1,11 +1,14 @@
 import json
 
 from kivy.event import EventDispatcher
-from kivy.properties import StringProperty, Property
+from kivy.properties import StringProperty, Property, NumericProperty
 from kivy.logger import Logger
 
 
 class Globals:
+    width = 0
+    height = 0
+
     def __init__(self):
         self.User_data = self._User_data()
         self.Settings_data = self._Settings_data()

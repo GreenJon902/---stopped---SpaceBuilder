@@ -18,6 +18,9 @@ class SpaceBuilder(App):
 
         self.setup()
 
+        Globals.width = Window.width
+        Globals.height = Window.height
+
     def setup(self):
         Logger.info("Application: Starting setup")
 
