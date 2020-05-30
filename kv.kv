@@ -1,7 +1,12 @@
 <IntroScreen>:
     FloatLayout:
-        width: root.width
-        height: root.height
+        canvas.before:
+            Color:
+                rgba: 1, 0, 0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
         id: shakeScreen
 
 

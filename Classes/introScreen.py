@@ -23,7 +23,6 @@ class IntroScreen(Screen):
         self.shakeScreenHeight = Globals.height - (self.shakeScreenY * 2)
         self.shakeScreenLayout = self.ids["shakeScreen"]
 
-
     def on_enter(self, *args):
         self.starClock = Clock.schedule_interval(self.draw, self.Globals.GameSettings.intro_star_new_frame_delay)
         self.shakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
@@ -41,11 +40,15 @@ class IntroScreen(Screen):
 
                 Rectangle(pos=(x, y), size=(Globals.width / Globals.GameSettings.intro_star_width_divider,
                                             Globals.height / Globals.GameSettings.intro_star_height_divider))
-                Rectangle(pos=(self.shakeScreenX, self.shakeScreenY), size=(self.shakeScreenWidth,
-                                                                            self.shakeScreenHeight),
-                          source="textures/shipInside.png")
+
                 # Rectangle(pos=(x - 10, y - 10), size=(Globals.width / 10 + 10, Globals.height / 50 + 10),
                 #         color=Color(1, 0, 0, 0.1))
+
+        with self.shakeScreenLayout.canvas:
+            Rectangle(pos=(self.shakeScreenX + self.shakeScreenLayout.pos[0],
+                           self.shakeScreenY + self.shakeScreenLayout.pos[1]), size=(self.shakeScreenWidth,
+                                                                                     self.shakeScreenHeight),
+                      source="textures/shipInside.png")
 
     def shake(self, _):
         animation = Animation(pos=self.shakeScreenLayout.pos, duration=0)
@@ -54,12 +57,10 @@ class IntroScreen(Screen):
             animation += Animation(pos=(self.shakeScreenX * pos[0], self.shakeScreenY * pos[1]),
                                    duration=self.Globals.GameSettings.intro_ship_shake_shake_length)
 
-
         animation += Animation(pos=(0, 0), duration=self.Globals.GameSettings.intro_ship_shake_shake_length)
         print("start")
         animation.start(self.shakeScreenLayout)
         print("done")
-
 
     def on_leave(self, *args):
         self.starClock.cancel()
