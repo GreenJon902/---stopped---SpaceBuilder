@@ -12,31 +12,31 @@ class IntroScreen(Screen):
         self.clock = None
         self.Globals = Globals
 
+        self.shakeScreenX = Globals.width / Globals.GameSettings.intro_ship_shake_amount_divider * -1
+        self.shakeScreenY = Globals.height / Globals.GameSettings.intro_ship_shake_amount_divider * -1
+        self.shakeScreenWidth = Globals.width - (self.shakeScreenX * 2)
+        self.shakeScreenHeight = Globals.height - (self.shakeScreenY * 2)
+        self.shakeScreenLayout = self.ids["shakeScreen"]
+
     def on_enter(self, *args):
         self.clock = Clock.schedule_interval(self.draw, 0.1)
 
     def draw(self, _):
-        self.canvas.clear()
+        self.shakeScreenLayout.canvas.clear()
 
         Globals = self.Globals
 
         for i in range(Globals.GameSettings.intro_star_amount):
-            with self.canvas:
+            with self.shakeScreenLayout.canvas:
                 Color(1, 1, 1)
 
-                x, y = Globals.width / 10 * -1, Globals.height / 10 * -1
-                x2, y2 = random.randint(0, Globals.width), random.randint(0, Globals.height / 2) + Globals.height / 2
+                x, y = random.randint(0, Globals.width), random.randint(0, Globals.height / 2) + Globals.height / 2
 
-                width, height = Globals.width - (x * 2), Globals.height - (y * 2)
-
-                print(x, y)
-                print(width, height)
-                print(Globals.width, Globals.height)
-
-                Rectangle(pos=(x2, y2), size=(Globals.width / Globals.GameSettings.intro_star_width_divider,
-                                              Globals.height / Globals.GameSettings.intro_star_height_divider),
-                          color=Color(1, 1, 1))
-                Rectangle(pos=(x, y), size=(width, height), source="textures/shipInside.png")
+                Rectangle(pos=(x, y), size=(Globals.width / Globals.GameSettings.intro_star_width_divider,
+                                            Globals.height / Globals.GameSettings.intro_star_height_divider))
+                Rectangle(pos=(self.shakeScreenX, self.shakeScreenY), size=(self.shakeScreenWidth,
+                                                                            self.shakeScreenHeight),
+                          source="textures/shipInside.png")
                 # Rectangle(pos=(x - 10, y - 10), size=(Globals.width / 10 + 10, Globals.height / 50 + 10),
                 #         color=Color(1, 0, 0, 0.1))
 
