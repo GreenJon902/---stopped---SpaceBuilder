@@ -27,7 +27,11 @@ class IntroScreen(Screen):
                 x, y = Globals.width / 10 * -1, Globals.height / 10 * -1
                 x2, y2 = random.randint(0, Globals.width), random.randint(0, Globals.height / 2) + Globals.height / 2
 
-                width, height = Globals.width + (x * 2), Globals.height + (y * 2)
+                width, height = Globals.width - (x * 2), Globals.height - (y * 2)
+
+                print(x, y)
+                print(width, height)
+                print(Globals.width, Globals.height)
 
                 Rectangle(pos=(x2, y2), size=(Globals.width / Globals.GameSettings.intro_star_width_divider,
                                               Globals.height / Globals.GameSettings.intro_star_height_divider),
