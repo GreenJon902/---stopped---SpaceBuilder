@@ -124,7 +124,7 @@ class Globals:
                 Logger.warn("Application: \"" + str(key) + "\" is an invalid key for Settings data")
 
     class GameSettings:
-        star_amount = 10
-        star_width_divider = 20
-        star_height_divider = 100
+        intro_star_amount = 10
+        intro_star_width_divider = 20
+        intro_star_height_divider = 100
 
