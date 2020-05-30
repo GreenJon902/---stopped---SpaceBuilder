@@ -1,6 +1,7 @@
 import json
 
 from kivy.event import EventDispatcher
+from kivy.graphics.context_instructions import Color
 from kivy.properties import StringProperty, Property, NumericProperty
 from kivy.logger import Logger
 
@@ -130,8 +131,11 @@ class Globals:
         intro_star_new_frame_delay = 0.1
         intro_ship_shake_amount_divider = 5
         intro_ship_shake_repeats = 3
-        intro_ship_shake_delay = 2
+        intro_ship_shake_delay = 5
         intro_ship_shake_shake_length = 0.05
         intro_ship_new_frame_delay = 0.01
         intro_ship_shake_positions = [(-0.75, 1), (-1, 0.75)]
+        intro_alarm_color = Color(1, 0, 0, 0.5)
+        intro_alarm_delay = 6
+        intro_alarm_length = 0.5
 
