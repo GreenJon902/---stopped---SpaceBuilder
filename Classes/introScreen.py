@@ -14,8 +14,8 @@ class IntroScreen(Screen):
 
         self.shakeScreenX = Globals.width / Globals.GameSettings.intro_ship_shake_amount_divider * -1
         self.shakeScreenY = Globals.height / Globals.GameSettings.intro_ship_shake_amount_divider * -1
-        self.shakeScreenMoveDirection = random.choice(["up", "down", "left", "right", "upLeft", "upRight", "downLeft",
-                                                       "downRight"])
+        self.shakeScreenMoveDirections = random.choices(["up", "down", "left", "right", "upLeft", "upRight", "downLeft",
+                                                       "downRight"], self.Globals.GameSettings.intro_ship_shake_repeats)
         self.shakeScreenWidth = Globals.width - (self.shakeScreenX * 2)
         self.shakeScreenHeight = Globals.height - (self.shakeScreenY * 2)
         self.shakeScreenLayout = self.ids["shakeScreen"]
@@ -43,7 +43,7 @@ class IntroScreen(Screen):
                 #         color=Color(1, 0, 0, 0.1))
 
     def shake(self):
-        for i in range(self.Globals.GameSettings.intro_ship_shake_repeats):
+        for i in enumerate(self.shakeScreenMoveDirections):
             pass
 
     def on_leave(self, *args):
