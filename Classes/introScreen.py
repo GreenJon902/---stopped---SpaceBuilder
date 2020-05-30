@@ -1,5 +1,4 @@
 import random
-import threading
 
 from kivy import Logger
 from kivy.animation import Animation
