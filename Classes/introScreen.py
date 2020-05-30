@@ -10,7 +10,7 @@ from kivy.graphics import *
 class IntroScreen(Screen):
     def __init__(self, Globals, *args, **kwargs):
         super(IntroScreen, self).__init__(*args, **kwargs)
-        self.clock = None
+        self.starClock = None
         self.Globals = Globals
 
         self.shakeScreenX = Globals.width / Globals.GameSettings.intro_ship_shake_amount_divider * -1
@@ -25,7 +25,7 @@ class IntroScreen(Screen):
         self.shake()
 
     def on_enter(self, *args):
-        self.clock = Clock.schedule_interval(self.draw, 0.1)
+        self.starClock = Clock.schedule_interval(self.draw, 0.1)
 
     def draw(self, _):
         self.shakeScreenLayout.canvas.clear()
@@ -76,4 +76,4 @@ class IntroScreen(Screen):
                 Logger.warn("Application: Direction " + str(direction) + " is not valid")
 
     def on_leave(self, *args):
-        self.clock.cancel()
+        self.starClock.cancel()
