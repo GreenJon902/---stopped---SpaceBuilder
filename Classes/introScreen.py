@@ -66,6 +66,11 @@ class IntroScreen(Screen):
         animation.start(self.shipLayout)
         print("done")
 
+    def make_ship_red(self, _):
+        with self.tintLayout.canvas:
+            Rectangle(pos=(0, 0), size=(self.Globals.width, self.Globals.height),
+                      color=self.Globals.GameSettings.intro_alarm_color)
+
     def on_leave(self, *args):
         self.starClock.cancel()
         self.shipClock.cancel()
