@@ -30,7 +30,7 @@ class IntroScreen(Screen):
                 width, height = Globals.width + (x * 2), Globals.height + (y * 2)
 
                 Rectangle(pos=(x2, y2), size=(Globals.width / Globals.GameSettings.intro_star_width_divider,
-                                              Globals.height / Globals.GameSettings.intro_star_width_height),
+                                              Globals.height / Globals.GameSettings.intro_star_height_divider),
                           color=Color(1, 1, 1))
                 Rectangle(pos=(x, y), size=(width, height), source="textures/shipInside.png")
                 # Rectangle(pos=(x - 10, y - 10), size=(Globals.width / 10 + 10, Globals.height / 50 + 10),
