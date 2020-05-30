@@ -42,5 +42,9 @@ class IntroScreen(Screen):
                 # Rectangle(pos=(x - 10, y - 10), size=(Globals.width / 10 + 10, Globals.height / 50 + 10),
                 #         color=Color(1, 0, 0, 0.1))
 
+    def shake(self):
+        for i in range(self.Globals.GameSettings.intro_ship_shake_repeats):
+            pass
+
     def on_leave(self, *args):
         self.clock.cancel()
