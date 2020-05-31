@@ -15,7 +15,6 @@ class IntroScreen(Screen):
         self.shakeClock = None
         self.tintClock = None
         self.tintClock2 = None
-        self.rotateClock = None
         self.Globals = Globals
 
         self.shakeScreenX = Globals.width / Globals.GameSettings.intro_ship_shake_amount_divider * -1
@@ -40,7 +39,6 @@ class IntroScreen(Screen):
         self.shipClock = Clock.schedule_interval(self.draw_ship, self.Globals.GameSettings.intro_ship_new_frame_delay)
         self.tintClock = Clock.schedule_once(self.start_alarm, self.Globals.GameSettings.intro_alarm_delay)
         self.shakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
-        self.rotateClock = Clock.schedule_once(self.rotate, self.Globals.GameSettings.intro_ship_rotate_delay)
 
         Logger.info("Application: Intro Screen clocks created")
 
@@ -90,12 +88,6 @@ class IntroScreen(Screen):
 
         Clock.schedule_once(lambda _: self.tintLayout.canvas.clear(), self.Globals.GameSettings.intro_alarm_length)
 
-    def rotate(self, _):
-        animation = Animation(angle=self.shipLayout.angle, duration=0)
-        animation += Animation(angle=self.Globals.GameSettings.intro_ship_rotate_degrees,
-                               duration=self.Globals.GameSettings.intro_ship_rotate_length)
-
-        animation.start(self.shipLayout)
 
 
     def on_leave(self, *args):
