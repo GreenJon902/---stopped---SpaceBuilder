@@ -31,7 +31,6 @@ class IntroScreenType1(Screen):
         Logger.info("Application: Intro Screen setup")
 
     def post_init(self, _):
-        print(self.ids)
         self.starsLayout = self.ids["stars"]
         self.shipLayout = self.ids["ship"]
         self.tintLayout = self.ids["tint"]
@@ -39,7 +38,7 @@ class IntroScreenType1(Screen):
         self.shipLayout.originX = self.Globals.width / 2
         self.shipLayout.originY = self.Globals.height / 2
 
-    def on_enter(self):
+    def on_enter(self, *args):
         Logger.info("Application: Intro Screen entered")
 
         self.starClock = Clock.schedule_interval(self.draw_star,
