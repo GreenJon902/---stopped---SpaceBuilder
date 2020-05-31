@@ -1,10 +1,14 @@
 import random
+from io import BytesIO
 
+from PIL import Image
 from kivy import Logger
 from kivy.animation import Animation
+from kivy.core.image import Image as CoreImage
 from kivy.clock import Clock
 from kivy.graphics import *
-from kivy.uix.screenmanager import Screen
+
+from Classes.screen import Screen
 
 
 class IntroScreen(Screen):
@@ -29,6 +33,37 @@ class IntroScreen(Screen):
 
         self.shipLayout.originX = Globals.width / 2
         self.shipLayout.originY = Globals.height / 2
+
+        img = Image.open("textures/shipInside.png")
+        width = img.size[0]
+        height = img.size[1]
+
+        ratio = self.shakeScreenHeight / self.shakeScreenWidth
+        ratio2 = height / width
+
+        takeAway = ratio - ratio2
+
+        new_width = width * ratio
+
+
+        left = (width - new_width) / 2
+        top = 0
+        right = (width + new_width) / 2
+        bottom = height
+
+        print(left, right)
+        print(top, bottom)
+
+        img = img.crop((left, top, right, bottom))
+
+        data = BytesIO()
+        img.save(data, format='png')
+        data.seek(0)
+        self.shipImageTexture = CoreImage(BytesIO(data.read()), ext='png').texture
+
+
+
+
 
         Logger.info("Application: Intro Screen setup")
 
@@ -63,7 +98,7 @@ class IntroScreen(Screen):
             Rectangle(pos=(self.shakeScreenX + self.shipLayout.pos[0],
                            self.shakeScreenY + self.shipLayout.pos[1]),
                       size=(self.shakeScreenWidth, self.shakeScreenHeight),
-                      source="textures/shipInside.png")
+                      texture=self.shipImageTexture)
 
     def shake(self, _):
         animation = Animation(pos=self.shipLayout.pos, duration=0)
