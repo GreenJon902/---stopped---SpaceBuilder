@@ -4,7 +4,7 @@ from kivy import Logger
 from kivy.animation import Animation
 from kivy.clock import Clock
 from kivy.graphics import *
-from kivy.uix.screenmanager import Screen
+from Classes.screen import Screen
 
 
 class IntroScreenType1(Screen):
@@ -24,14 +24,19 @@ class IntroScreenType1(Screen):
         self.shakeDistanceY = self.shakeScreenX * -1
         self.shakeScreenWidth = Globals.width - (self.shakeScreenX * 2)
         self.shakeScreenHeight = Globals.height - (self.shakeScreenY * 2)
-        self.starsLayout = self.ids["stars"]
-        self.shipLayout = self.ids["ship"]
-        self.tintLayout = self.ids["tint"]
+        self.starsLayout = None
+        self.shipLayout = None
+        self.tintLayout = None
 
         self.shipLayout.originX = Globals.width / 2
         self.shipLayout.originY = Globals.height / 2
 
         Logger.info("Application: Intro Screen setup")
+
+    def post_init(self, _):
+        self.starsLayout = self.ids["stars"]
+        self.shipLayout = self.ids["ship"]
+        self.tintLayout = self.ids["tint"]
 
     def on_enter(self, *args):
         Logger.info("Application: Intro Screen entered")
