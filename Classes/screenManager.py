@@ -2,7 +2,7 @@ from kivy import Logger
 from kivy.uix.screenmanager import ScreenManager
 
 from Classes.baseBuilderScreen import BaseBuilderScreen
-from Classes.introScreenType1 import IntroScreenType1
+from Classes.introScreen import IntroScreen
 from Classes.rotatableFloatLayout import RotatableFloatLayout
 
 
@@ -11,16 +11,7 @@ class ScreenManager(ScreenManager):
         super(ScreenManager, self).__init__()
 
 
-        if Globals.GameSettings.intro_type == 1:
-            introScreen = IntroScreenType1(Globals, name="IntroScreen")
-
-        elif Globals.GameSettings.intro_type == 2:
-            pass
-
-        else:
-            Logger.warn("Application: There is not intro type " + Globals.GameSettings.intro_type)
-
-
+        introScreen = IntroScreen(Globals, name="IntroScreen")
         baseBuildScreen = BaseBuilderScreen(name="BaseBuilderScreen")
 
 
