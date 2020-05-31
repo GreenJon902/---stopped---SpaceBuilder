@@ -15,6 +15,7 @@ class IntroScreen(Screen):
         self.shakeClock = None
         self.tintClock = None
         self.tintClock2 = None
+        self.rotateClock = None
         self.Globals = Globals
 
         self.shakeScreenX = Globals.width / Globals.GameSettings.intro_ship_shake_amount_divider * -1
