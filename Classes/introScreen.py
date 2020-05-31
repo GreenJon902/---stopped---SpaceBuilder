@@ -61,8 +61,8 @@ class IntroScreen(Screen):
 
         with self.shipLayout.canvas:
             Rectangle(pos=(self.shakeScreenX + self.shipLayout.pos[0],
-                           self.shakeScreenY + self.shipLayout.pos[1]), size=(self.shakeScreenWidth,
-                                                                              self.shakeScreenHeight),
+                           self.shakeScreenY + self.shipLayout.pos[1]),
+                      size=(self.shakeScreenWidth, self.shakeScreenHeight),
                       source="textures/shipInside.png")
 
     def shake(self, _):
@@ -87,8 +87,6 @@ class IntroScreen(Screen):
                       color=Color(*self.Globals.GameSettings.intro_alarm_color))
 
         Clock.schedule_once(lambda _: self.tintLayout.canvas.clear(), self.Globals.GameSettings.intro_alarm_length)
-
-
 
     def on_leave(self, *args):
         Logger.info("Application: Intro Screen exited")
