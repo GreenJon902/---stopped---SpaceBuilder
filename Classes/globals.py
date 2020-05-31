@@ -124,20 +124,22 @@ class Globals:
                 Logger.warn("Application: \"" + str(key) + "\" is an invalid key for Settings data")
 
     class GameSettings:
-        intro_star_amount = 10
-        intro_star_width_divider = 20
-        intro_star_height_divider = 100
-        intro_star_new_frame_delay = 0.1
-        intro_ship_shake_amount_divider = 5
-        intro_ship_shake_repeats = 3
-        intro_ship_shake_delay = 5
-        intro_ship_shake_shake_length = 0.05
-        intro_ship_new_frame_delay = 0.01
-        intro_ship_shake_positions = [(-0.75, 1), (-1, 0.75)]
-        intro_ship_rotate_degrees = 10
-        intro_ship_rotate_delay = 5.1
-        intro_ship_rotate_length = 0.5
-        intro_alarm_color = 1, 0, 0, 0.5
-        intro_alarm_delay = 5.1
-        intro_alarm_length = 0.6
+
+
+        intro_type_1_star_amount = 10
+        intro_type_1_star_width_divider = 20
+        intro_type_1_star_height_divider = 100
+        intro_type_1_star_new_frame_delay = 0.1
+        intro_type_1_ship_shake_amount_divider = 5
+        intro_type_1_ship_shake_repeats = 3
+        intro_type_1_ship_shake_delay = 5
+        intro_type_1_ship_shake_shake_length = 0.05
+        intro_type_1_ship_new_frame_delay = 0.01
+        intro_type_1_ship_shake_positions = [(-0.75, 1), (-1, 0.75)]
+        intro_type_1_ship_rotate_degrees = 10
+        intro_type_1_ship_rotate_delay = 5.1
+        intro_type_1_ship_rotate_length = 0.5
+        intro_type_1_alarm_color = 1, 0, 0, 0.5
+        intro_type_1_alarm_delay = 5.1
+        intro_type_1_alarm_length = 0.6
 
