@@ -2,7 +2,7 @@ from kivy import Logger
 from kivy.uix.screenmanager import ScreenManager
 
 from Classes.baseBuilderScreen import BaseBuilderScreen
-from Classes.introScreen import IntroScreen
+from Classes.introScreenType1 import IntroScreenType1
 from Classes.rotatableFloatLayout import RotatableFloatLayout
 
 
@@ -11,7 +11,7 @@ class ScreenManager(ScreenManager):
         super(ScreenManager, self).__init__()
 
 
-        introScreen = IntroScreen(Globals, name="IntroScreen")
+        introScreen = IntroScreenType1(Globals, name="IntroScreen")
         baseBuildScreen = BaseBuilderScreen(name="BaseBuilderScreen")
 
 
