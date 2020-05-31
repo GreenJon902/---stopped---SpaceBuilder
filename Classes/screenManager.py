@@ -17,7 +17,8 @@ class ScreenManager(ScreenManager):
         elif Globals.GameSettings.intro_type == 2:
             pass
 
-        else: Logger.warn("Application: There is not intro type " + Globals.GameSettings.intro_type)
+        else:
+            Logger.warn("Application: There is not intro type " + Globals.GameSettings.intro_type)
 
 
         baseBuildScreen = BaseBuilderScreen(name="BaseBuilderScreen")
