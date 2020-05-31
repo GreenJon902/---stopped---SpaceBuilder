@@ -24,8 +24,8 @@ class IntroScreenType1(Screen):
         self.shakeDistanceY = self.shakeScreenX * -1
         self.shakeScreenWidth = Globals.width - (self.shakeScreenX * 2)
         self.shakeScreenHeight = Globals.height - (self.shakeScreenY * 2)
-        self.shipLayout = self.ids["ship"]
         self.starsLayout = self.ids["stars"]
+        self.shipLayout = self.ids["ship"]
         self.tintLayout = self.ids["tint"]
 
         self.shipLayout.originX = Globals.width / 2
@@ -36,8 +36,10 @@ class IntroScreenType1(Screen):
     def on_enter(self, *args):
         Logger.info("Application: Intro Screen entered")
 
-        self.starClock = Clock.schedule_interval(self.draw_star, self.Globals.GameSettings.intro_type_1_star_new_frame_delay)
-        self.shipClock = Clock.schedule_interval(self.draw_ship, self.Globals.GameSettings.intro_type_1_ship_new_frame_delay)
+        self.starClock = Clock.schedule_interval(self.draw_star,
+                                                 self.Globals.GameSettings.intro_type_1_star_new_frame_delay)
+        self.shipClock = Clock.schedule_interval(self.draw_ship,
+                                                 self.Globals.GameSettings.intro_type_1_ship_new_frame_delay)
         self.tintClock = Clock.schedule_once(self.start_alarm, self.Globals.GameSettings.intro_type_1_alarm_delay)
         self.shakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_type_1_ship_shake_delay)
         self.rotateClock = Clock.schedule_once(self.rotate, self.Globals.GameSettings.intro_type_1_ship_rotate_delay)
