@@ -36,6 +36,7 @@ class IntroScreen(Screen):
         self.shipClock = Clock.schedule_interval(self.draw_ship, self.Globals.GameSettings.intro_ship_new_frame_delay)
         self.tintClock = Clock.schedule_once(self.start_alarm, self.Globals.GameSettings.intro_alarm_delay)
         self.shakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
+        self.rotateClock = Clock.schedule_once(self.rotate, self.Globals.GameSettings.intro_ship_rotate_delay)
 
         Logger.info("Application: Intro Screen clocks created")
 
