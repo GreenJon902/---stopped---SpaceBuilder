@@ -53,14 +53,13 @@ class IntroScreen(Screen):
                 Rectangle(pos=(x, y), size=(Globals.width / Globals.GameSettings.intro_star_width_divider,
                                             Globals.height / Globals.GameSettings.intro_star_height_divider))
 
-
     def draw_ship(self, _):
         self.shipLayout.canvas.clear()
 
         with self.shipLayout.canvas:
             Rectangle(pos=(self.shakeScreenX + self.shipLayout.pos[0],
                            self.shakeScreenY + self.shipLayout.pos[1]), size=(self.shakeScreenWidth,
-                                                                                     self.shakeScreenHeight),
+                                                                              self.shakeScreenHeight),
                       source="textures/shipInside.png")
 
     def shake(self, _):
@@ -86,10 +85,16 @@ class IntroScreen(Screen):
 
         Clock.schedule_once(lambda _: self.tintLayout.canvas.clear(), self.Globals.GameSettings.intro_alarm_length)
 
+    def rotate(self, _):
+        animation = Animation(angle=self.shipLayout.angle, duration=0)
+        animation += Animation(angle=self.Globals.GameSettings.intro_ship_rotate_degrees,
+                               duration=self.Globals.GameSettings.intro_ship_rotate_length)
+
+        animation.start(self.shipLayout)
+
 
     def on_leave(self, *args):
         Logger.info("Application: Intro Screen exited")
 
         self.starClock.cancel()
         self.shipClock.cancel()
-
