@@ -4,12 +4,12 @@ from kivy import Logger
 from kivy.animation import Animation
 from kivy.clock import Clock
 from kivy.graphics import *
-from Classes.screen import Screen
+from kivy.uix.screenmanager import Screen
 
 
-class IntroScreen(Screen):
+class IntroScreenType1(Screen):
     def __init__(self, Globals, *args, **kwargs):
-        super(IntroScreen, self).__init__(*args, **kwargs)
+        super(IntroScreenType1, self).__init__(*args, **kwargs)
         self.starClock = None
         self.shipClock = None
         self.shakeClock = None
@@ -24,27 +24,20 @@ class IntroScreen(Screen):
         self.shakeDistanceY = self.shakeScreenX * -1
         self.shakeScreenWidth = Globals.width - (self.shakeScreenX * 2)
         self.shakeScreenHeight = Globals.height - (self.shakeScreenY * 2)
-        self.starsLayout = None
-        self.shipLayout = None
-        self.tintLayout = None
-
-        Logger.info("Application: Intro Screen setup")
-
-    def post_init(self, _):
-        self.starsLayout = self.ids["stars"]
         self.shipLayout = self.ids["ship"]
+        self.starsLayout = self.ids["stars"]
         self.tintLayout = self.ids["tint"]
 
-        self.shipLayout.originX = self.Globals.width / 2
-        self.shipLayout.originY = self.Globals.height / 2
+        self.shipLayout.originX = Globals.width / 2
+        self.shipLayout.originY = Globals.height / 2
+
+        Logger.info("Application: Intro Screen setup")
 
     def on_enter(self, *args):
         Logger.info("Application: Intro Screen entered")
 
-        self.starClock = Clock.schedule_interval(self.draw_star,
-                                                 self.Globals.GameSettings.intro_type_1_star_new_frame_delay)
-        self.shipClock = Clock.schedule_interval(self.draw_ship,
-                                                 self.Globals.GameSettings.intro_type_1_ship_new_frame_delay)
+        self.starClock = Clock.schedule_interval(self.draw_star, self.Globals.GameSettings.intro_type_1_star_new_frame_delay)
+        self.shipClock = Clock.schedule_interval(self.draw_ship, self.Globals.GameSettings.intro_type_1_ship_new_frame_delay)
         self.tintClock = Clock.schedule_once(self.start_alarm, self.Globals.GameSettings.intro_type_1_alarm_delay)
         self.shakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_type_1_ship_shake_delay)
         self.rotateClock = Clock.schedule_once(self.rotate, self.Globals.GameSettings.intro_type_1_ship_rotate_delay)
