@@ -43,7 +43,7 @@ class IntroScreen(Screen):
 
         takeAway = ratio - ratio2
 
-        new_width = width * ratio
+        new_width = width - (width * takeAway)
 
 
         left = (width - new_width) / 2
