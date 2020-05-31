@@ -3,10 +3,12 @@ from kivy.properties import NumericProperty
 from kivy.uix.floatlayout import FloatLayout
 
 
-class rotatableFloatLayout(FloatLayout):
+class RotatableFloatLayout(FloatLayout):
     angle = NumericProperty(0)
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
+        super(RotatableFloatLayout, self).__init__(*args, **kwargs)
+
         with self.canvas.before:
             PushMatrix()
             self.rot = Rotate()
