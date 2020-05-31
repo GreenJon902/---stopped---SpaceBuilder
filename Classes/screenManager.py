@@ -11,7 +11,15 @@ class ScreenManager(ScreenManager):
         super(ScreenManager, self).__init__()
 
 
-        introScreen = IntroScreenType1(Globals, name="IntroScreen")
+        if Globals.GameSettings.intro_type == 1:
+            introScreen = IntroScreenType1(Globals, name="IntroScreen")
+
+        elif Globals.GameSettings.intro_type == 2:
+            pass
+
+        else: Logger.warn("Application: There is not intro type " + Globals.GameSettings.intro_type)
+
+
         baseBuildScreen = BaseBuilderScreen(name="BaseBuilderScreen")
 
 
