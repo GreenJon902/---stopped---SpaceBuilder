@@ -7,9 +7,9 @@ from kivy.graphics import *
 from Classes.screen import Screen
 
 
-class IntroScreenType1(Screen):
+class IntroScreen(Screen):
     def __init__(self, Globals, *args, **kwargs):
-        super(IntroScreenType1, self).__init__(*args, **kwargs)
+        super(IntroScreen, self).__init__(*args, **kwargs)
         self.starClock = None
         self.shipClock = None
         self.shakeClock = None
