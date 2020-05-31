@@ -28,6 +28,9 @@ class IntroScreen(Screen):
         self.starsLayout = self.ids["stars"]
         self.tintLayout = self.ids["tint"]
 
+        self.shipLayout.originX = Globals.width / 2
+        self.shipLayout.originY = Globals.height / 2
+
         Logger.info("Application: Intro Screen setup")
 
     def on_enter(self, *args):
