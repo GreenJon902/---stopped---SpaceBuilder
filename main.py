@@ -15,11 +15,14 @@ Builder.load_file('kv.kv')
 class SpaceBuilder(App):
     def __init__(self):
         super(SpaceBuilder, self).__init__()
+        Window.size = Window.height * 2, Window.height
 
         self.setup()
 
         Globals.width = Window.width
         Globals.height = Window.height
+
+
 
     def setup(self):
         Logger.info("Application: Starting setup")
