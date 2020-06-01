@@ -1,4 +1,5 @@
 import random
+import time
 from io import BytesIO
 
 from PIL import Image
@@ -64,7 +65,7 @@ class IntroScreen(Screen):
 
         Logger.info("Application: Intro Screen setup")
 
-    def on_enter(self, *args):
+    def post_init(self, *args):
         Logger.info("Application: Intro Screen entered")
 
         self.starClock = Clock.schedule_interval(self.draw_star, self.Globals.GameSettings.intro_star_new_frame_delay)
