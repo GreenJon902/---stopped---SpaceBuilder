@@ -3,7 +3,6 @@ from kivy.uix.screenmanager import ScreenManager
 
 from Classes.baseBuilderScreen import BaseBuilderScreen
 from Classes.introScreen import IntroScreen
-from Classes.rotatableFloatLayout import RotatableFloatLayout
 
 
 class ScreenManager(ScreenManager):
