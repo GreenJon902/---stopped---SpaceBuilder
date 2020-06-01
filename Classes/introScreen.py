@@ -46,7 +46,6 @@ class IntroScreen(Screen):
 
         new_width = width - (width * takeAway)
 
-
         left = (width - new_width) / 2
         top = 0
         right = (width + new_width) / 2
@@ -58,10 +57,6 @@ class IntroScreen(Screen):
         img.save(data, format='png')
         data.seek(0)
         self.shipImageTexture = CoreImage(BytesIO(data.read()), ext='png').texture
-
-
-
-
 
         Logger.info("Application: Intro Screen setup")
 

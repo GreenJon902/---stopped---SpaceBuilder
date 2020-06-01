@@ -9,14 +9,11 @@ class ScreenManager(ScreenManager):
     def __init__(self, Globals):
         super(ScreenManager, self).__init__()
 
-
         introScreen = IntroScreen(Globals, name="IntroScreen")
         baseBuildScreen = BaseBuilderScreen(name="BaseBuilderScreen")
 
-
         self.add_widget(introScreen)
         self.add_widget(baseBuildScreen)
-
 
         if Globals.User_data.get("introFinished"):
             self.current = "BaseBuilderScreen"

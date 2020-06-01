@@ -137,4 +137,3 @@ class Globals:
         intro_alarm_color = 1, 0, 0, 0.5
         intro_alarm_delay = 5.1
         intro_alarm_length = 0.6
-

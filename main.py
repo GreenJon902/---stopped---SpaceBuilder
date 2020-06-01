@@ -22,8 +22,6 @@ class SpaceBuilder(App):
         Globals.width = Window.width
         Globals.height = Window.height
 
-
-
     def setup(self):
         Logger.info("Application: Starting setup")
 
@@ -37,8 +35,6 @@ class SpaceBuilder(App):
 
     def on_stop(self):
         sys.exit()
-
-
 
 
 if __name__ == '__main__':
