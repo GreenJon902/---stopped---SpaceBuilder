@@ -60,6 +60,13 @@ class IntroScreen(Screen):
         data.seek(0)
         self.shipImageTexture = CoreImage(BytesIO(data.read()), ext='png').texture
 
+        img = Image.open("textures/star.png")
+
+        data = BytesIO()
+        img.save(data, format='png')
+        data.seek(0)
+        self.starImageTexture = CoreImage(BytesIO(data.read()), ext='png').texture
+
         Logger.info("Application: Intro Screen setup")
 
     def post_init(self):
@@ -105,7 +112,7 @@ class IntroScreen(Screen):
             angle = angle + 360 if angle < 0 else angle
 
             rect = LineString([(x, y), (x, y + height), (x + width, y + height), (x + width, y)])
-            rect = affinity.rotate(rect, angle, "center")
+            rect = affinity.rotate(rect, angle + 90, "center")
             rect = rect.coords
 
 
