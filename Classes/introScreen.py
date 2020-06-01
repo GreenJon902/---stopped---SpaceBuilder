@@ -65,7 +65,7 @@ class IntroScreen(Screen):
 
         Logger.info("Application: Intro Screen setup")
 
-    def post_init(self, *args):
+    def post_init(self):
         Logger.info("Application: Intro Screen entered")
 
         self.starClock = Clock.schedule_interval(self.draw_star, self.Globals.GameSettings.intro_star_new_frame_delay)
