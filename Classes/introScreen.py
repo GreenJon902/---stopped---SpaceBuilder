@@ -51,9 +51,6 @@ class IntroScreen(Screen):
         right = (width + new_width) / 2
         bottom = height
 
-        print(left, right)
-        print(top, bottom)
-
         img = img.crop((left, top, right, bottom))
 
         data = BytesIO()
