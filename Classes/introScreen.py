@@ -112,8 +112,10 @@ class IntroScreen(Screen):
             with self.starsLayout.canvas:
                 Color(1, 1, 1)
 
-                Mesh(indices=(0, 1, 2, 3), vertices=(rect[0][0], rect[0][1], 0, 0, rect[1][0], rect[1][1], 0, 0,
-                                                     rect[2][0], rect[2][1], 0, 0, rect[3][0], rect[3][1], 0, 0))
+                Mesh(indices=(0, 1, 2, 3),
+                     vertices=(rect[0][0], rect[0][1], 0, 0, rect[1][0], rect[1][1], 0, self.starImageTexture.height,
+                               rect[2][0], rect[2][1], self.starImageTexture.width, 0, rect[3][0], rect[3][1], self.starImageTexture.width, self.starImageTexture.height),
+                     mode="triangle_strip", texture=self.starImageTexture)
 
 
     def draw_ship(self, _):
