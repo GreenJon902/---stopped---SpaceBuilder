@@ -1,5 +1,5 @@
+import math
 import random
-import time
 from io import BytesIO
 
 from PIL import Image
@@ -8,6 +8,8 @@ from kivy.animation import Animation
 from kivy.core.image import Image as CoreImage
 from kivy.clock import Clock
 from kivy.graphics import *
+from shapely import affinity
+from shapely.geometry import LineString
 
 from Classes.screen import Screen
 
@@ -75,14 +77,44 @@ class IntroScreen(Screen):
 
         Globals = self.Globals
 
+        centerX, centerY = Globals.width / 2, Globals.height / 2
+        width = Globals.width / Globals.GameSettings.intro_star_width_divider
+        height = Globals.height / Globals.GameSettings.intro_star_height_divider
+
+        cd_length = height
+
         for i in range(Globals.GameSettings.intro_star_amount):
+
+
+            x, y = random.randint(0, Globals.width), random.randint(0, Globals.height / 2) + Globals.height / 2
+
+            line = LineString([(centerX, centerY), (x, y)])
+            left = line.parallel_offset(cd_length / 2, 'left')
+            right = line.parallel_offset(cd_length / 2, 'right')
+            p1 = left.boundary[1]
+            p2 = right.boundary[0]
+
+            x1, y1 = p1.coords[0]
+            x2, y2 = p2.coords[0]
+
+            a = 0, y1
+            b = x1, y1
+            c = x2, y2
+
+            angle = math.degrees(math.atan2(c[1] - b[1], c[0] - b[0]) - math.atan2(a[1] - b[1], a[0] - b[0]))
+            angle = angle + 360 if angle < 0 else angle
+
+            rect = LineString([(x, y), (x, y + height), (x + width, y + height), (x + width, y)])
+            rect = affinity.rotate(rect, angle, "center")
+            rect = rect.coords
+
+
             with self.starsLayout.canvas:
                 Color(1, 1, 1)
 
-                x, y = random.randint(0, Globals.width), random.randint(0, Globals.height / 2) + Globals.height / 2
+                Mesh(indices=(0, 1, 2, 3), vertices=(rect[0][0], rect[0][1], 0, 0, rect[1][0], rect[1][1], 0, 0,
+                                                     rect[2][0], rect[2][1], 0, 0, rect[3][0], rect[3][1], 0, 0))
 
-                Rectangle(pos=(x, y), size=(Globals.width / Globals.GameSettings.intro_star_width_divider,
-                                            Globals.height / Globals.GameSettings.intro_star_height_divider))
 
     def draw_ship(self, _):
         self.shipLayout.canvas.clear()

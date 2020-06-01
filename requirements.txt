@@ -8,4 +8,5 @@ Kivy-Garden==0.1.4
 Pillow==7.1.2
 Pygments==2.6.1
 requests==2.23.0
+Shapely==1.7.0
 urllib3==1.25.9
