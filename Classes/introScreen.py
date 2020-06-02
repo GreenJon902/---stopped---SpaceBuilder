@@ -135,7 +135,7 @@ class IntroScreen(Screen):
         self.meteorLayout.canvas.clear()
 
         with self.meteorLayout.canvas:
-            Rectangle(source="textures/meteor.png")
+            Rectangle(source="textures/meteor.png", pos=self.meteorLayout.pos, size=self.meteorLayout.size)
 
 
     def draw_ship(self, _):
