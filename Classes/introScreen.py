@@ -129,6 +129,15 @@ class IntroScreen(Screen):
                      mode="triangle_fan", texture=self.starImageTexture)
 
     def start_draw_meteor(self, _):
+        positions = self.Globals.GameSettings.intro_meteor_positions
+        sizes = self.Globals.GameSettings.intro_meteor_positions
+        size = self.Globals.width, self.Globals.height
+        animation = Animation(pos=(positions[0][0] * self[0], positions[0][1], size[1]), size=sizes[0], duration=0)
+        animation += Animation(pos=(positions[1][0] * self[0], positions[1][1], size[1]), size=sizes[1], duration=0)
+        animation += Animation(pos=(positions[2][0] * self[0], positions[2][1], size[1]), size=sizes[2], duration=0)
+
+        animation.start(self.meteorLayout)
+
         self.meteorClock2 = Clock.schedule_interval(self.draw_meteor, 0)
 
     def draw_meteor(self, _):
