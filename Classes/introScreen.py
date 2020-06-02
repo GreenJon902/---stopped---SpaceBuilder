@@ -132,18 +132,28 @@ class IntroScreen(Screen):
 
     def start_draw_meteor(self, _):
         positions = self.Globals.GameSettings.intro_meteor_positions
-        sizes = self.Globals.GameSettings.intro_meteor_positions
+        sizes = self.Globals.GameSettings.intro_meteor_sizes
         size = self.Globals.width, self.Globals.height
         time1 = self.Globals.GameSettings.intro_meteor_length_1
         time2 = self.Globals.GameSettings.intro_meteor_length_2
         time3 = self.Globals.GameSettings.intro_meteor_length_3
 
+        print(sizes)
+        print(size)
+        print(positions)
+        print((sizes[0][0] * size[0], sizes[0][1] * size[1]), (positions[0][0] * size[0], positions[0][1] * size[1]))
+        print((sizes[1][0] * size[0], sizes[1][1] * size[1]), (positions[1][0] * size[0], positions[1][1] * size[1]))
+        print((sizes[2][0] * size[0], sizes[2][1] * size[2]), (positions[2][0] * size[0], positions[2][1] * size[1]))
+
         animation = Animation(center=(positions[0][0] * size[0], positions[0][1] * size[1]),
                               size=(sizes[0][0] * size[0], sizes[0][1] * size[1]), duration=time1)
+
         animation += Animation(center=(positions[1][0] * size[0], positions[1][1] * size[1]),
                                size=(sizes[1][0] * size[0], sizes[1][1] * size[1]), duration=time2)
+
         animation += Animation(pos=(positions[2][0] * size[0], positions[2][1] * size[1]),
                                size=(sizes[2][0] * size[0], sizes[2][1] * size[1]), duration=time3)
+
         animation.start(self.meteorLayout)
 
         self.meteorClock2 = Clock.schedule_interval(self.draw_meteor, 0)
