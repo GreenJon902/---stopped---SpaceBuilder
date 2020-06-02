@@ -21,6 +21,7 @@ class IntroScreen(Screen):
         self.shipClock = None
         self.shakeClock = None
         self.meteorClock = None
+        self.meteorClock2 = None
         self.tintClock = None
         self.tintClock2 = None
         self.Globals = Globals
@@ -76,7 +77,7 @@ class IntroScreen(Screen):
 
         self.starClock = Clock.schedule_interval(self.draw_star, self.Globals.GameSettings.intro_star_new_frame_delay)
         self.shipClock = Clock.schedule_interval(self.draw_ship, self.Globals.GameSettings.intro_ship_new_frame_delay)
-        #self.meteorClock = Clock.schedule_once(self.draw_meteor(), self.Globals.GameSettings.intro_meteor_delay)
+        self.meteorClock = Clock.schedule_once(self.star_draw_meteor, self.Globals.GameSettings.intro_meteor_delay)
         self.tintClock = Clock.schedule_once(self.start_alarm, self.Globals.GameSettings.intro_alarm_delay)
         self.shakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
 
@@ -127,6 +128,8 @@ class IntroScreen(Screen):
                                rect[2][0], rect[2][1], 1, 1, rect[3][0], rect[3][1], 1, 0),
                      mode="triangle_fan", texture=self.starImageTexture)
 
+    def start_draw_meteor(self, _):
+        self.meteorClock2 = Clock.schedule_interval(self.draw_meteor, 0)
 
     def draw_meteor(self, _):
         self.meteorLayout.canvas.clear()
@@ -172,3 +175,4 @@ class IntroScreen(Screen):
 
         self.starClock.cancel()
         self.shipClock.cancel()
+        self.meteorClock2.cancel()
