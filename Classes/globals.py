@@ -137,3 +137,7 @@ class Globals:
         intro_alarm_color = 1, 0, 0, 0.5
         intro_alarm_delay = 5.1
         intro_alarm_length = 0.6
+        intro_meteor_delay = 1
+        intro_meteor_length = 2
+        intro_meteor_positions = [(0.75, 0.5), (0.75, 0.5), (1, -1)]
+        intro_meteor_sizes = [(0, 1), (0, 1)]
