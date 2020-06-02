@@ -37,6 +37,8 @@ class IntroScreen(Screen):
         self.meteorLayout = self.ids["meteor"]
         self.tintLayout = self.ids["tint"]
 
+        self.meteorLayout.size = (0, 0)
+
         self.shipLayout.originX = Globals.width / 2
         self.shipLayout.originY = Globals.height / 2
 
