@@ -20,6 +20,7 @@ class IntroScreen(Screen):
         self.starClock = None
         self.shipClock = None
         self.shakeClock = None
+        self.meteorClock = None
         self.tintClock = None
         self.tintClock2 = None
         self.Globals = Globals
@@ -32,6 +33,7 @@ class IntroScreen(Screen):
         self.shakeScreenHeight = Globals.height - (self.shakeScreenY * 2)
         self.shipLayout = self.ids["ship"]
         self.starsLayout = self.ids["stars"]
+        self.meteorLayout = self.ids["meteor"]
         self.tintLayout = self.ids["tint"]
 
         self.shipLayout.originX = Globals.width / 2
@@ -74,6 +76,7 @@ class IntroScreen(Screen):
 
         self.starClock = Clock.schedule_interval(self.draw_star, self.Globals.GameSettings.intro_star_new_frame_delay)
         self.shipClock = Clock.schedule_interval(self.draw_ship, self.Globals.GameSettings.intro_ship_new_frame_delay)
+        #self.meteorClock = Clock.schedule_once(self.draw_meteor(), self.Globals.GameSettings.intro_meteor_delay)
         self.tintClock = Clock.schedule_once(self.start_alarm, self.Globals.GameSettings.intro_alarm_delay)
         self.shakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
 
@@ -126,7 +129,10 @@ class IntroScreen(Screen):
 
 
     def draw_meteor(self, _):
-        pass
+        self.meteorLayout.canvas.clear()
+
+        with self.meteorLayout.canvas:
+            Rectangle(source="textures/meteor.png")
 
 
     def draw_ship(self, _):
