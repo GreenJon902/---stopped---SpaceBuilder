@@ -132,13 +132,17 @@ class IntroScreen(Screen):
         positions = self.Globals.GameSettings.intro_meteor_positions
         sizes = self.Globals.GameSettings.intro_meteor_positions
         size = self.Globals.width, self.Globals.height
+        time = self.Globals.GameSettings.intro_meteor_length
+
         animation = Animation(pos=(positions[0][0] * size[0], positions[0][1] * size[1]), size=sizes[0], duration=0)
-        animation += Animation(pos=(positions[1][0] * size[0], positions[1][1] * size[1]), size=sizes[1], duration=0)
-        animation += Animation(pos=(positions[2][0] * size[0], positions[2][1] * size[1]), size=sizes[2], duration=0)
+        animation += Animation(pos=(positions[1][0] * size[0], positions[1][1] * size[1]), size=sizes[1], duration=time)
+        animation += Animation(pos=(positions[2][0] * size[0], positions[2][1] * size[1]), size=sizes[2], duration=time)
 
         animation.start(self.meteorLayout)
 
         self.meteorClock2 = Clock.schedule_interval(self.draw_meteor, 0)
+
+        Logger.info("Application: Intro Screen meteor move started started")
 
     def draw_meteor(self, _):
         self.meteorLayout.canvas.clear()
