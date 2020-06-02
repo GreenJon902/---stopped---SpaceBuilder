@@ -125,7 +125,7 @@ class Globals:
 
     class GameSettings:
         intro_star_amount = 10
-        intro_star_width_divider = 20
+        intro_star_width_divider = 10
         intro_star_height_divider = 100
         intro_star_new_frame_delay = 0.1
         intro_ship_shake_amount_divider = 5
