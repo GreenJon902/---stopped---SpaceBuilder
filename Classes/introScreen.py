@@ -125,6 +125,10 @@ class IntroScreen(Screen):
                      mode="triangle_fan", texture=self.starImageTexture)
 
 
+    def draw_meteor(self, _):
+        pass
+
+
     def draw_ship(self, _):
         self.shipLayout.canvas.clear()
 
