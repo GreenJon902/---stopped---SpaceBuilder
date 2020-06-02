@@ -140,4 +140,4 @@ class Globals:
         intro_meteor_delay = 1
         intro_meteor_length = 2
         intro_meteor_positions = [(0.75, 0.5), (0.75, 0.5), (1, -1)]
-        intro_meteor_sizes = [(0, 1), (0, 1)]
+        intro_meteor_sizes = [(0, 0), (0.1, 0.1), (0.1, 0.1)]
