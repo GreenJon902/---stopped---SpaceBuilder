@@ -139,11 +139,11 @@ class IntroScreen(Screen):
         time3 = self.Globals.GameSettings.intro_meteor_length_3
 
         animation = Animation(center=(positions[0][0] * size[0], positions[0][1] * size[1]),
-                              size=sizes[0], duration=time1)
+                              size=(sizes[0][0] * size[0], sizes[0][1] * size[1]), duration=time1)
         animation += Animation(center=(positions[1][0] * size[0], positions[1][1] * size[1]),
-                               size=sizes[1], duration=time2)
+                               size=(sizes[1][0] * size[0], sizes[1][1] * size[1]), duration=time2)
         animation += Animation(pos=(positions[2][0] * size[0], positions[2][1] * size[1]),
-                               size=sizes[2], duration=time3)
+                               size=(sizes[2][0] * size[0], sizes[2][1] * size[1]), duration=time3)
         animation.start(self.meteorLayout)
 
         self.meteorClock2 = Clock.schedule_interval(self.draw_meteor, 0)
