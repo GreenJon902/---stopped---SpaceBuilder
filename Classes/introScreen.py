@@ -143,7 +143,7 @@ class IntroScreen(Screen):
         print(positions)
         print((sizes[0][0] * size[0], sizes[0][1] * size[1]), (positions[0][0] * size[0], positions[0][1] * size[1]))
         print((sizes[1][0] * size[0], sizes[1][1] * size[1]), (positions[1][0] * size[0], positions[1][1] * size[1]))
-        print((sizes[2][0] * size[0], sizes[2][1] * size[2]), (positions[2][0] * size[0], positions[2][1] * size[1]))
+        print((sizes[2][0] * size[0], sizes[2][1] * size[1]), (positions[2][0] * size[0], positions[2][1] * size[1]))
 
         animation = Animation(center=(positions[0][0] * size[0], positions[0][1] * size[1]),
                               size=(sizes[0][0] * size[0], sizes[0][1] * size[1]), duration=time1)
