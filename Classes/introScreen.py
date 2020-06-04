@@ -8,6 +8,7 @@ from kivy.animation import Animation
 from kivy.core.image import Image as CoreImage
 from kivy.clock import Clock
 from kivy.graphics import *
+from kivy.properties import partial
 from shapely import affinity
 from shapely.geometry import LineString
 
@@ -86,7 +87,7 @@ class IntroScreen(Screen):
         self.tintClock = Clock.schedule_once(self.start_alarm, self.Globals.GameSettings.intro_alarm_delay)
         self.shakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
         self.moveClock = Clock.schedule_once(self.move, self.Globals.GameSettings.intro_move_delay)
-        self.endClock = Clock.schedule_once(lambda x: self.parent.next(), self.Globals.GameSettings.intro_end_delay)
+        self.endClock = Clock.schedule_once(self.parent.openBaseBuilderScreen, self.Globals.GameSettings.intro_end_delay)
 
         Logger.info("Application: Intro Screen clocks created")
 
