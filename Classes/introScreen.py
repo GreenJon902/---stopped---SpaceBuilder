@@ -24,6 +24,8 @@ class IntroScreen(Screen):
         self.meteorClock2 = None
         self.tintClock = None
         self.tintClock2 = None
+        self.moveClock = None
+
         self.Globals = Globals
 
         self.shakeScreenX = Globals.width / Globals.GameSettings.intro_ship_shake_amount_divider * -1
@@ -82,8 +84,17 @@ class IntroScreen(Screen):
         self.meteorClock = Clock.schedule_once(self.start_draw_meteor, self.Globals.GameSettings.intro_meteor_delay)
         self.tintClock = Clock.schedule_once(self.start_alarm, self.Globals.GameSettings.intro_alarm_delay)
         self.shakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
+        self.moveClock = Clock.schedule_once(self.move, self.Globals.GameSettings.intro_move_delay)
 
         Logger.info("Application: Intro Screen clocks created")
+
+    def move(self, _):
+        Logger.info("Application: Intro Screen ship move started")
+
+        animation = Animation(pos=self.shipLayout.pos, duration=0)
+        animation += Animation(pos=(self.shipLayout.pos[0], 0), duration=self.Globals.GameSettings.intro_move_speed)
+
+        animation.start(self.shipLayout)
 
     def draw_star(self, _):
         self.starsLayout.canvas.clear()
@@ -137,14 +148,6 @@ class IntroScreen(Screen):
         time1 = self.Globals.GameSettings.intro_meteor_length_1
         time2 = self.Globals.GameSettings.intro_meteor_length_2
         time3 = self.Globals.GameSettings.intro_meteor_length_3
-
-        print(sizes)
-        print(size)
-        print(positions)
-        print(time1, time2, time3)
-        print((sizes[0][0] * size[0], sizes[0][1] * size[0]), (positions[0][0] * size[0], positions[0][1] * size[1]))
-        print((sizes[1][0] * size[0], sizes[1][1] * size[0]), (positions[1][0] * size[0], positions[1][1] * size[1]))
-        print((sizes[2][0] * size[0], sizes[2][1] * size[0]), (positions[2][0] * size[0], positions[2][1] * size[1]))
 
         animation = Animation(pos=(positions[0][0] * size[0], positions[0][1] * size[1]),
                               size=(sizes[0][0] * size[0], sizes[0][1] * size[0]), duration=time1)
