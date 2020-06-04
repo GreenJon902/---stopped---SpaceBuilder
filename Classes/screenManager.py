@@ -1,5 +1,5 @@
 from kivy import Logger
-from kivy.uix.screenmanager import ScreenManager
+from kivy.uix.screenmanager import ScreenManager, FadeTransition
 
 from Classes.baseBuilderScreen import BaseBuilderScreen
 from Classes.crashScreen import CrashScreen
@@ -11,7 +11,7 @@ class ScreenManager(ScreenManager):
         super(ScreenManager, self).__init__()
 
         introScreen = IntroScreen(Globals, name="IntroScreen")
-        crashScreen = CrashScreen(Globals, name="IntroScreen")
+        crashScreen = CrashScreen(Globals, name="CrashScreen")
         baseBuildScreen = BaseBuilderScreen(name="BaseBuilderScreen")
 
         self.add_widget(introScreen)
@@ -29,4 +29,5 @@ class ScreenManager(ScreenManager):
         Logger.info("Application: Screen Manager setup")
 
     def openCrashScreen(self, _):
+        self.transition = FadeTransition()
         self.current = "CrashScreen"
