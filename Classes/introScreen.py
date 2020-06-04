@@ -25,6 +25,7 @@ class IntroScreen(Screen):
         self.tintClock = None
         self.tintClock2 = None
         self.moveClock = None
+        self.endClock = None
 
         self.Globals = Globals
 
@@ -85,6 +86,7 @@ class IntroScreen(Screen):
         self.tintClock = Clock.schedule_once(self.start_alarm, self.Globals.GameSettings.intro_alarm_delay)
         self.shakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
         self.moveClock = Clock.schedule_once(self.move, self.Globals.GameSettings.intro_move_delay)
+        self.endClock = Clock.schedule_once(lambda x: self.parent.next(), self.Globals.GameSettings.intro_end_delay)
 
         Logger.info("Application: Intro Screen clocks created")
 
@@ -92,7 +94,8 @@ class IntroScreen(Screen):
         Logger.info("Application: Intro Screen ship move started")
 
         animation = Animation(pos=self.shipLayout.pos, duration=0)
-        animation += Animation(pos=(self.shipLayout.pos[0], self.shakeScreenHeight * -1), duration=self.Globals.GameSettings.intro_move_speed)
+        animation += Animation(pos=(self.shipLayout.pos[0], self.shakeScreenHeight * -1),
+                               duration=self.Globals.GameSettings.intro_move_speed)
 
         animation.start(self.shipLayout)
 
