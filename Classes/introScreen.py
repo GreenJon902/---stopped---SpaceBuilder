@@ -92,7 +92,7 @@ class IntroScreen(Screen):
         Logger.info("Application: Intro Screen ship move started")
 
         animation = Animation(pos=self.shipLayout.pos, duration=0)
-        animation += Animation(pos=(self.shipLayout.pos[0], 0), duration=self.Globals.GameSettings.intro_move_speed)
+        animation += Animation(pos=(self.shipLayout.pos[0], self.shakeScreenHeight * -1), duration=self.Globals.GameSettings.intro_move_speed)
 
         animation.start(self.shipLayout)
 
