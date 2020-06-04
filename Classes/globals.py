@@ -138,9 +138,9 @@ class Globals:
         intro_alarm_delay = 5.1
         intro_alarm_length = 0.6
         intro_meteor_delay = 1
-        intro_meteor_length_1 = 5
-        intro_meteor_length_2 = 5
-        intro_meteor_length_3 = 5
+        intro_meteor_length_1 = 1
+        intro_meteor_length_2 = 1
+        intro_meteor_length_3 = 1
         intro_meteor_positions = ((0.75, 0.5), (0.1, 0.1), (0.5, 0.5))
         intro_meteor_sizes = ((0, 0), (1, 1), (0.1, 0.1))
         intro_move_delay = 10
