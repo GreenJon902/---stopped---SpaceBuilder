@@ -146,20 +146,14 @@ class IntroScreen(Screen):
         print((sizes[1][0] * size[0], sizes[1][1] * size[0]), (positions[1][0] * size[0], positions[1][1] * size[1]))
         print((sizes[2][0] * size[0], sizes[2][1] * size[0]), (positions[2][0] * size[0], positions[2][1] * size[1]))
 
-        animation = Animation(center=(positions[0][0] * size[0], positions[0][1] * size[1]),
+        animation = Animation(pos=(positions[0][0] * size[0], positions[0][1] * size[1]),
                               size=(sizes[0][0] * size[0], sizes[0][1] * size[0]), duration=time1)
-
-        print(animation.__dict__["_animated_properties"])
-
-        animation += Animation(center=(positions[1][0] * size[0], positions[1][1] * size[1]),
+        animation += Animation(pos=(positions[1][0] * size[0], positions[1][1] * size[1]),
                                size=(sizes[1][0] * size[0], sizes[1][1] * size[0]), duration=time2)
-        print(animation.__dict__["anim1"].__dict__["_animated_properties"])
         animation += Animation(pos=(positions[2][0] * size[0], positions[2][1] * size[1]),
                                size=(sizes[2][0] * size[0], sizes[2][1] * size[0]), duration=time3)
-        print(animation.__dict__["anim2"].__dict__["_animated_properties"])
 
         animation.start(self.meteorLayout)
-        animation.bind(on_progress=self.do)
 
         self.meteorClock2 = Clock.schedule_interval(self.draw_meteor, 0)
 
@@ -171,17 +165,15 @@ class IntroScreen(Screen):
         with self.meteorLayout.canvas:
             Rectangle(source="textures/meteor.png", pos=self.meteorLayout.pos, size=self.meteorLayout.size)
 
-    def do(self, a, b, c):
-        print(a, int(c * 15))
 
     def draw_ship(self, _):
         self.shipLayout.canvas.clear()
 
         with self.shipLayout.canvas:
-            """Rectangle(pos=(self.shakeScreenX + self.shipLayout.pos[0],
+            Rectangle(pos=(self.shakeScreenX + self.shipLayout.pos[0],
                            self.shakeScreenY + self.shipLayout.pos[1]),
                       size=(self.shakeScreenWidth, self.shakeScreenHeight),
-                      texture=self.shipImageTexture)"""
+                      texture=self.shipImageTexture)
 
     def shake(self, _):
         animation = Animation(pos=self.shipLayout.pos, duration=0)
