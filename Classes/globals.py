@@ -143,3 +143,5 @@ class Globals:
         intro_meteor_length_3 = 5
         intro_meteor_positions = ((0.75, 0.5), (0.1, 0.1), (0.5, 0.5))
         intro_meteor_sizes = ((0, 0), (1, 1), (0.1, 0.1))
+        intro_move_delay = 10
+        intro_move_speed = 1
