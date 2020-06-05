@@ -24,7 +24,7 @@ class ScreenManager(ScreenManager):
 
         else:
             Logger.info("Application: Starting in Intro")
-            self.current = "IntroScreen"
+            self.current = "CrashScreen"
 
         Logger.info("Application: Screen Manager setup")
 
