@@ -1,4 +1,5 @@
 from kivy import Logger
+from kivy.core.image import Image as CoreImage
 from kivy.clock import Clock
 from kivy.graphics import *
 
@@ -14,22 +15,32 @@ class CrashScreen(Screen):
         self.canyonClock = None
         self.starClock = None
 
+
+        ratio = CoreImage("textures/canyon surface.png").width / CoreImage("textures/canyon surface.png").height
+        self.h = self.Globals.height
+        self.w = ratio * Globals.width
+
         self.starLayout = self.ids["stars"]
         self.canyonLayout = self.ids["canyon"]
 
+        self.starLayout.pos = (Globals.width, 0)
+        self.canyonLayout.pos = (Globals.width, 0)
+
         with self.starLayout.canvas:
-            Rectangle(pos=self.starLayout.pos, size=self.starLayout.size, source="textures/canyon surface stars.png")
+            Rectangle(pos=self.starLayout.pos, size=(self.w, self.h), source="textures/canyon surface stars.png")
 
         with self.canyonLayout.canvas:
-            Rectangle(pos=self.starLayout.pos, size=self.starLayout.size, source="textures/canyon surface.png")
+            Rectangle(pos=self.starLayout.pos, size=(self.w, self.h), source="textures/canyon surface.png")
 
         Logger.info("Application: Crash Screen setup")
+
 
     def post_init(self):
         Logger.info("Application: Crash Screen entered")
 
         self.canyonClock = Clock.schedule_interval(self.move_canyon, self.Globals.GameSettings.intro_move_delay)
         self.starClock = Clock.schedule_interval(self.move_stars, self.Globals.GameSettings.intro_move_delay)
+
 
     def move_canyon(self, _):
         pass
