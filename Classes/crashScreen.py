@@ -1,4 +1,5 @@
 from kivy import Logger
+from kivy.clock import Clock
 
 from Classes.screen import Screen
 
@@ -19,3 +20,6 @@ class CrashScreen(Screen):
 
     def post_init(self):
         Logger.info("Application: Crash Screen entered")
+
+        self.canyonClock = Clock.schedule_interval(self.move_canyon, self.Globals.GameSettings.intro_move_delay)
+        self.starClock = Clock.schedule_interval(self.move_stars, self.Globals.GameSettings.intro_move_star)
