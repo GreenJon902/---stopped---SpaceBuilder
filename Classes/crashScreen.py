@@ -13,7 +13,7 @@ class CrashScreen(Screen):
         self.canyonClock = None
         self.starClock = None
 
-        self.starsLayout = self.ids["stars"]
+        self.starLayout = self.ids["stars"]
         self.canyonLayout = self.ids["canyon"]
 
         Logger.info("Application: Crash Screen setup")
