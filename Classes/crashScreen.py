@@ -47,8 +47,10 @@ class CrashScreen(Screen):
         Logger.info("Application: Crash Screen canyon move started")
 
         animation = Animation(pos=self.starLayout.pos, duration=0)
-        animation += Animation(pos=(self.starLayout.pos[0] + self.starLayout.width, self.starLayout.pos[1]),
+        animation += Animation(pos=(self.starLayout.width - self.starLayout.pos[0], self.starLayout.pos[1]),
                                duration=self.Globals.GameSettings.crash_move_length)
+
+
 
         animation.start(self.canyonLayout)
 
