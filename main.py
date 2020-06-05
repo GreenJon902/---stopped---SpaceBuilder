@@ -15,7 +15,7 @@ Builder.load_file('kv.kv')
 class SpaceBuilder(App):
     def __init__(self):
         super(SpaceBuilder, self).__init__()
-        Window.size = Window.height * 2, Window.height
+        Window.size = 1000, 500
 
         self.setup()
 
