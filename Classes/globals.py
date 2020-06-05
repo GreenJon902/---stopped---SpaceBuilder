@@ -146,3 +146,7 @@ class Globals:
         intro_move_delay = 10
         intro_move_speed = 1
         intro_end_delay = 11
+
+        crash_move_delay = 1
+        crash_move_length = 2
+        crash_stars_move_divider = 2
