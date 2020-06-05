@@ -39,8 +39,8 @@ class CrashScreen(Screen):
     def post_init(self):
         Logger.info("Application: Crash Screen entered")
 
-        self.canyonClock = Clock.schedule_interval(self.move_canyon, self.Globals.GameSettings.intro_move_delay)
-        self.starClock = Clock.schedule_interval(self.move_stars, self.Globals.GameSettings.intro_move_delay)
+        self.canyonClock = Clock.schedule_once(self.move_canyon, self.Globals.GameSettings.crash_move_delay)
+        self.starClock = Clock.schedule_once(self.move_stars, self.Globals.GameSettings.crash_move_delay)
 
 
     def move_canyon(self, _):
