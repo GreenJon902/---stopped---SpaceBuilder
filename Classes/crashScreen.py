@@ -50,10 +50,14 @@ class CrashScreen(Screen):
         animation += Animation(pos=(self.starLayout.width - self.starLayout.pos[0], self.starLayout.pos[1]),
                                duration=self.Globals.GameSettings.crash_move_length)
 
-
+        print(self.starLayout.pos, (self.starLayout.width - self.starLayout.pos[0], self.starLayout.pos[1]), animation.duration)
+        animation.bind(on_progress=self.oof)
 
         animation.start(self.canyonLayout)
 
 
     def move_stars(self, _):
         Logger.info("Application: Crash Screen stars move started")
+
+    def oof(self, a, b, c):
+        print(b.pos[0])
