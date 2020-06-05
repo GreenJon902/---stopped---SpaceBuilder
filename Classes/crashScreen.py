@@ -1,4 +1,5 @@
 from kivy import Logger
+from kivy.animation import Animation
 from kivy.core.image import Image as CoreImage
 from kivy.clock import Clock
 from kivy.graphics import *
@@ -43,7 +44,12 @@ class CrashScreen(Screen):
 
 
     def move_canyon(self, _):
-        pass
+        animation = Animation(pos=self.starLayout.pos, duration=0)
+        animation += Animation(pos=(self.starLayout.pos[0] + self.starLayout.width, self.starLayout.pos[1]),
+                               duration=self.Globals.GameSettings.crash_move_length)
+
+        animation.start(self.canyonLayout)
+
 
     def move_stars(self, _):
         pass
