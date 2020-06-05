@@ -1,5 +1,6 @@
 from kivy import Logger
 from kivy.clock import Clock
+from kivy.graphics import *
 
 from Classes.screen import Screen
 
@@ -15,6 +16,12 @@ class CrashScreen(Screen):
 
         self.starLayout = self.ids["stars"]
         self.canyonLayout = self.ids["canyon"]
+
+        with self.starLayout.canvas:
+            Rectangle(pos=self.starLayout.pos, size=self.starLayout.size, source="textures/canyon surface stars.png")
+
+        with self.canyonLayout.canvas:
+            Rectangle(pos=self.starLayout.pos, size=self.starLayout.size, source="textures/canyon surface.png")
 
         Logger.info("Application: Crash Screen setup")
 
