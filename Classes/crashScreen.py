@@ -9,6 +9,9 @@ class CrashScreen(Screen):
 
         self.Globals = Globals
 
+        self.canyonClock = None
+        self.starClock = None
+
         self.starsLayout = self.ids["stars"]
         self.canyonLayout = self.ids["canyon"]
 
