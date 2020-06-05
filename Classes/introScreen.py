@@ -209,4 +209,3 @@ class IntroScreen(Screen):
 
         self.starClock.cancel()
         self.shipClock.cancel()
-        self.meteorClock2.cancel()
