@@ -9,6 +9,9 @@ class CrashScreen(Screen):
 
         self.Globals = Globals
 
+        self.starsLayout = self.ids["stars"]
+        self.canyonLayout = self.ids["canyon"]
+
         Logger.info("Application: Crash Screen setup")
 
     def post_init(self):
