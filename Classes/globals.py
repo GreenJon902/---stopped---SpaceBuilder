@@ -1,5 +1,6 @@
 import json
 
+from kivy.core.image import Image as CoreImage
 from kivy.event import EventDispatcher
 from kivy.logger import Logger
 from kivy.properties import StringProperty
@@ -147,6 +148,11 @@ class Globals:
         intro_move_speed = 1
         intro_end_delay = 11
 
-        crash_move_delay = 1
+        crash_move_delay = 0
         crash_move_length = 2
         crash_stars_move_divider = 3
+
+    class Textures:
+        canyon_surface = CoreImage("textures/canyon surface.png")
+        canyon_surface_stars = CoreImage("textures/canyon surface stars.png")
+        meteor = CoreImage("textures/meteor.png")

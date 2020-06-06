@@ -18,7 +18,7 @@ class CrashScreen(Screen):
         self.drawClock = None
 
 
-        ratio = CoreImage("textures/canyon surface.png").width / CoreImage("textures/canyon surface.png").height
+        ratio = self.Globals.Textures.canyon_surface_stars.width / self.Globals.Textures.canyon_surface_stars.height
         self.h = self.Globals.height
         self.w = ratio * self.h
 
@@ -66,7 +66,9 @@ class CrashScreen(Screen):
         self.canyonLayout.canvas.clear()
 
         with self.starLayout.canvas:
-            Rectangle(pos=self.starLayout.pos, size=(self.w, self.h), source="textures/canyon surface stars.png")
+            Rectangle(pos=self.starLayout.pos, size=(self.w, self.h),
+                      texture=self.Globals.Textures.canyon_surface_stars)
 
         with self.canyonLayout.canvas:
-            Rectangle(pos=self.canyonLayout.pos, size=(self.w, self.h), source="textures/canyon surface.png")
+            Rectangle(pos=self.canyonLayout.pos, size=(self.w, self.h),
+                      texture=self.Globals.Textures.canyon_surface_stars)
