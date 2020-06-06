@@ -56,8 +56,6 @@ class CrashScreen(Screen):
 
 
     def draw(self, _):
-        print(self.canyonLayout.pos)
-
         with self.starLayout.canvas:
             Rectangle(pos=self.starLayout.pos, size=(self.w, self.h), source="textures/canyon surface stars.png")
 
