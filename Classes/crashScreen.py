@@ -15,6 +15,7 @@ class CrashScreen(Screen):
 
         self.canyonClock = None
         self.starClock = None
+        self.drawClock = None
 
 
         ratio = CoreImage("textures/canyon surface.png").width / CoreImage("textures/canyon surface.png").height
@@ -27,12 +28,6 @@ class CrashScreen(Screen):
         self.starLayout.pos = (Globals.width, 0)
         self.canyonLayout.pos = (Globals.width, 0)
 
-        with self.starLayout.canvas:
-            Rectangle(pos=self.starLayout.pos, size=(self.w, self.h), source="textures/canyon surface stars.png")
-
-        with self.canyonLayout.canvas:
-            Rectangle(pos=self.starLayout.pos, size=(self.w, self.h), source="textures/canyon surface.png")
-
         Logger.info("Application: Crash Screen setup")
 
 
@@ -41,6 +36,7 @@ class CrashScreen(Screen):
 
         self.canyonClock = Clock.schedule_once(self.move_canyon, self.Globals.GameSettings.crash_move_delay)
         self.starClock = Clock.schedule_once(self.move_stars, self.Globals.GameSettings.crash_move_delay)
+        self.drawClock = Clock.schedule_once(self.draw, 0)
 
 
     def move_canyon(self, _):
@@ -51,7 +47,6 @@ class CrashScreen(Screen):
                                duration=self.Globals.GameSettings.crash_move_length)
 
         print(self.starLayout.pos, (self.starLayout.width - self.starLayout.pos[0], self.starLayout.pos[1]), animation.duration)
-        animation.bind(on_progress=self.oof)
 
         animation.start(self.canyonLayout)
 
@@ -59,5 +54,10 @@ class CrashScreen(Screen):
     def move_stars(self, _):
         Logger.info("Application: Crash Screen stars move started")
 
-    def oof(self, a, b, c):
-        print(b.pos[0])
+
+    def draw(self, _):
+        with self.starLayout.canvas:
+            Rectangle(pos=self.starLayout.pos, size=(self.w, self.h), source="textures/canyon surface stars.png")
+
+        with self.canyonLayout.canvas:
+            Rectangle(pos=self.canyonLayout.pos, size=(self.w, self.h), source="textures/canyon surface.png")
