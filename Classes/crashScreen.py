@@ -20,7 +20,7 @@ class CrashScreen(Screen):
 
         ratio = CoreImage("textures/canyon surface.png").width / CoreImage("textures/canyon surface.png").height
         self.h = self.Globals.height
-        self.w = (ratio * self.h)
+        self.w = ratio * self.h
 
         self.starLayout = self.ids["stars"]
         self.canyonLayout = self.ids["canyon"]
