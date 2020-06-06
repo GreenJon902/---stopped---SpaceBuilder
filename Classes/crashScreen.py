@@ -20,7 +20,7 @@ class CrashScreen(Screen):
 
         ratio = CoreImage("textures/canyon surface.png").width / CoreImage("textures/canyon surface.png").height
         self.h = self.Globals.height
-        self.w = ratio * Globals.width
+        self.w = (ratio * self.h)
 
         self.starLayout = self.ids["stars"]
         self.canyonLayout = self.ids["canyon"]
@@ -43,7 +43,7 @@ class CrashScreen(Screen):
         Logger.info("Application: Crash Screen canyon move started")
 
         animation = Animation(pos=self.canyonLayout.pos, duration=0)
-        animation += Animation(pos=(self.w * -1, self.canyonLayout.pos[1]),
+        animation += Animation(pos=((self.w * -1) + self.Globals.width, self.canyonLayout.pos[1]),
                                duration=self.Globals.GameSettings.crash_move_length)
 
         animation.start(self.canyonLayout)
@@ -54,6 +54,9 @@ class CrashScreen(Screen):
 
 
     def draw(self, _):
+        self.starLayout.canvas.clear()
+        self.canyonLayout.canvas.clear()
+
         with self.starLayout.canvas:
             Rectangle(pos=self.starLayout.pos, size=(self.w, self.h), source="textures/canyon surface stars.png")
 
