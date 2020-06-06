@@ -202,6 +202,8 @@ class IntroScreen(Screen):
     def draw_ship(self, _):
         self.shipLayout.canvas.clear()
 
+        print(self.shipImageTexture)
+
         with self.shipLayout.canvas:
             Rectangle(pos=(self.shakeScreenX + self.shipLayout.pos[0],
                            self.shakeScreenY + self.shipLayout.pos[1]),
