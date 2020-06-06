@@ -153,6 +153,6 @@ class Globals:
         crash_stars_move_divider = 3
 
     class Textures:
-        canyon_surface = CoreImage("textures/canyon surface.png")
-        canyon_surface_stars = CoreImage("textures/canyon surface stars.png")
-        meteor = CoreImage("textures/meteor.png")
+        canyon_surface = CoreImage("textures/canyon surface.png").texture
+        canyon_surface_stars = CoreImage("textures/canyon surface stars.png").texture
+        meteor = CoreImage("textures/meteor.png").texture
