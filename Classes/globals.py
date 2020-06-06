@@ -149,4 +149,4 @@ class Globals:
 
         crash_move_delay = 1
         crash_move_length = 2
-        crash_stars_move_divider = 2
+        crash_stars_move_divider = 3
