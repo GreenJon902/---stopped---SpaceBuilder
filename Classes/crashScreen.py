@@ -36,7 +36,7 @@ class CrashScreen(Screen):
 
         self.canyonClock = Clock.schedule_once(self.move_canyon, self.Globals.GameSettings.crash_move_delay)
         self.starClock = Clock.schedule_once(self.move_stars, self.Globals.GameSettings.crash_move_delay)
-        self.drawClock = Clock.schedule_once(self.draw, 0)
+        self.drawClock = Clock.schedule_interval(self.draw, 0)
 
 
     def move_canyon(self, _):
@@ -56,6 +56,8 @@ class CrashScreen(Screen):
 
 
     def draw(self, _):
+        print(self.canyonLayout.pos)
+
         with self.starLayout.canvas:
             Rectangle(pos=self.starLayout.pos, size=(self.w, self.h), source="textures/canyon surface stars.png")
 
