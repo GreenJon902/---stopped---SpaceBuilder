@@ -45,7 +45,7 @@ class IntroScreen(Screen):
         self.shipLayout.originX = Globals.width / 2
         self.shipLayout.originY = Globals.height / 2
 
-        img = Image.open("textures/shipInside.png")
+        img = Image.open("textures/shipInside1.png")
         width = img.size[0]
         height = img.size[1]
 
@@ -66,7 +66,32 @@ class IntroScreen(Screen):
         data = BytesIO()
         img.save(data, format='png')
         data.seek(0)
-        self.shipImageTexture = CoreImage(BytesIO(data.read()), ext='png').texture
+        self.shipImageTexture1 = CoreImage(BytesIO(data.read()), ext='png').texture
+
+        img = Image.open("textures/shipInside2.png")
+        width = img.size[0]
+        height = img.size[1]
+
+        ratio = self.shakeScreenHeight / self.shakeScreenWidth
+        ratio2 = height / width
+
+        takeAway = ratio - ratio2
+
+        new_width = width - (width * takeAway)
+
+        left = (width - new_width) / 2
+        top = 0
+        right = (width + new_width) / 2
+        bottom = height
+
+        img = img.crop((left, top, right, bottom))
+
+        data = BytesIO()
+        img.save(data, format='png')
+        data.seek(0)
+        self.shipImageTexture2 = CoreImage(BytesIO(data.read()), ext='png').texture
+
+        self.shipImageTexture = self.shipImageTexture1
 
         img = Image.open("textures/star.png")
 
@@ -92,6 +117,8 @@ class IntroScreen(Screen):
 
     def move(self, _):
         Logger.info("Application: Intro Screen ship move started")
+
+        self.shipImageTexture = self.shipImageTexture2
 
         animation = Animation(pos=self.shipLayout.pos, duration=0)
         animation += Animation(pos=(self.shipLayout.pos[0], self.shakeScreenHeight * -1),
