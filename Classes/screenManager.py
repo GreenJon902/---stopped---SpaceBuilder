@@ -10,11 +10,11 @@ class ScreenManager(ScreenManager):
     def __init__(self, Globals):
         super(ScreenManager, self).__init__()
 
-        #introScreen = IntroScreen(Globals, name="IntroScreen")
+        introScreen = IntroScreen(Globals, name="IntroScreen")
         crashScreen = CrashScreen(Globals, name="CrashScreen")
         baseBuildScreen = BaseBuilderScreen(name="BaseBuilderScreen")
 
-        #self.add_widget(introScreen)
+        self.add_widget(introScreen)
         self.add_widget(crashScreen)
         self.add_widget(baseBuildScreen)
 
@@ -24,7 +24,7 @@ class ScreenManager(ScreenManager):
 
         else:
             Logger.info("Application: Starting in Intro")
-            self.current = "CrashScreen"
+            self.current = "IntroScreen"
 
         Logger.info("Application: Screen Manager setup")
 
