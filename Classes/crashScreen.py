@@ -71,4 +71,4 @@ class CrashScreen(Screen):
 
         with self.canyonLayout.canvas:
             Rectangle(pos=self.canyonLayout.pos, size=(self.w, self.h),
-                      texture=self.Globals.Textures.canyon_surface_stars)
+                      texture=self.Globals.Textures.canyon_surface)
