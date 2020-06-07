@@ -1,3 +1,6 @@
+from io import BytesIO
+
+from PIL.Image import Image
 from kivy import Logger
 from kivy.animation import Animation
 from kivy.core.image import Image as CoreImage
@@ -27,6 +30,30 @@ class CrashScreen(Screen):
 
         self.starLayout.pos = (Globals.width, 0)
         self.canyonLayout.pos = (Globals.width, 0)
+
+        img = Image.open("textures/guides/intro.png")
+        width = img.size[0]
+        height = img.size[1]
+
+        ratio = self.Globals.width / self.Globals.height
+        ratio2 = height / width
+
+        takeAway = ratio - ratio2
+
+        new_width = width - (width * takeAway)
+
+        left = (width - new_width) / 2
+        top = 0
+        right = (width + new_width) / 2
+        bottom = height
+
+        img = img.crop((left, top, right, bottom))
+
+        data = BytesIO()
+        img.save(data, format='png')
+        data.seek(0)
+        self.person = CoreImage(BytesIO(data.read()), ext='png').texture
+
 
         Logger.info("Application: Crash Screen setup")
 
