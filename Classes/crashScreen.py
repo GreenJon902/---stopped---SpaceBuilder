@@ -1,6 +1,6 @@
 from io import BytesIO
 
-from PIL.Image import Image
+from PIL import Image
 from kivy import Logger
 from kivy.animation import Animation
 from kivy.core.image import Image as CoreImage
@@ -27,11 +27,12 @@ class CrashScreen(Screen):
 
         self.starLayout = self.ids["stars"]
         self.canyonLayout = self.ids["canyon"]
+        self.guideLayout = self.ids["guide"]
 
         self.starLayout.pos = (Globals.width, 0)
         self.canyonLayout.pos = (Globals.width, 0)
 
-        img = Image.open("textures/guides/intro.png")
+        img = Image.open("textures/guide/intro.png")
         width = img.size[0]
         height = img.size[1]
 
@@ -52,7 +53,7 @@ class CrashScreen(Screen):
         data = BytesIO()
         img.save(data, format='png')
         data.seek(0)
-        self.person = CoreImage(BytesIO(data.read()), ext='png').texture
+        self.guideImage = CoreImage(BytesIO(data.read()), ext='png').texture
 
 
         Logger.info("Application: Crash Screen setup")
@@ -99,3 +100,7 @@ class CrashScreen(Screen):
         with self.canyonLayout.canvas:
             Rectangle(pos=self.canyonLayout.pos, size=(self.w, self.h),
                       texture=self.Globals.Textures.canyon_surface)
+
+        with self.guideLayout.canvas:
+            Rectangle(pos=self.canyonLayout.pos, size=(self.w, self.h),
+                      texture=self.guideImage)
