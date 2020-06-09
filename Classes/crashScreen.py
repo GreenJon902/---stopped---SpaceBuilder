@@ -81,6 +81,13 @@ class CrashScreen(Screen):
         animation.start(self.canyonLayout)
 
 
+    def guide_move(self, _):
+        Logger.info("Application: Crash Screen guide move started")
+
+    def guide_bg_move(self, _):
+        Logger.info("Application: Crash Screen guide background move started")
+
+
     def move_stars(self, _):
         Logger.info("Application: Crash Screen stars move started")
 
