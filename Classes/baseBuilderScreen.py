@@ -1,7 +1,7 @@
 from kivy import Logger
 from kivy.uix.screenmanager import Screen
 
-from Classes.rotatableFloatLayout import RotatableFloatLayout
+from Classes.betterFloatLayout import RotatableFloatLayout
 
 
 class BaseBuilderScreen(Screen):

@@ -1,17 +1,20 @@
 from kivy.graphics import *
-from kivy.properties import NumericProperty
+from kivy.properties import NumericProperty, ListProperty
 from kivy.uix.floatlayout import FloatLayout
 
 
-class RotatableFloatLayout(FloatLayout):
+class BetterFloatLayout(FloatLayout):
     angle = NumericProperty(0)
     originX = NumericProperty(0)
     originY = NumericProperty(0)
 
+    color = ListProperty(list(0, 0, 0, 0))
+
     def __init__(self, *args, **kwargs):
-        super(RotatableFloatLayout, self).__init__(*args, **kwargs)
+        super(BetterFloatLayout, self).__init__(*args, **kwargs)
 
         self.bind(angle=self.rotate)
+        self.bind(color=self.colorChange)
 
         with self.canvas.before:
             PushMatrix()
@@ -33,3 +36,8 @@ class RotatableFloatLayout(FloatLayout):
 
         with self.canvas.after:
             PopMatrix()
+
+    def colorChange(self, _, color):
+        with self.canvas.before:
+            Color(color)
+            Rectangle(pos=self.pos, size=self.size)
