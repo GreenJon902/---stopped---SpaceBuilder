@@ -30,7 +30,6 @@ class CrashScreen(Screen):
         self.starLayout = self.ids["stars"]
         self.canyonLayout = self.ids["canyon"]
         self.guideLayout = self.ids["guide"]
-        self.guideLayout = self.ids["guideBg"]
 
         self.starLayout.pos = (Globals.width, 0)
         self.canyonLayout.pos = (Globals.width, 0)
