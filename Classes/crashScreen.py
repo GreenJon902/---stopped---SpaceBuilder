@@ -124,3 +124,4 @@ class CrashScreen(Screen):
         with self.guideLayout.canvas:
             Rectangle(pos=self.guideLayout.pos, size=(self.w, self.h),
                       texture=self.guideImage)
+
