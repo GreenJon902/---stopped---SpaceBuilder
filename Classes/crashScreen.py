@@ -97,7 +97,7 @@ class CrashScreen(Screen):
 
         animation = Animation(pos=self.guideLayout.pos, duration=0)
         animation += Animation(pos=(0, self.guideLayout.pos[1]),
-                               duration=self.Globals.GameSettings.crash_guide_speed)
+                               duration=self.Globals.GameSettings.crash_guide_bg_speed)
 
         animation.start(self.guideLayout)
 
