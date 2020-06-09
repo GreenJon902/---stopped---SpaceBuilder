@@ -12,6 +12,7 @@ from shapely import affinity
 from shapely.geometry import LineString
 
 from Classes.screen import Screen
+from Classes.betterFloatLayout import BetterFloatLayout
 
 
 class IntroScreen(Screen):
