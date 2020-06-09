@@ -151,6 +151,10 @@ class Globals:
         crash_move_delay = 0
         crash_move_length = 2
         crash_stars_move_divider = 3
+        crash_guide_delay = 3
+        crash_guide_speed = 1
+        crash_guide_bg_delay = 3.1
+        crash_guide_bg_speed = 0.8
 
     class Textures:
         canyon_surface = CoreImage("textures/canyon surface.png").texture
