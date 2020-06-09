@@ -69,7 +69,7 @@ class CrashScreen(Screen):
         self.starClock = Clock.schedule_once(self.move_stars, self.Globals.GameSettings.crash_move_delay)
         self.drawClock = Clock.schedule_interval(self.draw, 0)
         self.guideClock = Clock.schedule_once(self.guide_move, self.Globals.GameSettings.crash_guide_delay)
-        self.guideBgClock = Clock.schedule_once(self.guide_bg_move, self.Globals.GameSettings.crash_guide_bg_delay)
+        self.guideBgClock = Clock.schedule_once(self.guide_bg_fade, self.Globals.GameSettings.crash_guide_bg_delay)
 
 
     def move_canyon(self, _):
@@ -92,7 +92,7 @@ class CrashScreen(Screen):
         animation.start(self.guideLayout)
 
 
-    def guide_bg_move(self, _):
+    def guide_bg_fade(self, _):
         Logger.info("Application: Crash Screen guide background move started")
 
         animation = Animation(pos=self.guideLayout.pos, duration=0)
