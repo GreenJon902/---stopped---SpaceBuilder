@@ -19,6 +19,8 @@ class CrashScreen(Screen):
         self.canyonClock = None
         self.starClock = None
         self.drawClock = None
+        self.guideClock = None
+        self.guideBgClock = None
 
 
         ratio = self.Globals.Textures.canyon_surface_stars.width / self.Globals.Textures.canyon_surface_stars.height
