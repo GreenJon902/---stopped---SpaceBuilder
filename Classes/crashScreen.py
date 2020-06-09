@@ -34,6 +34,7 @@ class CrashScreen(Screen):
 
         self.starLayout.pos = (Globals.width, 0)
         self.canyonLayout.pos = (Globals.width, 0)
+        self.guideLayout.pos = (Globals.width * -1, 0)
 
         img = Image.open("textures/guide/intro.png")
         width = img.size[0]
