@@ -5,6 +5,8 @@ from Classes.baseBuilderScreen import BaseBuilderScreen
 from Classes.crashScreen import CrashScreen
 from Classes.introScreen import IntroScreen
 
+from Classes.betterFloatLayout import BetterFloatLayout
+
 
 class ScreenManager(ScreenManager):
     def __init__(self, Globals):
