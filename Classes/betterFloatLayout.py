@@ -8,7 +8,7 @@ class BetterFloatLayout(FloatLayout):
     originX = NumericProperty(0)
     originY = NumericProperty(0)
 
-    color = ListProperty(list(0, 0, 0, 0))
+    color = ListProperty([0, 0, 0, 0])
 
     def __init__(self, *args, **kwargs):
         super(BetterFloatLayout, self).__init__(*args, **kwargs)

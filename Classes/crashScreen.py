@@ -96,6 +96,12 @@ class CrashScreen(Screen):
     def guide_bg_move(self, _):
         Logger.info("Application: Crash Screen guide background move started")
 
+        animation = Animation(pos=self.guideLayout.pos, duration=0)
+        animation += Animation(pos=(0, self.guideLayout.pos[1]),
+                               duration=self.Globals.GameSettings.crash_guide_speed)
+
+        animation.start(self.guideLayout)
+
 
     def move_stars(self, _):
         Logger.info("Application: Crash Screen stars move started")
@@ -122,6 +128,9 @@ class CrashScreen(Screen):
                       texture=self.Globals.Textures.canyon_surface)
 
         with self.guideLayout.canvas:
+            Rectangle(pos=self.guideLayout.pos, size=(self.w, self.h),
+                      texture=self.guideImage)
+
             Rectangle(pos=self.guideLayout.pos, size=(self.w, self.h),
                       texture=self.guideImage)
 
