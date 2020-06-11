@@ -42,7 +42,7 @@ class CrashScreen(Screen):
         ratio = self.Globals.width / self.Globals.height
         ratio2 = height / width
 
-        takeAway = ratio - ratio2
+        takeAway = ratio - ratio2 - 1
 
         new_width = width - (width * takeAway)
 
@@ -128,8 +128,7 @@ class CrashScreen(Screen):
 
         with self.guideLayout.canvas:
             Rectangle(pos=self.guideLayout.pos, size=(self.w, self.h),
-                      texture=self.guideImage)
+                      texture=self.guideImage, color=Color(rgba=(0, 0, 0, 0)))
 
-            Rectangle(pos=self.guideLayout.pos, size=(self.w, self.h),
-                      texture=self.guideImage)
+            Rectangle(pos=(0, 0), size=(self.w, self.h), color=Color(rgba=(0, 0, 0, 0)))
 
