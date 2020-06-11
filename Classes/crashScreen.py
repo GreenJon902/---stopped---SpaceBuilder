@@ -46,10 +46,16 @@ class CrashScreen(Screen):
 
         new_width = width - (width * takeAway)
 
-        left = (width - new_width) / 2
+        print(ratio, ratio2)
+        print(new_width, width, takeAway, width * takeAway)
+
+        left = 0
         top = 0
-        right = (width + new_width) / 2
+        right = (width + new_width) / 2 - (width - new_width) / 2
         bottom = height
+
+        print((left, top), (right, bottom))
+        print((0, 0), (img.size[0], img.size[1]))
 
         img = img.crop((left, top, right, bottom))
 
