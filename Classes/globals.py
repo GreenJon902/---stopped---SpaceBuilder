@@ -161,4 +161,3 @@ class Globals:
         canyon_surface = CoreImage("textures/canyon surface.png").texture
         canyon_surface_stars = CoreImage("textures/canyon surface stars.png").texture
         meteor = CoreImage("textures/meteor.png").texture
-        guide_intro = CoreImage("textures/guide/intro.png").texture
