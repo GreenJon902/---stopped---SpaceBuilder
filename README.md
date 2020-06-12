@@ -1,3 +1,2 @@
 # SpaceBuilder
-An App
-Yahaaaa
+Resizeing doesnt work puls i broke the color
