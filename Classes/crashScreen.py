@@ -134,7 +134,6 @@ class CrashScreen(Screen):
 
         with self.guideLayout.canvas:
             Rectangle(pos=self.guideLayout.pos, size=(self.w, self.h),
-                      texture=self.guideImage, color=Color(rgba=(0, 0, 0, 0)))
+                      texture=self.guideImage)
 
-            Rectangle(pos=(0, 0), size=(self.w, self.h), color=Color(rgba=(0, 0, 0, 0)))
 
