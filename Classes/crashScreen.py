@@ -123,6 +123,7 @@ class CrashScreen(Screen):
     def draw(self, _):
         self.starLayout.canvas.clear()
         self.canyonLayout.canvas.clear()
+        self.guideLayout.canvas.clear()
 
         with self.starLayout.canvas:
             Rectangle(pos=self.starLayout.pos, size=(self.w, self.h),
@@ -133,7 +134,7 @@ class CrashScreen(Screen):
                       texture=self.Globals.Textures.canyon_surface)
 
         with self.guideLayout.canvas:
-            Rectangle(pos=self.guideLayout.pos, size=(self.w, self.h),
+            Rectangle(pos=self.guideLayout.pos, size=(self.Globals.width, self.Globals.height),
                       texture=self.guideImage)
 
 
