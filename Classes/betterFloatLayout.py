@@ -17,6 +17,8 @@ class BetterFloatLayout(FloatLayout):
         self.bind(color=self.colorChange)
 
         with self.canvas.before:
+            Color(rgba=self.color)
+
             PushMatrix()
             self.rot = Rotate()
             self.rot.angle = 0
@@ -39,5 +41,5 @@ class BetterFloatLayout(FloatLayout):
 
     def colorChange(self, _, color):
         with self.canvas.before:
-            Color(color)
+            Color(rgba=color)
             Rectangle(pos=self.pos, size=self.size)
