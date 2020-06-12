@@ -1,5 +1,9 @@
+from io import BytesIO
+
+from PIL import Image
 from kivy import Logger
 from kivy.animation import Animation
+from kivy.core.image import Image as CoreImage
 from kivy.clock import Clock
 from kivy.graphics import *
 
@@ -18,6 +22,7 @@ class CrashScreen(Screen):
         self.guideClock = None
         self.guideBgClock = None
 
+
         ratio = self.Globals.Textures.canyon_surface_stars.width / self.Globals.Textures.canyon_surface_stars.height
         self.h = self.Globals.height
         self.w = ratio * self.h
@@ -32,6 +37,7 @@ class CrashScreen(Screen):
 
         Logger.info("Application: Crash Screen setup")
 
+
     def post_init(self):
         Logger.info("Application: Crash Screen entered")
 
@@ -40,6 +46,7 @@ class CrashScreen(Screen):
         self.drawClock = Clock.schedule_interval(self.draw, 0)
         self.guideClock = Clock.schedule_once(self.guide_move, self.Globals.GameSettings.crash_guide_delay)
         self.guideBgClock = Clock.schedule_once(self.guide_bg_fade, self.Globals.GameSettings.crash_guide_bg_delay)
+
 
     def move_canyon(self, _):
         Logger.info("Application: Crash Screen canyon move started")
@@ -50,6 +57,7 @@ class CrashScreen(Screen):
 
         animation.start(self.canyonLayout)
 
+
     def guide_move(self, _):
         Logger.info("Application: Crash Screen guide move started")
 
@@ -58,17 +66,20 @@ class CrashScreen(Screen):
 
         animation.start(self.guideLayout)
 
+
     def guide_bg_fade(self, _):
         Logger.info("Application: Crash Screen guide background move started")
 
-        #animation = Animation(color=self.guideLayout.color, duration=0)
-        #animation += Animation(color=self.Globals.GameSettings.crash_guide_bg_color,
-        #                       duration=self.Globals.GameSettings.crash_guide_bg_speed)
+        animation = Animation(color=self.guideLayout.color, duration=0)
+        animation += Animation(color=self.Globals.GameSettings.crash_guide_bg_color,
+                               duration=self.Globals.GameSettings.crash_guide_bg_speed)
 
-        #animation.start(self.guideLayout)
+        animation.start(self.guideLayout)
+
 
     def move_stars(self, _):
         Logger.info("Application: Crash Screen stars move started")
+
 
         animation = Animation(pos=self.starLayout.pos, duration=0)
         animation += Animation(pos=(((self.w * -1) + self.Globals.width) /
@@ -77,10 +88,10 @@ class CrashScreen(Screen):
 
         animation.start(self.starLayout)
 
+
     def draw(self, _):
         self.starLayout.canvas.clear()
         self.canyonLayout.canvas.clear()
-        self.guideLayout.canvas.clear()
 
         with self.starLayout.canvas:
             Rectangle(pos=self.starLayout.pos, size=(self.w, self.h),
@@ -90,10 +101,10 @@ class CrashScreen(Screen):
             Rectangle(pos=self.canyonLayout.pos, size=(self.w, self.h),
                       texture=self.Globals.Textures.canyon_surface)
 
-        with self.guideLayout.canvas:
-            Rectangle(pos=self.guideLayout.pos,
-                      size=(self.Globals.height * (
-                                                   self.Globals.Textures.guide_intro.height
-                                                   / self.Globals.Textures.guide_intro.width),
-                            self.Globals.height),
+        with self.canyonLayout.canvas:
+            Rectangle(pos=self.guideLayout.pos, size=(self.Globals.width, self.Globals.height),
                       textures=self.Globals.Textures.guide_intro)
+
+
+
+
