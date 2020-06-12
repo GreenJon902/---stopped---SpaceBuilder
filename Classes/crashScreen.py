@@ -39,14 +39,25 @@ class CrashScreen(Screen):
         width = img.size[0]
         height = img.size[1]
 
-        ratio = self.Globals.height / height
+        ratio = self.Globals.width / self.Globals.height
+        ratio2 = height / width
 
-        new_width = width * ratio
+        takeAway = ratio - ratio2 - 1
 
-        print(ratio)
-        print(new_width, Globals.height)
+        new_width = width - (width * takeAway)
 
-        img = img.resize((int(new_width), self.Globals.height))
+        print(ratio, ratio2)
+        print(new_width, width, takeAway, width * takeAway)
+
+        left = 0
+        top = 0
+        right = (width + new_width) / 2 - (width - new_width) / 2
+        bottom = height
+
+        print((left, top), (right, bottom))
+        print((0, 0), (img.size[0], img.size[1]))
+
+        img = img.crop((left, top, right, bottom))
 
         data = BytesIO()
         img.save(data, format='png')
@@ -122,10 +133,8 @@ class CrashScreen(Screen):
                       texture=self.Globals.Textures.canyon_surface)
 
         with self.guideLayout.canvas:
-            self.guideLayout.canvas.clear()
+            Rectangle(pos=self.guideLayout.pos, size=(self.w, self.h),
+                      texture=self.guideImage, color=Color(rgba=(0, 0, 0, 0)))
 
-            Rectangle(pos=self.guideLayout.pos, size=(self.Globals.width, self.Globals.height),
-                      texture=self.guideImage)
-
-            #Rectangle(pos=(0, 0), size=(self.w, self.h), color=Color(rgba=(0, 0, 0, 0)))
+            Rectangle(pos=(0, 0), size=(self.w, self.h), color=Color(rgba=(0, 0, 0, 0)))
 
