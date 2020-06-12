@@ -101,7 +101,7 @@ class CrashScreen(Screen):
     def guide_bg_fade(self, _):
         Logger.info("Application: Crash Screen guide background move started")
 
-        animation = Animation(color=self.guideLayout.color, duration=0)
+        animation = Animation(color=(0, 0, 0, 0), duration=0)
         animation += Animation(color=self.Globals.GameSettings.crash_guide_bg_color,
                                duration=self.Globals.GameSettings.crash_guide_bg_speed)
 
