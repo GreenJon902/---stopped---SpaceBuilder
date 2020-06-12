@@ -62,7 +62,8 @@ class CrashScreen(Screen):
         Logger.info("Application: Crash Screen guide move started")
 
         animation = Animation(pos=self.guideLayout.pos, duration=0)
-        animation += Animation(pos=(0, 0), duration=self.Globals.GameSettings.crash_guide_speed)
+        animation += Animation(pos=(0, self.guideLayout.pos[1]),
+                               duration=self.Globals.GameSettings.crash_guide_speed)
 
         animation.start(self.guideLayout)
 
@@ -100,11 +101,5 @@ class CrashScreen(Screen):
         with self.canyonLayout.canvas:
             Rectangle(pos=self.canyonLayout.pos, size=(self.w, self.h),
                       texture=self.Globals.Textures.canyon_surface)
-
-        with self.canyonLayout.canvas:
-            Rectangle(pos=self.guideLayout.pos, size=(self.Globals.width, self.Globals.height),
-                      textures=self.Globals.Textures.guide_intro)
-
-
 
 
