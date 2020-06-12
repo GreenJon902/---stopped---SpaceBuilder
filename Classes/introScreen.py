@@ -227,7 +227,7 @@ class IntroScreen(Screen):
     def do_alarm(self, _):
         with self.tintLayout.canvas:
             Rectangle(pos=(0, 0), size=(self.Globals.width, self.Globals.height),
-                      color=Color(*self.Globals.GameSettings.intro_alarm_color))
+                      color=self.Globals.GameSettings.intro_alarm_color)
 
         Clock.schedule_once(lambda _: self.tintLayout.canvas.clear(), self.Globals.GameSettings.intro_alarm_length)
 

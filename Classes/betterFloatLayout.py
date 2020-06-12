@@ -18,6 +18,7 @@ class BetterFloatLayout(FloatLayout):
 
         with self.canvas.before:
             Color(rgba=self.color)
+            Rectangle(pos=self.pos, size=self.size)
 
             PushMatrix()
             self.rot = Rotate()
