@@ -35,25 +35,6 @@ class CrashScreen(Screen):
         self.canyonLayout.pos = (Globals.width, 0)
         self.guideLayout.pos = (Globals.width * -1, 0)
 
-        img = Image.open("textures/guide/intro.png")
-        width = img.size[0]
-        height = img.size[1]
-
-        ratio = self.Globals.height / height
-
-        new_width = width * ratio
-
-        print(ratio)
-        print(new_width, Globals.height)
-
-        img = img.resize((int(new_width), self.Globals.height))
-
-        data = BytesIO()
-        img.save(data, format='png')
-        data.seek(0)
-        self.guideImage = CoreImage(BytesIO(data.read()), ext='png').texture
-
-
         Logger.info("Application: Crash Screen setup")
 
 
@@ -121,11 +102,4 @@ class CrashScreen(Screen):
             Rectangle(pos=self.canyonLayout.pos, size=(self.w, self.h),
                       texture=self.Globals.Textures.canyon_surface)
 
-        with self.guideLayout.canvas:
-            self.guideLayout.canvas.clear()
-
-            Rectangle(pos=self.guideLayout.pos, size=(self.Globals.width, self.Globals.height),
-                      texture=self.guideImage)
-
-            #Rectangle(pos=(0, 0), size=(self.w, self.h), color=Color(rgba=(0, 0, 0, 0)))
 
