@@ -9,7 +9,6 @@ from kivy.logger import Logger
 from Classes.globals import Globals
 from Classes.screenManager import ScreenManager
 
-Builder.load_file('kv.kv')
 
 
 class SpaceBuilder(App):
@@ -31,6 +30,8 @@ class SpaceBuilder(App):
         Logger.info("Application: Finished setup")
 
     def build(self):
+        Builder.load_file('kv.kv')
+
         return ScreenManager(Globals)
 
     def on_stop(self):
