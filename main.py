@@ -40,4 +40,5 @@ class SpaceBuilder(App):
 
 if __name__ == '__main__':
     Globals = Globals()
+    Logger.info("Application: Globals created")
     SpaceBuilder().run()
