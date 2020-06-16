@@ -22,7 +22,6 @@ class CrashScreen(Screen):
         self.guideClock = None
         self.guideBgClock = None
 
-
         ratio = self.Globals.Textures.canyon_surface_stars.width / self.Globals.Textures.canyon_surface_stars.height
         self.h = self.Globals.height
         self.w = ratio * self.h
@@ -35,11 +34,7 @@ class CrashScreen(Screen):
         self.canyonLayout.pos = (Globals.width, 0)
         self.guideLayout.pos = (Globals.width * -1, 0)
 
-
-
-
         Logger.info("Application: Crash Screen setup")
-
 
     def post_init(self):
         Logger.info("Application: Crash Screen entered")
@@ -50,7 +45,6 @@ class CrashScreen(Screen):
         self.guideClock = Clock.schedule_once(self.guide_move, self.Globals.GameSettings.crash_guide_delay)
         self.guideBgClock = Clock.schedule_once(self.guide_bg_fade, self.Globals.GameSettings.crash_guide_bg_delay)
 
-
     def move_canyon(self, _):
         Logger.info("Application: Crash Screen canyon move started")
 
@@ -59,7 +53,6 @@ class CrashScreen(Screen):
                                duration=self.Globals.GameSettings.crash_move_length)
 
         animation.start(self.canyonLayout)
-
 
     def guide_move(self, _):
         Logger.info("Application: Crash Screen guide move started")
@@ -70,7 +63,6 @@ class CrashScreen(Screen):
 
         animation.start(self.guideLayout)
 
-
     def guide_bg_fade(self, _):
         Logger.info("Application: Crash Screen guide background move started")
 
@@ -80,10 +72,8 @@ class CrashScreen(Screen):
 
         animation.start(self.guideLayout)
 
-
     def move_stars(self, _):
         Logger.info("Application: Crash Screen stars move started")
-
 
         animation = Animation(pos=self.starLayout.pos, duration=0)
         animation += Animation(pos=(((self.w * -1) + self.Globals.width) /
@@ -91,7 +81,6 @@ class CrashScreen(Screen):
                                duration=self.Globals.GameSettings.crash_move_length)
 
         animation.start(self.starLayout)
-
 
     def draw(self, _):
         self.starLayout.canvas.clear()
@@ -108,6 +97,4 @@ class CrashScreen(Screen):
 
         with self.guideLayout.canvas:
             Rectangle(pos=self.guideLayout.pos, size=(self.Globals.width, self.Globals.height),
-                      texture=self.guideImage)
-
-
+                      texture=self.Globals.Textures.guide_intro, color=Color(1, 1, 1))
