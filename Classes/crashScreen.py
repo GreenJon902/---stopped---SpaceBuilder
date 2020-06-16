@@ -35,34 +35,7 @@ class CrashScreen(Screen):
         self.canyonLayout.pos = (Globals.width, 0)
         self.guideLayout.pos = (Globals.width * -1, 0)
 
-        img = Image.open("textures/guide/intro.png")
-        width = img.size[0]
-        height = img.size[1]
 
-        ratio = self.Globals.width / self.Globals.height
-        ratio2 = height / width
-
-        takeAway = ratio - ratio2 - 1
-
-        new_width = width - (width * takeAway)
-
-        print(ratio, ratio2)
-        print(new_width, width, takeAway, width * takeAway)
-
-        left = 0
-        top = 0
-        right = (width + new_width) / 2 - (width - new_width) / 2
-        bottom = height
-
-        print((left, top), (right, bottom))
-        print((0, 0), (img.size[0], img.size[1]))
-
-        img = img.crop((left, top, right, bottom))
-
-        data = BytesIO()
-        img.save(data, format='png')
-        data.seek(0)
-        self.guideImage = CoreImage(BytesIO(data.read()), ext='png').texture
 
 
         Logger.info("Application: Crash Screen setup")
@@ -92,7 +65,7 @@ class CrashScreen(Screen):
         Logger.info("Application: Crash Screen guide move started")
 
         animation = Animation(pos=self.guideLayout.pos, duration=0)
-        animation += Animation(pos=(0, self.guideLayout.pos[1]),
+        animation += Animation(pos=(0, 0),
                                duration=self.Globals.GameSettings.crash_guide_speed)
 
         animation.start(self.guideLayout)
