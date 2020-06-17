@@ -1,14 +1,11 @@
-import os
 import sys
 
 from kivy.app import App
+from kivy.clock import Clock
 from kivy.core.window import Window
-from kivy.lang import Builder
-from kivy.logger import Logger
 
-from Classes.globals import Globals
-from Classes.screenManager import ScreenManager
-
+from Classes.loadingScreen import LoadingScreen
+from loadFunctions import create_Globals, add_save_paths, load_kv, load_textures
 
 
 class SpaceBuilder(App):
@@ -18,32 +15,23 @@ class SpaceBuilder(App):
 
         self.Globals = None
 
-        self.setup()
-
-        self.Globals.width = Window.width
-        self.Globals.height = Window.height
-
-    def setup(self):
-        Logger.info("Application: Starting setup")
-
-        self.Globals = Globals()
-        Logger.info("Application: Globals created")
-
-        self.Globals.User_data.save_path = str(os.path.join(str(self.user_data_dir), "user_data.json"))
-        self.Globals.Settings_data.save_path = str(os.path.join(str(self.user_data_dir), "settings_data.json"))
-
-        Logger.info("Application: Finished setup")
 
     def build(self):
-        Builder.load_file('kv.kv')
-        Logger.info("Application: Kv loaded")
 
-        return ScreenManager(self.Globals)
+        loadingScreen = LoadingScreen()
+        loadingScreen.bus.append(("Loading KV", load_kv, self))
+        loadingScreen.bus.append(("Create Globals", create_Globals, self))
+        loadingScreen.bus.append(("Adding save paths", add_save_paths, self))
+        loadingScreen.bus.append(("Loading Textures", load_textures, self))
+
+
+        Clock.schedule_once(loadingScreen.start_bus, 0)
+
+        return loadingScreen
 
     def on_stop(self):
         sys.exit()
 
 
 if __name__ == '__main__':
-
     SpaceBuilder().run()

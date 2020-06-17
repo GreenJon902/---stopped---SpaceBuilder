@@ -1,3 +1,8 @@
+from functools import partial
+
+from kivy import Logger
+from kivy.clock import Clock
+
 from Classes.screen import Screen
 
 
@@ -7,6 +12,13 @@ class LoadingScreen(Screen):
 
         self.bus = list()
 
-    def start_bus(self):
-        for callback in self.bus:
-            callback()
+
+    def start_bus(self, _):
+        i = 0
+        for vars in self.bus:
+            name, callback, app = vars
+
+            Logger.info("Loader: " + name)
+            Clock.schedule_once(partial(callback, app), i)
+
+            i += 1

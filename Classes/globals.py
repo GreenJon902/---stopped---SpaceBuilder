@@ -13,6 +13,7 @@ class Globals:
     def __init__(self):
         self.User_data = self._User_data()
         self.Settings_data = self._Settings_data()
+        self.Textures = self._Textures()
 
     class _User_data(EventDispatcher):
         Default_data = {
@@ -155,8 +156,15 @@ class Globals:
         crash_guide_speed = 1
 
 
-    class Textures:
-        canyon_surface = CoreImage("textures/canyon surface.png").texture
-        canyon_surface_stars = CoreImage("textures/canyon surface stars.png").texture
-        meteor = CoreImage("textures/meteor.png").texture
-        guide_intro = CoreImage("textures/guide/intro.png").texture
+    class _Textures:
+        def __init__(self):
+            canyon_surface = None
+            canyon_surface_stars = None
+            meteor = None
+            guide_intro = None
+
+        def load(self):
+            self.canyon_surface = CoreImage("textures/canyon surface.png").texture
+            self.canyon_surface_stars = CoreImage("textures/canyon surface stars.png").texture
+            self.meteor = CoreImage("textures/meteor.png").texture
+            self.guide_intro = CoreImage("textures/guide/intro.png").texture
