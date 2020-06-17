@@ -28,6 +28,7 @@ class IntroScreen(Screen):
         self.endClock = None
 
         self.Globals = Globals
+        print(self.Globals)
 
         self.shakeScreenX = self.Globals.width / self.Globals.GameSettings.intro_ship_shake_amount_divider * -1
         self.shakeScreenY = self.Globals.height / self.Globals.GameSettings.intro_ship_shake_amount_divider * -1

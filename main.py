@@ -1,4 +1,5 @@
 import sys
+from functools import partial
 
 from kivy.app import App
 from kivy.clock import Clock
@@ -21,7 +22,7 @@ class SpaceBuilder(App):
 
         loadingScreen = LoadingScreen()
         loadingScreen.app = self
-        loadingScreen.nextWidget = ScreenManager(self.Globals)
+        loadingScreen.nextWidget = partial(ScreenManager, self.Globals)
 
 
         loadingScreen.bus.append(("Loading KV", load_kv))

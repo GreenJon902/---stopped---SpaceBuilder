@@ -6,12 +6,16 @@ from kivy.clock import Clock
 from Classes.screen import Screen
 
 
-def bus_append(name, func, lastFunc, i):
+def bus_append(name, func, lastFunc, app, _):
     Logger.info("Loader: " + name)
 
     func()
 
-    Clock.schedule_once(lastFunc, i)
+    Clock.schedule_once(lastFunc, 0)
+
+
+def switch(app, widget, _):
+    app.widget = widget()
 
 
 class LoadingScreen(Screen):
@@ -27,17 +31,11 @@ class LoadingScreen(Screen):
         self.bus.reverse()
         
         i = 0
-        last_func = print
+        last_func = partial(switch, self.app, self.nextWidget)
 
-        for vars in self.bus:
-            name, callback, app = vars
-
-            func = callback
-
-            um = partial(bus_append, name, func, last_func, i)
-
-            last_func = func
-
-            Clock.schedule_once()
+        for name, callback in self.bus:
+            last_func = partial(bus_append, name, partial(callback, self.app), last_func, self.app)
 
             i += 1
+
+        Clock.schedule_once(last_func, 0)
