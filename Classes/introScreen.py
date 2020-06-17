@@ -29,8 +29,8 @@ class IntroScreen(Screen):
 
         self.Globals = Globals
 
-        self.shakeScreenX = Globals.width / Globals.GameSettings.intro_ship_shake_amount_divider * -1
-        self.shakeScreenY = Globals.height / Globals.GameSettings.intro_ship_shake_amount_divider * -1
+        self.shakeScreenX = self.Globals.width / self.Globals.GameSettings.intro_ship_shake_amount_divider * -1
+        self.shakeScreenY = self.Globals.height / self.Globals.GameSettings.intro_ship_shake_amount_divider * -1
         self.shakeDistanceX = self.shakeScreenX * -1
         self.shakeDistanceY = self.shakeScreenX * -1
         self.shakeScreenWidth = Globals.width - (self.shakeScreenX * 2)
@@ -42,8 +42,8 @@ class IntroScreen(Screen):
 
         self.meteorLayout.size = (0, 0)
 
-        self.shipLayout.originX = Globals.width / 2
-        self.shipLayout.originY = Globals.height / 2
+        self.shipLayout.originX = self.Globals.width / 2
+        self.shipLayout.originY = self.Globals.height / 2
 
         img = Image.open("textures/shipInside1.png")
         width = img.size[0]
