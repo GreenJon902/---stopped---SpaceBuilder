@@ -5,6 +5,7 @@ from kivy.clock import Clock
 from kivy.core.window import Window
 
 from Classes.loadingScreen import LoadingScreen
+from Classes.screenManager import ScreenManager
 from loadFunctions import create_Globals, add_save_paths, load_kv, load_textures
 
 
@@ -19,10 +20,16 @@ class SpaceBuilder(App):
     def build(self):
 
         loadingScreen = LoadingScreen()
-        loadingScreen.bus.append(("Loading KV", load_kv, self))
-        loadingScreen.bus.append(("Create Globals", create_Globals, self))
-        loadingScreen.bus.append(("Adding save paths", add_save_paths, self))
-        loadingScreen.bus.append(("Loading Textures", load_textures, self))
+        loadingScreen.app = self
+        loadingScreen.nextWidget = ScreenManager(self.Globals)
+
+
+        loadingScreen.bus.append(("Loading KV", load_kv))
+        loadingScreen.bus.append(("Create Globals", create_Globals))
+        loadingScreen.bus.append(("Adding save paths", add_save_paths))
+        loadingScreen.bus.append(("Loading Textures", load_textures))
+
+
 
 
         Clock.schedule_once(loadingScreen.start_bus, 0)
