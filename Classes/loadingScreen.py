@@ -14,8 +14,8 @@ def bus_append(name, func, lastFunc, app, _):
     Clock.schedule_once(lastFunc, 0)
 
 
-def switch(app, widget):
-    app.widget = widget(app.Globals)
+def switch(app):
+    app.baseScreenManager.next()
 
 
 class LoadingScreen(Screen):
@@ -24,14 +24,13 @@ class LoadingScreen(Screen):
 
         self.bus = list()
         self.app = None
-        self.nextWidget = None
 
 
     def start_bus(self, _):
         self.bus.reverse()
         
         i = 0
-        last_func = lambda x: switch(self.app, self.nextWidget)
+        last_func = lambda x: switch(self.app)
 
         for name, callback in self.bus:
             last_func = partial(bus_append, name, partial(callback, self.app), last_func, self.app)
