@@ -31,7 +31,7 @@ class Globals:
             self.bind(save_path=self.load)
 
         def load(self, _, callback):
-            Logger.info("Application: App data save path: " + str(callback))
+            Logger.info("Application: User data save path: " + str(callback))
 
             try:
                 with open(callback, "r") as file:
@@ -85,7 +85,7 @@ class Globals:
             self.bind(save_path=self.load)
 
         def load(self, _, callback):
-            Logger.info("Application: App data save path: " + str(callback))
+            Logger.info("Application: Settings data save path: " + str(callback))
 
             try:
                 with open(callback, "r") as file:
