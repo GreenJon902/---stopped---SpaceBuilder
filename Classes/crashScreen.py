@@ -82,5 +82,8 @@ class CrashScreen(Screen):
                       texture=self.Globals.Textures.canyon_surface)
 
         with self.guideLayout.canvas:
-            Rectangle(pos=self.guideLayout.pos, size=(self.Globals.width, self.Globals.height),
-                      texture=self.Globals.Textures.guide_intro, color=Color(1, 1, 1))
+            Rectangle(pos=self.guideLayout.pos,
+                      size=(self.Globals.height * (self.Globals.Textures.guide_intro.width /
+                                                   self.Globals.Textures.guide_intro.height), self.Globals.height),
+                      texture=self.Globals.Textures.guide_intro,
+                      color=Color(1, 1, 1))
