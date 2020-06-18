@@ -11,4 +11,4 @@ class BaseScreenManager(Widget):
 
     def next(self):
         self.clear_widgets()
-        self.add_widget(self.widget2)
+        self.add_widget(self.widget2())

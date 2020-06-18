@@ -12,6 +12,9 @@ class ScreenManager(ScreenManager):
     def __init__(self, Globals):
         super(ScreenManager, self).__init__()
 
+        self.width = Globals.width
+        self.height = Globals.height
+
         introScreen = IntroScreen(Globals, name="IntroScreen")
         crashScreen = CrashScreen(Globals, name="CrashScreen")
         baseBuildScreen = BaseBuilderScreen(name="BaseBuilderScreen")
