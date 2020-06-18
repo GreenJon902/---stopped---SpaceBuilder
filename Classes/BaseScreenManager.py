@@ -1,3 +1,4 @@
+from kivy import Logger
 from kivy.uix.widget import Widget
 
 
@@ -12,3 +13,5 @@ class BaseScreenManager(Widget):
     def next(self):
         self.clear_widgets()
         self.add_widget(self.widget2())
+
+        Logger.info("Application: Starting App")
