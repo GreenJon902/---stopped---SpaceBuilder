@@ -158,10 +158,10 @@ class Globals:
 
     class _Textures:
         def __init__(self):
-            canyon_surface = None
-            canyon_surface_stars = None
-            meteor = None
-            guide_intro = None
+            self.canyon_surface = None
+            self.canyon_surface_stars = None
+            self.meteor = None
+            self.guide_intro = None
 
         def load(self):
             self.canyon_surface = CoreImage("textures/canyonSurface.png").texture
