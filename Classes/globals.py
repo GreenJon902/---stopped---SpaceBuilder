@@ -164,7 +164,7 @@ class Globals:
             guide_intro = None
 
         def load(self):
-            self.canyon_surface = CoreImage("textures/canyon surface.png").texture
-            self.canyon_surface_stars = CoreImage("textures/canyon surface stars.png").texture
+            self.canyon_surface = CoreImage("textures/canyonSurface.png").texture
+            self.canyon_surface_stars = CoreImage("textures/canyonSurfaceStars.png").texture
             self.meteor = CoreImage("textures/meteor.png").texture
             self.guide_intro = CoreImage("textures/guide/intro.png").texture
