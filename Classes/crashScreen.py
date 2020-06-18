@@ -1,9 +1,5 @@
-from io import BytesIO
-
-from PIL import Image
 from kivy import Logger
 from kivy.animation import Animation
-from kivy.core.image import Image as CoreImage
 from kivy.clock import Clock
 from kivy.graphics import *
 

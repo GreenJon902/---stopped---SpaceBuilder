@@ -25,6 +25,8 @@ class LoadingScreen(Screen):
         self.bus = list()
         self.app = None
 
+
+
         Logger.info("Application: Loading Screen setup")
 
     def start_bus(self, _):
