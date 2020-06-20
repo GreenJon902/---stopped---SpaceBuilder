@@ -162,7 +162,8 @@ class Globals:
             self.canyon_surface = None
             self.canyon_surface_stars = None
             self.meteor = None
-            self.guide_intro = None
+            self.guide_intro1 = None
+            self.guide_intro2 = None
             self.ShipInside1 = None
             self.ShipInside2 = None
 
@@ -170,7 +171,7 @@ class Globals:
             self.canyon_surface = CoreImage("textures/canyonSurface.png").texture
             self.canyon_surface_stars = CoreImage("textures/canyonSurfaceStars.png").texture
             self.meteor = CoreImage("textures/meteor.png").texture
-            self.guide_intro = CoreImage("textures/guide/intro1.png").texture
-            self.guide_intro = CoreImage("textures/guide/intro2.png").texture
+            self.guide_intro1 = CoreImage("textures/guide/intro1.png").texture
+            self.guide_intro2 = CoreImage("textures/guide/intro2.png").texture
             self.ShipInside1 = Image.open("textures/shipInside1.png")
             self.ShipInside2 = Image.open("textures/shipInside2.png")

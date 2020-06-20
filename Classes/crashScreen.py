@@ -85,5 +85,5 @@ class CrashScreen(Screen):
             Rectangle(pos=self.guideLayout.pos,
                       size=(self.Globals.height * (self.Globals.Textures.guide_intro.width /
                                                    self.Globals.Textures.guide_intro.height), self.Globals.height),
-                      texture=self.Globals.Textures.guide_intro,
+                      texture=self.Globals.Textures.guide_intro1,
                       color=Color(1, 1, 1))
