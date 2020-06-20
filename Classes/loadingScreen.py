@@ -10,12 +10,12 @@ from kivy.uix.progressbar import ProgressBar
 from Classes.screen import Screen
 
 
-def bus_append(name, func, nextFunc, _):
+def bus_append(name, func, lastFunc, app, _):
     Logger.info("Loader: " + name)
 
     func()
 
-    Clock.schedule_once(nextFunc, 0)
+    Clock.schedule_once(lastFunc, 0)
 
 
 def switch(app):
@@ -43,6 +43,10 @@ class LoadingScreen(Screen):
                       texture=img)
 
 
+
+        self.progressBar = ProgressBar(max=10)
+
+
         Logger.info("Application: Loading Screen setup")
 
 
@@ -51,11 +55,11 @@ class LoadingScreen(Screen):
         self.bus.reverse()
 
         i = 0
-        nextFunc = lambda x: switch(self.app)
+        last_func = lambda x: switch(self.app)
 
         for name, callback in self.bus:
-            nextFunc = partial(bus_append, name, partial(callback, self.app), nextFunc)
+            last_func = partial(bus_append, name, partial(callback, self.app), last_func, self.app)
 
             i += 1
 
-        Clock.schedule_once(nextFunc, 0)
+        Clock.schedule_once(last_func, 0)

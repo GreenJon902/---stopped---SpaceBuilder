@@ -163,7 +163,6 @@ class Globals:
             self.meteor = None
             self.guide_intro = None
 
-
         def load(self):
             self.canyon_surface = CoreImage("textures/canyonSurface.png").texture
             self.canyon_surface_stars = CoreImage("textures/canyonSurfaceStars.png").texture
