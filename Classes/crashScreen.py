@@ -23,7 +23,7 @@ class CrashScreen(Screen):
 
         self.starLayout = self.ids["stars"]
         self.canyonLayout = self.ids["canyon"]
-        self.guideLayout = self.ids["guide"]
+        self.guideLayout1 = self.ids["guide1"]
 
         self.starLayout.pos = (Globals.width, 0)
         self.canyonLayout.pos = (Globals.width, 0)
@@ -81,8 +81,8 @@ class CrashScreen(Screen):
             Rectangle(pos=self.canyonLayout.pos, size=(self.w, self.h),
                       texture=self.Globals.Textures.canyon_surface)
 
-        with self.guideLayout.canvas:
-            Rectangle(pos=self.guideLayout.pos,
+        with self.guideLayout1.canvas:
+            Rectangle(pos=self.guideLayout1.pos,
                       size=(self.Globals.height * (self.Globals.Textures.guide_intro.width /
                                                    self.Globals.Textures.guide_intro.height), self.Globals.height),
                       texture=self.Globals.Textures.guide_intro1,
