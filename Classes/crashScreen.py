@@ -24,10 +24,13 @@ class CrashScreen(Screen):
         self.starLayout = self.ids["stars"]
         self.canyonLayout = self.ids["canyon"]
         self.guideLayout1 = self.ids["guide1"]
+        self.guideLayout2 = self.ids["guide2"]
 
         self.starLayout.pos = (Globals.width, 0)
         self.canyonLayout.pos = (Globals.width, 0)
-        self.guideLayout.pos = (Globals.width * -1, 0)
+        self.guideLayout1.pos = (Globals.width * -1, 0)
+
+        self.guideLayout2.opacity = 0
 
         Logger.info("Application: Crash Screen setup")
 
@@ -51,11 +54,11 @@ class CrashScreen(Screen):
     def guide_move(self, _):
         Logger.info("Application: Crash Screen guide move started")
 
-        animation = Animation(pos=self.guideLayout.pos, duration=0)
+        animation = Animation(pos=self.guideLayout1.pos, duration=0)
         animation += Animation(pos=(0, 0),
                                duration=self.Globals.GameSettings.crash_guide_speed)
 
-        animation.start(self.guideLayout)
+        animation.start(self.guideLayout1)
 
 
     def move_stars(self, _):
@@ -71,7 +74,8 @@ class CrashScreen(Screen):
     def draw(self, _):
         self.starLayout.canvas.clear()
         self.canyonLayout.canvas.clear()
-        self.guideLayout.canvas.clear()
+        self.guideLayout1.canvas.clear()
+        self.guideLayout2.canvas.clear()
 
         with self.starLayout.canvas:
             Rectangle(pos=self.starLayout.pos, size=(self.w, self.h),
@@ -83,7 +87,14 @@ class CrashScreen(Screen):
 
         with self.guideLayout1.canvas:
             Rectangle(pos=self.guideLayout1.pos,
-                      size=(self.Globals.height * (self.Globals.Textures.guide_intro.width /
-                                                   self.Globals.Textures.guide_intro.height), self.Globals.height),
+                      size=(self.Globals.height * (self.Globals.Textures.guide_intro1.width /
+                                                   self.Globals.Textures.guide_intro1.height), self.Globals.height),
                       texture=self.Globals.Textures.guide_intro1,
+                      color=Color(1, 1, 1))
+
+        with self.guideLayout2.canvas:
+            Rectangle(pos=self.guideLayout1.pos,
+                      size=(self.Globals.height * (self.Globals.Textures.guide_intro2.width /
+                                                   self.Globals.Textures.guide_intro2.height), self.Globals.height),
+                      texture=self.Globals.Textures.guide_intro2,
                       color=Color(1, 1, 1))
