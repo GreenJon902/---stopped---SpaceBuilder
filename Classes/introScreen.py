@@ -45,7 +45,7 @@ class IntroScreen(Screen):
         self.shipLayout.originX = self.Globals.width / 2
         self.shipLayout.originY = self.Globals.height / 2
 
-        img = Image.open("textures/shipInside1.png")
+        img = Globals.Textures.ShipInside1
         width = img.size[0]
         height = img.size[1]
 
@@ -68,7 +68,7 @@ class IntroScreen(Screen):
         data.seek(0)
         self.shipImageTexture1 = CoreImage(BytesIO(data.read()), ext='png').texture
 
-        img = Image.open("textures/shipInside2.png")
+        img = Globals.Textures.ShipInside2
         width = img.size[0]
         height = img.size[1]
 

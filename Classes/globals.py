@@ -1,5 +1,6 @@
 import json
 
+from PIL import Image
 from kivy.core.image import Image as CoreImage
 from kivy.event import EventDispatcher
 from kivy.logger import Logger
@@ -162,6 +163,8 @@ class Globals:
             self.canyon_surface_stars = None
             self.meteor = None
             self.guide_intro = None
+            self.ShipInside1 = None
+            self.ShipInside2 = None
 
         def load(self):
             self.canyon_surface = CoreImage("textures/canyonSurface.png").texture
@@ -169,3 +172,5 @@ class Globals:
             self.meteor = CoreImage("textures/meteor.png").texture
             self.guide_intro = CoreImage("textures/guide/intro1.png").texture
             self.guide_intro = CoreImage("textures/guide/intro2.png").texture
+            self.ShipInside1 = Image.open("textures/shipInside1.png")
+            self.ShipInside2 = Image.open("textures/shipInside2.png")
