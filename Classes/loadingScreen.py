@@ -5,7 +5,6 @@ from kivy.clock import Clock
 from kivy.core.window import Window
 from kivy.graphics import *
 from kivy.core.image import Image
-from kivy.uix.progressbar import ProgressBar
 
 from Classes.screen import Screen
 
@@ -43,13 +42,7 @@ class LoadingScreen(Screen):
                       texture=img)
 
 
-
-        self.progressBar = ProgressBar(max=10)
-
-
         Logger.info("Application: Loading Screen setup")
-
-
 
     def start_bus(self, _):
         self.bus.reverse()
