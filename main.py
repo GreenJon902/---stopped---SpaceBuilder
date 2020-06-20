@@ -31,8 +31,6 @@ class SpaceBuilder(App):
         loadingScreen.bus.append(("Loading Textures", load_textures))
 
 
-
-
         Clock.schedule_once(loadingScreen.start_bus, 0)
 
         self.baseScreenManager = BaseScreenManager(loadingScreen, lambda: ScreenManager(self.Globals))
