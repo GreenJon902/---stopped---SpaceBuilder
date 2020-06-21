@@ -16,6 +16,7 @@ class CrashScreen(Screen):
         self.starClock = None
         self.drawClock = None
         self.guideClock = None
+        self.click1Clock = None
 
         ratio = self.Globals.Textures.canyon_surface_stars.width / self.Globals.Textures.canyon_surface_stars.height
         self.h = self.Globals.height
@@ -41,6 +42,7 @@ class CrashScreen(Screen):
         self.starClock = Clock.schedule_once(self.move_stars, self.Globals.GameSettings.crash_move_delay)
         self.drawClock = Clock.schedule_interval(self.draw, 0)
         self.guideClock = Clock.schedule_once(self.guide_move, self.Globals.GameSettings.crash_guide_delay)
+        self.click1Clock = Clock.schedule_once(self.click1bind, self.Globals.GameSettings.crash_click_1_delay)
 
     def move_canyon(self, _):
         Logger.info("Application: Crash Screen canyon move started")
