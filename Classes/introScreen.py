@@ -41,6 +41,7 @@ class IntroScreen(Screen):
         self.tintLayout = self.ids["tint"]
 
         self.meteorLayout.size = (0, 0)
+        self.meteorLayout.size_hint = (None, None)
 
         self.shipLayout.originX = self.Globals.width / 2
         self.shipLayout.originY = self.Globals.height / 2
@@ -176,25 +177,16 @@ class IntroScreen(Screen):
     def move_meteor(self, _):
         positions = self.Globals.GameSettings.intro_meteor_positions
         sizes = self.Globals.GameSettings.intro_meteor_sizes
-        size = self.Globals.width, self.Globals.height
-        time1 = self.Globals.GameSettings.intro_meteor_length_1
-        time2 = self.Globals.GameSettings.intro_meteor_length_2
-        time3 = self.Globals.GameSettings.intro_meteor_length_3
+        winSize = self.Globals.width, self.Globals.height
+        times = self.Globals.GameSettings.intro_meteor_length_times
 
-        pos1 = (positions[0][0] * size[0], positions[0][1] * size[1])
-        pos2 = (positions[1][0] * size[0], positions[1][1] * size[1])
-        pos3 = (positions[2][0] * size[0], positions[2][1] * size[1])
+        animation = Animation(duration=0)
 
-        size1 = (sizes[0][0] * size[0], sizes[0][1] * size[0])
-        size2 = (sizes[1][0] * size[0], sizes[1][1] * size[0])
-        size3 = (sizes[2][0] * size[0], sizes[2][1] * size[0])
+        for i in range(len(times)):
+            pos = (positions[i][0] * winSize[0], positions[i][1] * winSize[1])
+            size = (sizes[i][0] * winSize[0], sizes[i][1] * winSize[0])
 
-        print(pos1, pos2, pos3)
-        print(size1, size2, size3)
-
-        animation = Animation(center=pos1, size=size1, duration=time1)
-        animation += Animation(center=pos2, size=size2, duration=time2)
-        animation += Animation(pos=pos3, size=size3, duration=time3)
+            animation += Animation(center=pos, size=size, duration=times[i])
 
         animation.start(self.meteorLayout)
 
@@ -205,12 +197,10 @@ class IntroScreen(Screen):
 
         with self.meteorLayout.canvas:
             Rectangle(texture=self.Globals.Textures.meteor, pos=self.meteorLayout.pos, size=self.meteorLayout.size)
-            print(self.meteorLayout.size)
 
 
     def draw_ship(self, _):
         self.shipLayout.canvas.clear()
-        self.shipLayout.opacity = 0.1
 
         with self.shipLayout.canvas:
             Rectangle(pos=(self.shakeScreenX + self.shipLayout.pos[0],
