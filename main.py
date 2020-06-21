@@ -7,7 +7,7 @@ from kivy.core.window import Window
 from Classes.baseScreenManager import BaseScreenManager
 from Classes.loadingScreen import LoadingScreen
 from Classes.screenManager import ScreenManager
-from loadFunctions import create_Globals, add_save_paths, load_kv, load_textures
+from loadFunctions import create_Globals, add_save_paths, load_kv, load_textures, load_audio
 
 
 class SpaceBuilder(App):
@@ -29,6 +29,7 @@ class SpaceBuilder(App):
         loadingScreen.bus.append(("Create Globals", create_Globals))
         loadingScreen.bus.append(("Adding save paths", add_save_paths))
         loadingScreen.bus.append(("Loading Textures", load_textures))
+        loadingScreen.bus.append(("Loading Audio", load_audio))
 
 
         Clock.schedule_once(loadingScreen.start_bus, 0)

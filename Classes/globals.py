@@ -15,6 +15,7 @@ class Globals:
         self.User_data = self._User_data()
         self.Settings_data = self._Settings_data()
         self.Textures = self._Textures()
+        self.Audio = self._Audio()
 
     class _User_data(EventDispatcher):
         Default_data = {
@@ -177,4 +178,9 @@ class Globals:
             self.ShipInside2 = Image.open("resources/textures/intro/shipInside2.png")
             self.star = Image.open("resources/textures/intro/star.png")
 
+    class _Audio:
+        def __init__(self):
+            pass
 
+        def load(self):
+            pass

@@ -33,3 +33,9 @@ def load_textures(app):
     app.Globals.Textures.load()
 
     Logger.info("Loader: Loaded Textures")
+
+
+def load_audio(app):
+    app.Globals.Audio.load()
+
+    Logger.info("Loader: Loaded Audio")
