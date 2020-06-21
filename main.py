@@ -4,7 +4,7 @@ from kivy.app import App
 from kivy.clock import Clock
 from kivy.core.window import Window
 
-from Classes.BaseScreenManager import BaseScreenManager
+from Classes.baseScreenManager import BaseScreenManager
 from Classes.loadingScreen import LoadingScreen
 from Classes.screenManager import ScreenManager
 from loadFunctions import create_Globals, add_save_paths, load_kv, load_textures
