@@ -107,11 +107,13 @@ class IntroScreen(Screen):
 
         self.starClock = Clock.schedule_interval(self.draw_star, self.Globals.GameSettings.intro_star_new_frame_delay)
         self.shipClock = Clock.schedule_interval(self.draw_ship, self.Globals.GameSettings.intro_ship_new_frame_delay)
-        self.meteorClock = Clock.schedule_once(self.start_draw_meteor, self.Globals.GameSettings.intro_meteor_delay)
+        self.meteorClock = Clock.schedule_once(self.move_meteor, self.Globals.GameSettings.intro_meteor_delay)
+        self.meteorClock2 = Clock.schedule_interval(self.draw_meteor, 0)
         self.tintClock = Clock.schedule_once(self.start_alarm, self.Globals.GameSettings.intro_alarm_delay)
         self.shakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
         self.moveClock = Clock.schedule_once(self.move, self.Globals.GameSettings.intro_move_delay)
         self.endClock = Clock.schedule_once(self.parent.openCrashScreen, self.Globals.GameSettings.intro_end_delay)
+
 
         Logger.info("Application: Intro Screen clocks created")
 
@@ -171,7 +173,7 @@ class IntroScreen(Screen):
                                rect[2][0], rect[2][1], 1, 1, rect[3][0], rect[3][1], 1, 0),
                      mode="triangle_fan", texture=self.starImageTexture)
 
-    def start_draw_meteor(self, _):
+    def move_meteor(self, _):
         positions = self.Globals.GameSettings.intro_meteor_positions
         sizes = self.Globals.GameSettings.intro_meteor_sizes
         size = self.Globals.width, self.Globals.height
@@ -187,25 +189,28 @@ class IntroScreen(Screen):
         size2 = (sizes[1][0] * size[0], sizes[1][1] * size[0])
         size3 = (sizes[2][0] * size[0], sizes[2][1] * size[0])
 
-        animation = Animation(pos=pos1, size=size1, duration=time1)
-        animation += Animation(pos=pos2, size=size2, duration=time2)
+        print(pos1, pos2, pos3)
+        print(size1, size2, size3)
+
+        animation = Animation(center=pos1, size=size1, duration=time1)
+        animation += Animation(center=pos2, size=size2, duration=time2)
         animation += Animation(pos=pos3, size=size3, duration=time3)
 
         animation.start(self.meteorLayout)
 
-        self.meteorClock2 = Clock.schedule_interval(self.draw_meteor, 0)
-
-        Logger.info("Application: Intro Screen meteor move started started")
+        Logger.info("Application: Intro Screen meteor move started")
 
     def draw_meteor(self, _):
         self.meteorLayout.canvas.clear()
 
         with self.meteorLayout.canvas:
             Rectangle(texture=self.Globals.Textures.meteor, pos=self.meteorLayout.pos, size=self.meteorLayout.size)
+            print(self.meteorLayout.size)
 
 
     def draw_ship(self, _):
         self.shipLayout.canvas.clear()
+        self.shipLayout.opacity = 0.1
 
         with self.shipLayout.canvas:
             Rectangle(pos=(self.shakeScreenX + self.shipLayout.pos[0],
