@@ -156,6 +156,7 @@ class Globals:
         crash_guide_delay = 3
         crash_guide_speed = 1
         crash_click_1_delay = 4
+        crash_click_transition_speed = 0.5
 
 
     class _Textures:

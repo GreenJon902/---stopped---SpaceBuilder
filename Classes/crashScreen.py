@@ -51,8 +51,15 @@ class CrashScreen(Screen):
 
     def on_touch_up(self, _):
         if self.currentClick == 1:
-            self.guideLayout1.opacity = 0
-            self.guideLayout2.opacity = 1
+
+            animation1 = Animation(opacity=1, duration=0)
+            animation1 += Animation(opacity=0, duration=self.Globals.GameSettings.crash_click_transition_speed)
+
+            animation2 = Animation(opacity=0, duration=0)
+            animation2 += Animation(opacity=1, duration=self.Globals.GameSettings.crash_click_transition_speed)
+
+            animation1.start(self.guideLayout1)
+            animation2.start(self.guideLayout2)
 
             self.currentClick = 2
 
