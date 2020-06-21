@@ -36,7 +36,7 @@ class LoadingScreen(Screen):
 
         self.size = Window.size
 
-        img = Image("textures/loadingScreenBackground.png").texture
+        img = Image("resources/textures/loadingScreenBackground.png").texture
 
         goOver = (Window.height * (img.width / img.height)) - Window.width
 
@@ -48,13 +48,12 @@ class LoadingScreen(Screen):
 
 
         self.label = Label(text="Loading", color=(1, 1, 1, 1),
-                           font_size=Window.height / 10, font_name="textures/ComicSans.ttf")
+                           font_size=Window.height / 10, font_name="resources/ComicSans.ttf")
 
         self.label.pos_hint = {"y": -0.25}
 
         self.add_widget(self.label)
 
-        #Clock.schedule_interval(lambda x: print(self.label.text), 0)
 
 
         Logger.info("Application: Loading Screen setup")

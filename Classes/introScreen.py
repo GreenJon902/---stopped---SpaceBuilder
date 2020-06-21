@@ -94,7 +94,7 @@ class IntroScreen(Screen):
 
         self.shipImageTexture = self.shipImageTexture1
 
-        img = Image.open("textures/star.png")
+        img = self.Globals.Textures.star
 
         data = BytesIO()
         img.save(data, format='png')

@@ -165,12 +165,16 @@ class Globals:
             self.guide_intro2 = None
             self.ShipInside1 = None
             self.ShipInside2 = None
+            self.star = None
 
         def load(self):
-            self.canyon_surface = CoreImage("textures/canyonSurface.png").texture
-            self.canyon_surface_stars = CoreImage("textures/canyonSurfaceStars.png").texture
-            self.meteor = CoreImage("textures/meteor.png").texture
-            self.guide_intro1 = CoreImage("textures/guide/intro1.png").texture
-            self.guide_intro2 = CoreImage("textures/guide/intro2.png").texture
-            self.ShipInside1 = Image.open("textures/shipInside1.png")
-            self.ShipInside2 = Image.open("textures/shipInside2.png")
+            self.canyon_surface = CoreImage("resources/textures/intro/canyonSurface.png").texture
+            self.canyon_surface_stars = CoreImage("resources/textures/intro/canyonSurfaceStars.png").texture
+            self.meteor = CoreImage("resources/textures/intro/meteor.png").texture
+            self.guide_intro1 = CoreImage("resources/textures/guide/intro1.png").texture
+            self.guide_intro2 = CoreImage("resources/textures/guide/intro2.png").texture
+            self.ShipInside1 = Image.open("resources/textures/intro/shipInside1.png")
+            self.ShipInside2 = Image.open("resources/textures/intro/shipInside2.png")
+            self.star = Image.open("resources/textures/intro/star.png")
+
+
