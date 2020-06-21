@@ -36,10 +36,10 @@ class ScreenManager(ScreenManager):
 
         Logger.info("Application: Screen Manager setup")
 
-    def openCrashScreen(self, _):
+    def openCrashScreen(self, _=None):
         self.transition = FadeTransition()
         self.current = "CrashScreen"
 
-    def openBaseBuilderScreen(self, _):
+    def openBaseBuilderScreen(self, _=None):
         self.transition = FadeTransition()
         self.current = "BaseBuilderScreen"
