@@ -24,7 +24,7 @@ def create_Globals(app):
 
 
 def load_kv(app):
-    Builder.load_file('kv.kv')
+    Builder.load_file('resources/kv.kv')
 
     Logger.info("Loader: Loaded KV")
 
