@@ -4,8 +4,10 @@ from kivy.uix.screenmanager import Screen
 
 
 class BaseBuilderScreen(Screen):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, Globals, *args, **kwargs):
         super(BaseBuilderScreen, self).__init__(*args, **kwargs)
+
+        self.Globals = Globals
 
         Logger.info("Application: BaseBuilder Screen setup")
 

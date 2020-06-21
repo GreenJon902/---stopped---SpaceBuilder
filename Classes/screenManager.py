@@ -19,7 +19,7 @@ class ScreenManager(ScreenManager):
         dumpScreen = Screen(name="Screen")
         introScreen = IntroScreen(Globals, name="IntroScreen")
         crashScreen = CrashScreen(Globals, name="CrashScreen")
-        baseBuildScreen = BaseBuilderScreen(name="BaseBuilderScreen")
+        baseBuildScreen = BaseBuilderScreen(Globals, name="BaseBuilderScreen")
 
         self.add_widget(dumpScreen)
         self.add_widget(introScreen)
