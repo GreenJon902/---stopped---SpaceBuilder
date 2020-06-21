@@ -49,7 +49,7 @@ class CrashScreen(Screen):
     def click1allow(self, _):
         self.currentClick = 1
 
-    def on_mouse_up(self, _):
+    def on_touch_up(self, _):
         if self.currentClick == 1:
             self.guideLayout1.opacity = 0
             self.guideLayout2.opacity = 1
