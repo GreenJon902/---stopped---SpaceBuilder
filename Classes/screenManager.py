@@ -6,6 +6,7 @@ from Classes.crashScreen import CrashScreen
 from Classes.introScreen import IntroScreen
 
 from Classes.betterFloatLayout import BetterFloatLayout
+from Classes.screen import Screen
 
 
 class ScreenManager(ScreenManager):
@@ -15,10 +16,12 @@ class ScreenManager(ScreenManager):
         self.width = Globals.width
         self.height = Globals.height
 
+        dumpScreen = Screen(Globals, name="Screen")
         introScreen = IntroScreen(Globals, name="IntroScreen")
         crashScreen = CrashScreen(Globals, name="CrashScreen")
         baseBuildScreen = BaseBuilderScreen(name="BaseBuilderScreen")
 
+        self.add_widget(dumpScreen)
         self.add_widget(introScreen)
         self.add_widget(crashScreen)
         self.add_widget(baseBuildScreen)
@@ -29,7 +32,7 @@ class ScreenManager(ScreenManager):
 
         else:
             Logger.info("Application: Starting in Intro")
-            self.current = "IntroScreen"
+            self.current = "CrashScreen"
 
         Logger.info("Application: Screen Manager setup")
 
