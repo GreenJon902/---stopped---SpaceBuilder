@@ -155,6 +155,7 @@ class Globals:
         crash_stars_move_divider = 3
         crash_guide_delay = 3
         crash_guide_speed = 1
+        crash_click_1_delay = 4
 
 
     class _Textures:
