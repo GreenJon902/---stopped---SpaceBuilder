@@ -39,3 +39,7 @@ class ScreenManager(ScreenManager):
     def openCrashScreen(self, _):
         self.transition = FadeTransition()
         self.current = "CrashScreen"
+
+    def openBaseBuilderScreen(self, _):
+        self.transition = FadeTransition()
+        self.current = "BaseBuilderScreen"
