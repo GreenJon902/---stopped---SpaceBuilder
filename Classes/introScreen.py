@@ -225,7 +225,7 @@ class IntroScreen(Screen):
         Logger.info("Application: Intro Screen ship shake started")
 
     def start_alarm(self, _):
-        self.tintClock2 = Clock.schedule_interval(self.do_alarm, self.Globals.GameSettings.intro_alarm_length * 2)
+        self.tintClock2 = Clock.schedule_interval(self.do_alarm, self.Globals.GameSettings.intro_alarm_switch_interval * 2)
         Logger.info("Application: Intro Screen ship alarm stated")
 
     def do_alarm(self, _):
@@ -233,7 +233,7 @@ class IntroScreen(Screen):
             Rectangle(pos=(0, 0), size=(self.Globals.width, self.Globals.height),
                       color=Color(*self.Globals.GameSettings.intro_alarm_color))
 
-        Clock.schedule_once(lambda _: self.tintLayout.canvas.clear(), self.Globals.GameSettings.intro_alarm_length)
+        Clock.schedule_once(lambda _: self.tintLayout.canvas.clear(), self.Globals.GameSettings.intro_alarm_switch_interval)
 
     def on_leave(self, *args):
         Logger.info("Application: Intro Screen exited")

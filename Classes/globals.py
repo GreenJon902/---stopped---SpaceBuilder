@@ -140,7 +140,7 @@ class Globals:
         intro_ship_shake_positions = ((1, 0.5), (1, 0.5))
         intro_alarm_color = 1, 0, 0, 0.5
         intro_alarm_delay = 5.1
-        intro_alarm_length = 0.6
+        intro_alarm_switch_interval = 0.6
         intro_alarm_sound_delay = 5.1
         intro_meteor_delay = 4
         intro_meteor_length_times = (0, 0.25, 0.25, 0.25, 0.1)
