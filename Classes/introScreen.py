@@ -20,7 +20,7 @@ class IntroScreen(Screen):
         self.starClock = None
         self.shipClock = None
         self.shipShakeClock = None
-        self.meteorHitSoundClick = None
+        self.meteorHitSoundClock = None
         self.meteorClock = None
         self.meteorClock2 = None
         self.tintClock = None
@@ -116,6 +116,7 @@ class IntroScreen(Screen):
         self.shipShakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
         self.shipFallClock = Clock.schedule_once(self.move, self.Globals.GameSettings.intro_ship_fall_delay)
         self.endClock = Clock.schedule_once(self.parent.openCrashScreen, self.Globals.GameSettings.intro_end_delay)
+
 
 
         Logger.info("Application: Intro Screen clocks created")
