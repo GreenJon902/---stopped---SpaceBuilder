@@ -28,6 +28,7 @@ class IntroScreen(Screen):
         self.alarmSoundClock = None
         self.alarmSoundClock2 = None
         self.shipFallClock = None
+        self.shipFallSoundClock = None
         self.endClock = None
 
         self.Globals = Globals
@@ -120,6 +121,8 @@ class IntroScreen(Screen):
                                                    self.Globals.GameSettings.intro_alarm_sound_delay)
         self.shipShakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
         self.shipFallClock = Clock.schedule_once(self.move, self.Globals.GameSettings.intro_ship_fall_delay)
+        self.shipFallSoundClock = Clock.schedule_once(lambda x: self.Globals.Audio.shipFall.play(),
+                                                      self.Globals.GameSettings.intro_ship_fall_sound_delay)
         self.endClock = Clock.schedule_once(self.parent.openCrashScreen, self.Globals.GameSettings.intro_end_delay)
 
 
