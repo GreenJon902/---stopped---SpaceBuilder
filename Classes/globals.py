@@ -147,9 +147,9 @@ class Globals:
         intro_meteor_positions = ((0.75, 0.5), (0.75, 0.5), (0.75, 0.5), (0.75, 0.5), (1.2, 1.2))
         intro_meteor_sizes = ((0, 0), (0.1, 0.1), (0.25, 0.25), (0.5, 0.5), (0.4, 0.4))
         intro_meteor_hit_sound_delay = 4.75
-        intro_move_delay = 10
-        intro_fall_sound_delay = 10
-        intro_move_speed = 1
+        intro_ship_fall_delay = 10
+        intro_ship_fall_sound_delay = 10
+        intro_ship_fall_speed = 1
         intro_end_delay = 11
 
         crash_move_delay = 0

@@ -112,7 +112,7 @@ class IntroScreen(Screen):
         self.meteorClock2 = Clock.schedule_interval(self.draw_meteor, 0)
         self.tintClock = Clock.schedule_once(self.start_alarm, self.Globals.GameSettings.intro_alarm_delay)
         self.shakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
-        self.moveClock = Clock.schedule_once(self.move, self.Globals.GameSettings.intro_move_delay)
+        self.moveClock = Clock.schedule_once(self.move, self.Globals.GameSettings.intro_ship_fall_delay)
         self.endClock = Clock.schedule_once(self.parent.openCrashScreen, self.Globals.GameSettings.intro_end_delay)
 
 
@@ -125,7 +125,7 @@ class IntroScreen(Screen):
 
         animation = Animation(pos=self.shipLayout.pos, duration=0)
         animation += Animation(pos=(self.shipLayout.pos[0], self.shakeScreenHeight * -1),
-                               duration=self.Globals.GameSettings.intro_move_speed)
+                               duration=self.Globals.GameSettings.intro_ship_fall_speed)
 
         animation.start(self.shipLayout)
 
