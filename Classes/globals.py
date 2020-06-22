@@ -1,6 +1,7 @@
 import json
 
 from PIL import Image
+from kivy.core.audio import SoundLoader
 from kivy.core.image import Image as CoreImage
 from kivy.event import EventDispatcher
 from kivy.logger import Logger
@@ -180,7 +181,11 @@ class Globals:
 
     class _Audio:
         def __init__(self):
-            pass
+            self.meteorHit = None
+            self.alarm = None
+            self.shipFall = None
 
         def load(self):
-            pass
+            self.meteorHit = SoundLoader.load("resources/audio/intro/meteorHit.wav")
+            self.alarm = SoundLoader.load("resources/audio/intro/alarm.wav")
+            self.shipFall = SoundLoader.load("resources/audio/intro/shipFall.wav")
