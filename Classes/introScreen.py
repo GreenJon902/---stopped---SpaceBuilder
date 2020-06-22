@@ -253,3 +253,4 @@ class IntroScreen(Screen):
 
         self.starClock.cancel()
         self.shipClock.cancel()
+        self.alarmSoundClock2.cancel()
