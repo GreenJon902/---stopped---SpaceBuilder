@@ -26,6 +26,7 @@ class IntroScreen(Screen):
         self.tintClock2 = None
         self.alarmSoundClock = None
         self.alarmSoundClock2 = None
+        self.alarmSoundStopClock = None
         self.shipFallClock = None
         self.shipFallSoundClock = None
         self.endClock = None
@@ -116,6 +117,8 @@ class IntroScreen(Screen):
         self.meteorHitSoundClock = Clock.schedule_once(lambda x: self.Globals.Audio.meteorHit.play(),
                                                        self.Globals.GameSettings.intro_meteor_hit_sound_delay)
         self.tintClock = Clock.schedule_once(self.start_alarm, self.Globals.GameSettings.intro_alarm_delay)
+        self.alarmSoundClock = Clock.schedule_once(lambda x: self.alarmSoundClock2.cancel(),
+                                                   self.Globals.GameSettings.intro_alarm_sound_stop_delay)
         self.alarmSoundClock = Clock.schedule_once(self.start_alarm_sounds,
                                                    self.Globals.GameSettings.intro_alarm_sound_delay)
         self.shipShakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
@@ -257,4 +260,3 @@ class IntroScreen(Screen):
 
         self.starClock.cancel()
         self.shipClock.cancel()
-        self.alarmSoundClock2.cancel()
