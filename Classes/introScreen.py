@@ -26,6 +26,7 @@ class IntroScreen(Screen):
         self.tintClock = None
         self.tintClock2 = None
         self.alarmSoundClock = None
+        self.alarmSoundClock2 = None
         self.shipFallClock = None
         self.endClock = None
 
