@@ -128,7 +128,7 @@ class IntroScreen(Screen):
         Logger.info("Application: Intro Screen clocks created")
 
     def start_alarm_sounds(self, _):
-        self.alarmSoundClock2 = Clock.schedule_interval(lambda x: self.Globals.Audio.meteorHit.play(),
+        self.alarmSoundClock2 = Clock.schedule_interval(lambda x: self.Globals.Audio.alarm.play(),
                                                         self.Globals.GameSettings.intro_alarm_sound_interval)
 
     def move(self, _):
