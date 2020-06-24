@@ -25,7 +25,18 @@ class BaseBuilderScreen(Screen):
         Logger.info("Application: BaseBuilder Screen clocks created")
 
     def draw(self, _):
-        pass
+        self.canyonFloorLayout.canvas.clear()
+        self.buildingsLayout.canvas.clear()
+        self.canyonTopLayout.canvas.clear()
+
+        with self.buildingsLayout.canvas:
+            pass
+
+        with self.canyonFloorLayout.canvas:
+            pass
+
+        with self.canyonTopLayout.canvas:
+            pass
 
     def on_leave(self, *args):
         self.drawClock.cancel()
