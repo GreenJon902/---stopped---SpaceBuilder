@@ -34,30 +34,30 @@ class Globals:
             self.bind(save_path=self.load)
 
         def load(self, _, callback):
-            Logger.info("Application: User data save path: " + str(callback))
+            Logger.info("User_Data: Save path: " + str(callback))
 
             try:
                 with open(callback, "r") as file:
                     self.data = json.load(file)
 
             except FileNotFoundError:
-                Logger.warn("Application: User data save file not found, creating new one")
+                Logger.warn("User_Data: Save file not found, creating new one")
                 self.create_new()
 
                 with open(callback, "r") as file:
                     self.data = json.load(file)
 
-            Logger.info("Application: Loaded user data")
+            Logger.info("User_Data: Loaded data")
 
         def save(self, out):
             with open(self.save_path, "w", encoding='utf-8') as file:
                 json.dump(out, file, ensure_ascii=True, indent=4)
 
-            Logger.info("Application: Saved user data")
+            Logger.info("User_Data: Saved data")
 
         def create_new(self):
             open(self.save_path, "a").close()
-            Logger.info("Application: Created new user data file")
+            Logger.info("User_Data: Created new data file")
             self.save(self.Default_data)
 
         def set(self, key, value):
@@ -65,14 +65,14 @@ class Globals:
                 self.data[key] = value
 
             else:
-                Logger.warn("Application: \"" + str(key) + "\" is an invalid key for User data")
+                Logger.warn("User_Data: \"" + str(key) + "\" is an invalid key")
 
         def get(self, key):
             if key in self.data:
                 return self.data[key]
 
             else:
-                Logger.warn("Application: \"" + str(key) + "\" is an invalid key for User data")
+                Logger.warn("User_Data: \"" + str(key) + "\" is an invalid key")
 
     class _Settings_data(EventDispatcher):
         Default_data = {
@@ -88,30 +88,30 @@ class Globals:
             self.bind(save_path=self.load)
 
         def load(self, _, callback):
-            Logger.info("Application: Settings data save path: " + str(callback))
+            Logger.info("Settings_Data: dave path: " + str(callback))
 
             try:
                 with open(callback, "r") as file:
                     self.data = json.load(file)
 
             except FileNotFoundError:
-                Logger.warn("Application: Settings data save file not found, creating new one")
+                Logger.warn("Settings_Data: Save file not found, creating new one")
                 self.create_new()
 
                 with open(callback, "r") as file:
                     self.data = json.load(file)
 
-            Logger.info("Application: Loaded settings data")
+            Logger.info("Settings_Data: Loaded data")
 
         def save(self, out):
             with open(self.save_path, "w", encoding='utf-8') as file:
                 json.dump(out, file, ensure_ascii=True, indent=4)
 
-            Logger.info("Application: Saved settings data")
+            Logger.info("Settings_Data: Saved data")
 
         def create_new(self):
             open(self.save_path, "a").close()
-            Logger.info("Application: Created new settings data file")
+            Logger.info("Settings_Data: Created new data file")
             self.save(self.Default_data)
 
         def set(self, key, value):
@@ -119,14 +119,14 @@ class Globals:
                 self.data[key] = value
 
             else:
-                Logger.warn("Application: \"" + str(key) + "\" is an invalid key for Settings data")
+                Logger.warn("Settings_Data: \"" + str(key) + "\" is an invalid key")
 
         def get(self, key):
             if key in self.data:
                 return self.data[key]
 
             else:
-                Logger.warn("Application: \"" + str(key) + "\" is an invalid key for Settings data")
+                Logger.warn("Settings_Data: \"" + str(key) + "\" is an invalid key")
 
     class GameSettings:
         intro_star_amount = 10
