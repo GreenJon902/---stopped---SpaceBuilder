@@ -45,6 +45,10 @@ class BaseBuilderScreen(Screen):
 
         Logger.info("Application: BaseBuilder Screen clocks created")
 
+    def zoomOrMove(self, _=None):
+        print(self.sizeAndPosition.pos)
+        print(self.sizeAndPosition.size)
+
     def draw(self, _):
         self.canyonFloorLayout.canvas.clear()
         self.buildingsLayout.canvas.clear()
