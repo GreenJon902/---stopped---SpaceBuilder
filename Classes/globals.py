@@ -178,20 +178,20 @@ class Globals:
             self.canyon_surface = None
             self.canyon_surface_stars = None
             self.meteor = None
-            self.guide_intro1 = None
-            self.guide_intro2 = None
-            self.ShipInside1 = None
-            self.ShipInside2 = None
+            self.guide_intro_1 = None
+            self.guide_intro_2 = None
+            self.ship_inside_1 = None
+            self.ship_inside_2 = None
             self.star = None
 
         def load(self):
             self.canyon_surface = CoreImage("resources/textures/intro/canyonSurface.png").texture
             self.canyon_surface_stars = CoreImage("resources/textures/intro/canyonSurfaceStars.png").texture
             self.meteor = CoreImage("resources/textures/intro/meteor.png").texture
-            self.guide_intro1 = CoreImage("resources/textures/guide/intro1.png").texture
-            self.guide_intro2 = CoreImage("resources/textures/guide/intro2.png").texture
-            self.ShipInside1 = Image.open("resources/textures/intro/shipInside1.png")
-            self.ShipInside2 = Image.open("resources/textures/intro/shipInside2.png")
+            self.guide_intro_1 = CoreImage("resources/textures/guide/intro1.png").texture
+            self.guide_intro_2 = CoreImage("resources/textures/guide/intro2.png").texture
+            self.ship_inside_1 = Image.open("resources/textures/intro/shipInside1.png")
+            self.ship_inside_2 = Image.open("resources/textures/intro/shipInside2.png")
             self.star = Image.open("resources/textures/intro/star.png")
 
     class _Audio:
