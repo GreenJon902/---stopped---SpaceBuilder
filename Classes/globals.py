@@ -183,6 +183,8 @@ class Globals:
             self.ship_inside_1 = None
             self.ship_inside_2 = None
             self.star = None
+            self.canyon_background_bottom = None
+            self.canyon_background_top = None
 
         def load(self):
             self.canyon_surface = CoreImage("resources/textures/intro/canyonSurface.png").texture
@@ -193,6 +195,8 @@ class Globals:
             self.ship_inside_1 = Image.open("resources/textures/intro/shipInside1.png")
             self.ship_inside_2 = Image.open("resources/textures/intro/shipInside2.png")
             self.star = Image.open("resources/textures/intro/star.png")
+            self.canyon_background_bottom = Image.open("resources/textures/baseBuilder/canyon_background_bottom.png")
+            self.canyon_background_top = Image.open("resources/textures/baseBuilder/canyon_background_top.png")
 
     class _Audio:
         def __init__(self):
