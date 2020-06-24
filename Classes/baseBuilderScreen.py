@@ -20,5 +20,10 @@ class BaseBuilderScreen(Screen):
 
         Logger.info("Application: BaseBuilder Screen clocks created")
 
+    def draw(self, _):
+        pass
+
     def on_leave(self, *args):
+        self.drawClock.cancel()
+
         Logger.info("Application: BaseBuilder Screen exited")
