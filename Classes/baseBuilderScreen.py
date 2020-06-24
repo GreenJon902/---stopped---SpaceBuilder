@@ -25,6 +25,7 @@ class BaseBuilderScreen(Screen):
         self.sizeAndPositionLayout.add_widget(Widget(pos=(0, 0),
                                                      size=(self.Globals.height * ratio, self.Globals.height)))
         self.sizeAndPositionLayout.bind(on_transform_with_touch=self.zoomOrMove)
+        self.zoomOrMove()
 
         self.sizeAndPositionLayout.pos = 0, 0
         self.sizeAndPositionLayout.size = self.Globals.width, self.Globals.height
