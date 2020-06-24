@@ -1,14 +1,10 @@
 from kivy import Logger
 from kivy.clock import Clock
-from kivy.properties import NumericProperty, DictProperty
 from kivy.uix.screenmanager import Screen
 
 
 
 class BaseBuilderScreen(Screen):
-    zoom = NumericProperty(defaultvalue=1)
-    view_pos = DictProperty(defaultvalue=[0, 0])
-
     def __init__(self, Globals, *args, **kwargs):
         super(BaseBuilderScreen, self).__init__(*args, **kwargs)
         self.drawClock = None
@@ -18,7 +14,6 @@ class BaseBuilderScreen(Screen):
         self.canyonFloorLayout = self.ids["canyonFloor"]
         self.buildingsLayout = self.ids["buildings"]
         self.canyonTopLayout = self.ids["canyonTop"]
-
 
         Logger.info("Application: BaseBuilder Screen setup")
 
