@@ -38,7 +38,7 @@ class BaseBuilderScreen(Screen):
         Logger.info("Application: BaseBuilder Screen setup")
 
     def post_init(self):
-        Logger.info("Application: BaseBuilder Screen clocks created")
+        Logger.info("Application: Intro Screen entered")
 
         self.drawClock = Clock.schedual_interval(self.draw, 0)
 
