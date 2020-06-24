@@ -21,19 +21,19 @@ class BaseBuilderScreen(Screen):
 
 
         ratio = Globals.Textures.canyon_background_bottom.width / Globals.Textures.canyon_background_bottom.height
-        self.baseLayout.size = self.Globals.height * ratio, self.Globals.height
+        self.sizeAndPositionLayout.size = self.Globals.height * ratio, self.Globals.height
 
         self.canyonFloorLayout.pos = 0, 0
-        self.canyonFloorLayout.size = self.baseLayout.size
+        self.canyonFloorLayout.size = self.sizeAndPositionLayout.size
 
         self.buildingsLayout.pos = 0, 0
-        self.buildingsLayout.size = self.baseLayout.size
+        self.buildingsLayout.size = self.sizeAndPositionLayout.size
 
         self.canyonTopLayout.pos = 0, 0
-        self.canyonTopLayout.size = self.baseLayout.size
+        self.canyonTopLayout.size = self.sizeAndPositionLayout.size
 
         self.canyonDefencesLayout.pos = 0, 0
-        self.canyonDefencesLayout.size = self.baseLayout.size
+        self.canyonDefencesLayout.size = self.sizeAndPositionLayout.size
 
 
         Logger.info("Application: BaseBuilder Screen setup")
@@ -55,7 +55,6 @@ class BaseBuilderScreen(Screen):
         self.canyonTopLayout.canvas.clear()
 
         with self.canyonFloorLayout.canvas:
-            print(self.canyonFloorLayout.pos, self.canyonFloorLayout.size)
             Rectangle(pos=self.canyonFloorLayout.pos, size=self.canyonFloorLayout.size,
                       texture=self.Globals.Textures.canyon_background_bottom)
 
