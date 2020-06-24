@@ -126,11 +126,11 @@ class IntroScreen(Screen):
 
         Logger.info("Application: Intro Screen clocks created")
 
-    def start_alarm_sounds(self, _):
+    def start_alarm_sounds(self, _=None):
         self.alarmSoundClock2 = Clock.schedule_interval(lambda x: self.Globals.Audio.alarm.play(),
                                                         self.Globals.GameSettings.intro_alarm_sound_interval)
 
-    def move(self, _):
+    def move(self, _=None):
         Logger.info("Application: Intro Screen ship move started")
 
         self.shipImageTexture = self.shipImageTexture2
@@ -141,7 +141,7 @@ class IntroScreen(Screen):
 
         animation.start(self.shipLayout)
 
-    def draw_star(self, _):
+    def draw_star(self, _=None):
         self.starsLayout.canvas.clear()
 
         Globals = self.Globals
@@ -186,7 +186,7 @@ class IntroScreen(Screen):
                                rect[2][0], rect[2][1], 1, 1, rect[3][0], rect[3][1], 1, 0),
                      mode="triangle_fan", texture=self.Globals.Textures.star)
 
-    def move_meteor(self, _):
+    def move_meteor(self, _=None):
         positions = self.Globals.GameSettings.intro_meteor_positions
         sizes = self.Globals.GameSettings.intro_meteor_sizes
         winSize = self.Globals.width, self.Globals.height
@@ -204,14 +204,14 @@ class IntroScreen(Screen):
 
         Logger.info("Application: Intro Screen meteor move started")
 
-    def draw_meteor(self, _):
+    def draw_meteor(self, _=None):
         self.meteorLayout.canvas.clear()
 
         with self.meteorLayout.canvas:
             Rectangle(texture=self.Globals.Textures.meteor, pos=self.meteorLayout.pos, size=self.meteorLayout.size)
 
 
-    def draw_ship(self, _):
+    def draw_ship(self, _=None):
         self.shipLayout.canvas.clear()
 
         with self.shipLayout.canvas:
@@ -220,7 +220,7 @@ class IntroScreen(Screen):
                       size=(self.shakeScreenWidth, self.shakeScreenHeight),
                       texture=self.shipImageTexture)
 
-    def shake(self, _):
+    def shake(self, _=None):
         animation = Animation(pos=self.shipLayout.pos, duration=0)
 
         i = 0
@@ -236,12 +236,12 @@ class IntroScreen(Screen):
 
         Logger.info("Application: Intro Screen ship shake started")
 
-    def start_alarm(self, _):
+    def start_alarm(self, _=None):
         self.tintClock2 = Clock.schedule_interval(self.do_alarm,
                                                   self.Globals.GameSettings.intro_alarm_switch_interval * 2)
         Logger.info("Application: Intro Screen ship alarm stated")
 
-    def do_alarm(self, _):
+    def do_alarm(self, _=None):
         with self.tintLayout.canvas:
             Rectangle(pos=(0, 0), size=(self.Globals.width, self.Globals.height),
                       color=Color(*self.Globals.GameSettings.intro_alarm_color))

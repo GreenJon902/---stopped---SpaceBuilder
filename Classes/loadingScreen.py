@@ -58,7 +58,7 @@ class LoadingScreen(Screen):
 
         Logger.info("Application: Loading Screen setup")
 
-    def start_bus(self, _):
+    def start_bus(self, _=None):
         self.bus.reverse()
 
         i = 0

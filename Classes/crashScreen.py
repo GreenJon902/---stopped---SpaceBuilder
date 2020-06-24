@@ -46,10 +46,10 @@ class CrashScreen(Screen):
         self.guideClock = Clock.schedule_once(self.guide_move, self.Globals.GameSettings.crash_guide_delay)
         self.click1Clock = Clock.schedule_once(self.click1allow, self.Globals.GameSettings.crash_click_1_delay)
 
-    def click1allow(self, _):
+    def click1allow(self, _=None):
         self.currentClick = 1
 
-    def on_touch_up(self, _):
+    def on_touch_up(self, _=None):
         if self.currentClick == 1:
 
             animation1 = Animation(opacity=1, duration=0)
@@ -69,7 +69,7 @@ class CrashScreen(Screen):
             self.parent.openBaseBuilderScreen()
 
 
-    def move_canyon(self, _):
+    def move_canyon(self, _=None):
         Logger.info("Application: Crash Screen canyon move started")
 
         animation = Animation(pos=self.canyonLayout.pos, duration=0)
@@ -78,7 +78,7 @@ class CrashScreen(Screen):
 
         animation.start(self.canyonLayout)
 
-    def guide_move(self, _):
+    def guide_move(self, _=None):
         Logger.info("Application: Crash Screen guide move started")
 
         animation = Animation(pos=self.guideLayout1.pos, duration=0)
@@ -88,7 +88,7 @@ class CrashScreen(Screen):
         animation.start(self.guideLayout1)
 
 
-    def move_stars(self, _):
+    def move_stars(self, _=None):
         Logger.info("Application: Crash Screen stars move started")
 
         animation = Animation(pos=self.starLayout.pos, duration=0)
@@ -98,7 +98,7 @@ class CrashScreen(Screen):
 
         animation.start(self.starLayout)
 
-    def draw(self, _):
+    def draw(self, _=None):
         self.starLayout.canvas.clear()
         self.canyonLayout.canvas.clear()
         self.guideLayout1.canvas.clear()
