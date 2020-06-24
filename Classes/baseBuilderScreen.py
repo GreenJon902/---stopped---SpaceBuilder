@@ -1,5 +1,6 @@
 from kivy import Logger
 from kivy.clock import Clock
+from kivy.graphics import *
 from kivy.uix.screenmanager import Screen
 
 
@@ -48,14 +49,16 @@ class BaseBuilderScreen(Screen):
         self.buildingsLayout.canvas.clear()
         self.canyonTopLayout.canvas.clear()
 
+        with self.canyonFloorLayout.canvas:
+            Rectangle(pos=self.canyonFloorLayout.pos, size=self.canyonFloorLayout.size,
+                      texture=self.Globals.Textures.canyon_background_bottom)
+
         with self.buildingsLayout.canvas:
             pass
 
-        with self.canyonFloorLayout.canvas:
-            pass
-
         with self.canyonTopLayout.canvas:
-            pass
+            Rectangle(pos=self.canyonTopLayout.pos, size=self.canyonTopLayout.size,
+                      texture=self.Globals.Textures.canyon_background_top)
 
     def on_leave(self, *args):
         self.drawClock.cancel()
