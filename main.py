@@ -39,6 +39,9 @@ class SpaceBuilder(App):
         return self.baseScreenManager
 
     def on_stop(self):
+        self.Globals.User_data.save()
+        self.Globals.Settings_data.save()
+
         sys.exit()
 
 

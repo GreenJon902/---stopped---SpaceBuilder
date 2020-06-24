@@ -49,16 +49,19 @@ class Globals:
 
             Logger.info("User_Data: Loaded data")
 
-        def save(self, out):
+        def _save(self, out):
             with open(self.save_path, "w", encoding='utf-8') as file:
                 json.dump(out, file, ensure_ascii=True, indent=4)
 
             Logger.info("User_Data: Saved data")
 
+        def save(self):
+            self._save(self.data)
+
         def create_new(self):
             open(self.save_path, "a").close()
             Logger.info("User_Data: Created new data file")
-            self.save(self.Default_data)
+            self._save(self.Default_data)
 
         def set(self, key, value):
             if key in self.data:
@@ -105,16 +108,19 @@ class Globals:
 
             Logger.info("Settings_Data: Loaded data")
 
-        def save(self, out):
+        def _save(self, out):
             with open(self.save_path, "w", encoding='utf-8') as file:
                 json.dump(out, file, ensure_ascii=True, indent=4)
 
             Logger.info("Settings_Data: Saved data")
 
+        def save(self):
+            self._save(self.data)
+
         def create_new(self):
             open(self.save_path, "a").close()
             Logger.info("Settings_Data: Created new data file")
-            self.save(self.Default_data)
+            self._save(self.Default_data)
 
         def set(self, key, value):
             if key in self.data:
