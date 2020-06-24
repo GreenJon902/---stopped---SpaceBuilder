@@ -41,7 +41,7 @@ class BaseBuilderScreen(Screen):
     def post_init(self):
         Logger.info("Application: Intro Screen entered")
 
-        self.drawClock = Clock.schedual_interval(self.draw, 0)
+        self.drawClock = Clock.schedule_interval(self.draw, 0)
 
         Logger.info("Application: BaseBuilder Screen clocks created")
 
@@ -51,6 +51,7 @@ class BaseBuilderScreen(Screen):
         self.canyonTopLayout.canvas.clear()
 
         with self.canyonFloorLayout.canvas:
+            print(self.canyonFloorLayout.pos, self.canyonFloorLayout.size)
             Rectangle(pos=self.canyonFloorLayout.pos, size=self.canyonFloorLayout.size,
                       texture=self.Globals.Textures.canyon_background_bottom)
 
