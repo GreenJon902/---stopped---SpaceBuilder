@@ -64,6 +64,8 @@ class CrashScreen(Screen):
             self.currentClick = 2
 
         elif self.currentClick == 2:
+            self.Globals.User_data["introFinished"] = 1
+
             self.parent.openBaseBuilderScreen()
 
 

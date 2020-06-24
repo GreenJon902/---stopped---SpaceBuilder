@@ -20,7 +20,7 @@ class Globals:
 
     class _User_data(EventDispatcher):
         Default_data = {
-            "intoFinished": 0,
+            "introFinished": 0,
             "timesCrashed": 0,
             "layout": {}
         }
