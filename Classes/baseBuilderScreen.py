@@ -11,8 +11,12 @@ class BaseBuilderScreen(Screen):
 
         Logger.info("Application: BaseBuilder Screen setup")
 
-    def on_enter(self, *args):
-        Logger.info("Application: BaseBuilder Screen entered")
+    def post_init(self):
+        Logger.info("Application: BaseBuilder Screen clocks created")
+
+
+
+        Logger.info("Application: BaseBuilder Screen clocks created")
 
     def on_leave(self, *args):
         Logger.info("Application: BaseBuilder Screen exited")
