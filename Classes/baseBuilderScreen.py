@@ -16,8 +16,6 @@ class BaseBuilderScreen(Screen):
         self.buildingsLayout = self.ids["buildings"]
 
 
-
-
         self.canyonFloorLayout.pos = 0, 0
         self.canyonFloorLayout.size = self.Globals.width, self.Globals.height
 
@@ -38,7 +36,6 @@ class BaseBuilderScreen(Screen):
     def draw(self, _):
         self.canyonFloorLayout.canvas.clear()
         self.buildingsLayout.canvas.clear()
-        self.canyonTopLayout.canvas.clear()
 
         with self.canyonFloorLayout.canvas:
             pass
