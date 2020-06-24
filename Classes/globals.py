@@ -64,6 +64,8 @@ class Globals:
             if key in self.data:
                 self.data[key] = value
 
+                Logger.info("User_Data: Set " + str(key) + " to " + str(value))
+
             else:
                 Logger.warn("User_Data: \"" + str(key) + "\" is an invalid key")
 
@@ -117,6 +119,8 @@ class Globals:
         def set(self, key, value):
             if key in self.data:
                 self.data[key] = value
+
+                Logger.info("Settings_Data: Set " + str(key) + " to " + str(value))
 
             else:
                 Logger.warn("Settings_Data: \"" + str(key) + "\" is an invalid key")
