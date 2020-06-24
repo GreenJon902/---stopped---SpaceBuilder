@@ -14,6 +14,8 @@ class BaseBuilderScreen(Screen):
         self.canyonFloorLayout = self.ids["canyonFloor"]
         self.buildingsLayout = self.ids["buildings"]
         self.canyonTopLayout = self.ids["canyonTop"]
+        self.canyonDefencesLayout = self.ids["canyonDefences"]
+        self.baseLayout = self.ids["base"]
 
         Logger.info("Application: BaseBuilder Screen setup")
 

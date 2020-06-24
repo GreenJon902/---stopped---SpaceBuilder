@@ -28,11 +28,20 @@
 
 
 <BaseBuilderScreen>:
-    FloatLayout:
-        id: canyonFloor
+    Scatter:
+        id: base
+        do_scale: True
+        do_translation: True
+        do_rotation: False
 
-    FloatLayout:
-        id: buildings
+        FloatLayout:
+            id: canyonFloor
 
-    FloatLayout:
-        id: canyonTop
+        FloatLayout:
+            id: buildings
+
+        FloatLayout:
+            id: canyonTop
+
+        FloatLayout:
+            id: canyonDefences
