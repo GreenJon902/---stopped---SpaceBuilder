@@ -1,6 +1,7 @@
 from kivy import Logger
 from kivy.clock import Clock
 from kivy.graphics import *
+from kivy.uix.widget import Widget
 
 from Classes.screen import Screen
 
