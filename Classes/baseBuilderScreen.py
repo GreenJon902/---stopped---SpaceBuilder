@@ -41,8 +41,6 @@ class BaseBuilderScreen(Screen):
         self.canyonDefencesLayout.pos = 0, 0
         self.canyonDefencesLayout.size = self.Globals.width, self.Globals.height
 
-        self.zoomOrMove()
-
         Logger.info("Application: BaseBuilder Screen setup")
 
     def post_init(self):
@@ -56,9 +54,9 @@ class BaseBuilderScreen(Screen):
         self.pos = self.sizeAndPositionLayout.pos
 
         ratio = self.Globals.Textures.canyon_background_bottom.width / \
-            self.Globals.Textures.canyon_background_bottom.height
+                self.Globals.Textures.canyon_background_bottom.height
         self.size2 = self.Globals.height * ratio * self.sizeAndPositionLayout.scale, \
-            self.Globals.height * self.sizeAndPositionLayout.scale
+                     self.Globals.height * self.sizeAndPositionLayout.scale
 
     def draw(self, _):
         self.canyonFloorLayout.canvas.clear()
@@ -66,14 +64,14 @@ class BaseBuilderScreen(Screen):
         self.canyonTopLayout.canvas.clear()
 
         with self.canyonFloorLayout.canvas:
-            Rectangle(pos=self.pos, size=self.size2,
+            Rectangle(pos=self.pos, size=self.Globals.height,
                       texture=self.Globals.Textures.canyon_background_bottom)
 
         with self.buildingsLayout.canvas:
             pass
 
         with self.canyonTopLayout.canvas:
-            Rectangle(pos=self.pos, size=self.size2,
+            Rectangle(pos=self.pos, size=self.canyonTopLayout.size,
                       texture=self.Globals.Textures.canyon_background_top)
 
     def on_leave(self, *args):
