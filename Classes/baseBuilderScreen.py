@@ -11,6 +11,10 @@ class BaseBuilderScreen(Screen):
 
         self.Globals = Globals
 
+        self.canyonFloorLayout = self.ids["canyonFloor"]
+        self.buildingsLayout = self.ids["buildings"]
+        self.canyonTopLayout = self.ids["canyonTop"]
+
         Logger.info("Application: BaseBuilder Screen setup")
 
     def post_init(self):
