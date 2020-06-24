@@ -17,7 +17,7 @@ class BaseBuilderScreen(Screen):
         self.buildingsLayout = self.ids["buildings"]
         self.canyonTopLayout = self.ids["canyonTop"]
         self.canyonDefencesLayout = self.ids["canyonDefences"]
-        self.baseLayout = self.ids["base"]
+        self.sizeAndPositionLayout = self.ids["sizeAndPosition"]
 
 
         ratio = Globals.Textures.canyon_background_bottom.width / Globals.Textures.canyon_background_bottom.height
