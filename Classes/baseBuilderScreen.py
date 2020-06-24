@@ -19,6 +19,8 @@ class BaseBuilderScreen(Screen):
         self.canyonDefencesLayout = self.ids["canyonDefences"]
         self.sizeAndPositionLayout = self.ids["sizeAndPosition"]
 
+        self.sizeAndPositionLayout.bind(on_transform_with_touch=self.zoomOrMove)
+
 
         ratio = Globals.Textures.canyon_background_bottom.width / Globals.Textures.canyon_background_bottom.height
         self.sizeAndPositionLayout.size = self.Globals.height * ratio, self.Globals.height
@@ -45,7 +47,7 @@ class BaseBuilderScreen(Screen):
 
         Logger.info("Application: BaseBuilder Screen clocks created")
 
-    def zoomOrMove(self, _=None):
+    def zoomOrMove(self, _=None, x=None):
         print(self.sizeAndPosition.pos)
         print(self.sizeAndPosition.size)
 
