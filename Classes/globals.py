@@ -194,7 +194,7 @@ class Globals:
             self.guide_intro_2 = CoreImage("resources/textures/guide/intro2.png").texture
             self.ship_inside_1 = Image.open("resources/textures/intro/shipInside1.png")
             self.ship_inside_2 = Image.open("resources/textures/intro/shipInside2.png")
-            self.star = Image.open("resources/textures/intro/star.png")
+            self.star = CoreImage("resources/textures/intro/star.png")
             self.canyon_background_bottom = \
                 CoreImage("resources/textures/baseBuilder/canyon_background_bottom.png").texture
             self.canyon_background_top = CoreImage("resources/textures/baseBuilder/canyon_background_top.png").texture

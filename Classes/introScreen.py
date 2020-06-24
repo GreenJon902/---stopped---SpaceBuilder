@@ -98,12 +98,6 @@ class IntroScreen(Screen):
 
         self.shipImageTexture = self.shipImageTexture1
 
-        img = self.Globals.Textures.star
-
-        data = BytesIO()
-        img.save(data, format='png')
-        data.seek(0)
-        self.starImageTexture = CoreImage(BytesIO(data.read()), ext='png').texture
 
         Logger.info("Application: Intro Screen setup")
 
@@ -190,7 +184,7 @@ class IntroScreen(Screen):
                 Mesh(indices=(0, 1, 2, 3),
                      vertices=(rect[0][0], rect[0][1], 0, 0, rect[1][0], rect[1][1], 0, 1,
                                rect[2][0], rect[2][1], 1, 1, rect[3][0], rect[3][1], 1, 0),
-                     mode="triangle_fan", texture=self.starImageTexture)
+                     mode="triangle_fan", texture=self.Globals.Textures.star)
 
     def move_meteor(self, _):
         positions = self.Globals.GameSettings.intro_meteor_positions
