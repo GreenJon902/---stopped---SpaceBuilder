@@ -11,23 +11,13 @@ class BaseBuilderScreen(Screen):
         super(BaseBuilderScreen, self).__init__(*args, **kwargs)
         self.drawClock = None
 
-        self.pos = 0, 0
-        self.size2 = 100, 100
         self.Globals = Globals
 
         self.canyonFloorLayout = self.ids["canyonFloor"]
         self.buildingsLayout = self.ids["buildings"]
-        self.canyonTopLayout = self.ids["canyonTop"]
-        self.canyonDefencesLayout = self.ids["canyonDefences"]
-        self.sizeAndPositionLayout = self.ids["sizeAndPosition"]
 
-        ratio = Globals.Textures.canyon_background_bottom.width / Globals.Textures.canyon_background_bottom.height
-        self.sizeAndPositionLayout.add_widget(Widget(pos=(0, 0),
-                                                     size=(self.Globals.height * ratio, self.Globals.height)))
-        self.sizeAndPositionLayout.bind(on_transform_with_touch=self.zoomOrMove)
 
-        self.sizeAndPositionLayout.pos = 0, 0
-        self.sizeAndPositionLayout.size = self.Globals.width, self.Globals.height
+
 
         self.canyonFloorLayout.pos = 0, 0
         self.canyonFloorLayout.size = self.Globals.width, self.Globals.height
@@ -35,13 +25,6 @@ class BaseBuilderScreen(Screen):
         self.buildingsLayout.pos = 0, 0
         self.buildingsLayout.size = self.Globals.width, self.Globals.height
 
-        self.canyonTopLayout.pos = 0, 0
-        self.canyonTopLayout.size = self.Globals.width, self.Globals.height
-
-        self.canyonDefencesLayout.pos = 0, 0
-        self.canyonDefencesLayout.size = self.Globals.width, self.Globals.height
-
-        self.zoomOrMove()
 
         Logger.info("Application: BaseBuilder Screen setup")
 
@@ -52,13 +35,6 @@ class BaseBuilderScreen(Screen):
 
         Logger.info("Application: BaseBuilder Screen clocks created")
 
-    def zoomOrMove(self, _=None, x=None):
-        self.pos = self.sizeAndPositionLayout.pos
-
-        ratio = self.Globals.Textures.canyon_background_bottom.width / \
-            self.Globals.Textures.canyon_background_bottom.height
-        self.size2 = self.Globals.height * ratio * self.sizeAndPositionLayout.scale, \
-            self.Globals.height * self.sizeAndPositionLayout.scale
 
     def draw(self, _):
         self.canyonFloorLayout.canvas.clear()
@@ -66,15 +42,11 @@ class BaseBuilderScreen(Screen):
         self.canyonTopLayout.canvas.clear()
 
         with self.canyonFloorLayout.canvas:
-            Rectangle(pos=self.pos, size=self.size2,
-                      texture=self.Globals.Textures.canyon_background_bottom)
+            pass
 
         with self.buildingsLayout.canvas:
             pass
 
-        with self.canyonTopLayout.canvas:
-            Rectangle(pos=self.pos, size=self.size2,
-                      texture=self.Globals.Textures.canyon_background_top)
 
     def on_leave(self, *args):
         self.drawClock.cancel()
