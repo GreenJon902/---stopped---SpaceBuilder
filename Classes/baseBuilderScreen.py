@@ -23,7 +23,7 @@ class BaseBuilderScreen(Screen):
         ratio = Globals.Textures.canyon_background.width / Globals.Textures.canyon_background.height
         self.sizeAndPositionLayout.add_widget(Widget(pos=(0, 0),
                                                      size=(self.Globals.height * ratio, self.Globals.height)))
-        #self.sizeAndPositionLayout.min_scale = 1
+        self.sizeAndPositionLayout.min_scale = 1
         self.sizeAndPositionLayout.bind(on_transform_with_touch=self.zoomOrMove)
         self.zoomOrMove()
 
@@ -40,6 +40,8 @@ class BaseBuilderScreen(Screen):
         self.canyonDefencesLayout.size = self.Globals.width, self.Globals.height
 
         Logger.info("Application: BaseBuilder Screen setup")
+
+
 
     def post_init(self):
         Logger.info("Application: Intro Screen entered")
