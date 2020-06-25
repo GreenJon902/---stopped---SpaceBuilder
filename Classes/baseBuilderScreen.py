@@ -56,9 +56,9 @@ class BaseBuilderScreen(Screen):
         self.pos2 = self.sizeAndPositionLayout.pos
 
         ratio = self.Globals.Textures.canyon_background_bottom.width / \
-                self.Globals.Textures.canyon_background_bottom.height
+            self.Globals.Textures.canyon_background_bottom.height
         self.size2 = self.Globals.height * ratio * self.sizeAndPositionLayout.scale, \
-                     self.Globals.height * self.sizeAndPositionLayout.scale
+            self.Globals.height * self.sizeAndPositionLayout.scale
 
 
     def draw(self, _):
