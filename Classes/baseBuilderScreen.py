@@ -24,6 +24,7 @@ class BaseBuilderScreen(Screen):
         ratio = Globals.Textures.canyon_background_bottom.width / Globals.Textures.canyon_background_bottom.height
         self.sizeAndPositionLayout.add_widget(Widget(pos=(0, 0),
                                                      size=(self.Globals.height * ratio, self.Globals.height)))
+        #self.sizeAndPositionLayout.min_scale = 1
         self.sizeAndPositionLayout.bind(on_transform_with_touch=self.zoomOrMove)
         self.zoomOrMove()
 
@@ -61,18 +62,18 @@ class BaseBuilderScreen(Screen):
 
 
     def draw(self, _):
-        self.canyonFloorLayout.canvas.clear()
-        self.buildingsLayout.canvas.clear()
-        self.canyonTopLayout.canvas.clear()
+        self.canyonFloorLayout.canvas.before.clear()
+        self.buildingsLayout.canvas.before.clear()
+        self.canyonTopLayout.canvas.before.clear()
 
-        with self.canyonFloorLayout.canvas:
+        with self.canyonFloorLayout.canvas.before:
             Rectangle(pos=self.pos2, size=self.size2,
                       texture=self.Globals.Textures.canyon_background_bottom)
 
-        with self.buildingsLayout.canvas:
+        with self.buildingsLayout.canvas.before:
             pass
 
-        with self.canyonTopLayout.canvas:
+        with self.canyonTopLayout.canvas.before:
             Rectangle(pos=self.pos2, size=self.size2,
                       texture=self.Globals.Textures.canyon_background_top)
 
