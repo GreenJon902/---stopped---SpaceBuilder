@@ -8,7 +8,7 @@ class BaseBuilderScreen(Screen):
     def __init__(self, *args, **kwargs):
         super(BaseBuilderScreen, self).__init__(*args, **kwargs)
 
-        self.Globals = get_Globals
+        self.Globals = get_Globals()
 
         self.baseBuilderHolder = self.ids["baseBuilderHolder"]
         self.baseBuilder = self.ids["baseBuilder"]
