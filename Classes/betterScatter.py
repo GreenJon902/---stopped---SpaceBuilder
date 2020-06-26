@@ -14,6 +14,8 @@ class BetterScatter(Scatter):
         self.scale_max = self.Globals.GameSettings.max_zoom
 
     def transform_with_touch(self, touch):
+        changed = False
+
         if len(self._touches) == 1:
             xAdd = touch.pos[0] - self._last_touch_pos[touch][0]
             yAdd = touch.pos[1] - self._last_touch_pos[touch][1]
@@ -30,13 +32,17 @@ class BetterScatter(Scatter):
             if left + xAdd <= 0 and right + xAdd >= self.Globals.width:  # right,  left
                 dx = xAdd
 
+                changed = True
+
             if bottom + yAdd <= 0 and top + yAdd >= self.Globals.height:  # up, down
                 dy = yAdd
+
+                changed = True
 
 
             self.apply_transform(Matrix().translate(dx, dy, 0))
 
-            return False
+            return changed
 
 
         else:
