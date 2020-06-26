@@ -21,7 +21,7 @@ class ScreenManager(ScreenManager):
         self.width = Globals.width
         self.height = Globals.height
 
-        dumpScreen = Screen(name="Screen")
+        dumpScreen = Screen(name="DumpScreen")
         introScreen = IntroScreen(name="IntroScreen")
         crashScreen = CrashScreen(name="CrashScreen")
         baseBuildScreen = BaseBuilderScreen(name="BaseBuilderScreen")
