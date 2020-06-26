@@ -5,7 +5,6 @@ from Classes.baseBuilderScreen import BaseBuilderScreen
 from Classes.crashScreen import CrashScreen
 from Classes.globals import get_Globals
 from Classes.introScreen import IntroScreen
-from Classes.screen import Screen
 
 from Classes.baseBuilder import BaseBuilder
 from Classes.betterFloatLayout import BetterFloatLayout
@@ -21,12 +20,10 @@ class ScreenManager(ScreenManager):
         self.width = Globals.width
         self.height = Globals.height
 
-        dumpScreen = Screen(name="Screen")
         introScreen = IntroScreen(name="IntroScreen")
         crashScreen = CrashScreen(name="CrashScreen")
         baseBuildScreen = BaseBuilderScreen(name="BaseBuilderScreen")
 
-        self.add_widget(dumpScreen)
         self.add_widget(introScreen)
         self.add_widget(crashScreen)
         self.add_widget(baseBuildScreen)
