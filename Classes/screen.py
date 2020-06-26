@@ -1,8 +1,8 @@
 from kivy.clock import Clock
-from kivy.uix.screenmanager import Screen
+from kivy.uix.screenmanager import Screen as _Screen
 
 
-class Screen(Screen):
+class Screen(_Screen):
     def __init__(self, *args, **kwargs):
         super(Screen, self).__init__(*args, **kwargs)
 
