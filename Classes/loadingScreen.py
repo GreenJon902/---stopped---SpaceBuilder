@@ -1,31 +1,27 @@
-import sys
-import threading
 from functools import partial
 
 from kivy import Logger
-from kivy.core.image import Image
+from kivy.clock import Clock
 from kivy.core.window import Window
 from kivy.graphics import *
+from kivy.core.image import Image
 from kivy.uix.label import Label
 
 from Classes.screen import Screen
 
 
-def bus_append(name, func, lastFunc):
+def bus_append(name, func, lastFunc, _):
     Logger.info("Loader: " + name)
 
     func()
 
-    lastFunc()
+    Clock.schedule_once(lastFunc, 0)
 
 
 def switch(app):
     Logger.info("Loader: Loading Code")
 
     app.baseScreenManager.next()
-    Logger.info("Loader: Stopping Loading Thread")
-    print("heyyy", threading.get_ident(), threading.current_thread().name)
-    sys.exit()
 
 
 class LoadingScreen(Screen):
@@ -63,21 +59,14 @@ class LoadingScreen(Screen):
         Logger.info("Application: Loading Screen setup")
 
     def start_bus(self, _=None):
-        Logger.info("Loader: Starting Loading Thread")
-        threading.Thread(target=self._start_bus, daemon=True, name="Loader").start()
-        print("yhaaa", threading.get_ident(), threading.current_thread().name)
-
-
-    def _start_bus(self):
-        print("bdfs", threading.get_ident(), threading.current_thread().name)
         self.bus.reverse()
 
         i = 0
-        last_func = partial(switch, self.app)
+        last_func = lambda x: switch(self.app)
 
         for name, callback in self.bus:
             last_func = partial(bus_append, name, partial(callback, self.app), last_func)
 
             i += 1
 
-        last_func()
+        Clock.schedule_once(last_func, 0)
