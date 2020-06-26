@@ -10,10 +10,10 @@ class BaseBuilderScreen(Screen):
         self.Globals = Globals
 
 
-        self.sizeAndPositionLayout = self.ids["sizeAndPosition"]
+        self.baseBuilderHolder = self.ids["baseBuilderHolder"]
 
-        self.sizeAndPositionLayout.pos = 0, 0
-        self.sizeAndPositionLayout.size = self.Globals.width, self.Globals.height
+        self.baseBuilderHolder.pos = 0, 0
+        self.baseBuilderHolder.size = self.Globals.width, self.Globals.height
 
 
         Logger.info("Application: BaseBuilder Screen setup")
