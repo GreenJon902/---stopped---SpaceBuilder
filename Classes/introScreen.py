@@ -32,6 +32,11 @@ class IntroScreen(Screen):
         self.shipFallSoundClock = None
         self.endClock = None
 
+        self.shipLayout = None
+        self.starsLayout = None
+        self.meteorLayout = None
+        self.tintLayout = None
+
         self.Globals = get_Globals()
 
         self.shakeScreenX = self.Globals.width / self.Globals.GameSettings.intro_ship_shake_amount_divider * -1
@@ -40,16 +45,6 @@ class IntroScreen(Screen):
         self.shakeDistanceY = self.shakeScreenX * -1
         self.shakeScreenWidth = self.Globals.width - (self.shakeScreenX * 2)
         self.shakeScreenHeight = self.Globals.height - (self.shakeScreenY * 2)
-        self.shipLayout = self.ids["ship"]
-        self.starsLayout = self.ids["stars"]
-        self.meteorLayout = self.ids["meteor"]
-        self.tintLayout = self.ids["tint"]
-
-        self.meteorLayout.size = (0, 0)
-        self.meteorLayout.size_hint = (None, None)
-
-        self.shipLayout.originX = self.Globals.width / 2
-        self.shipLayout.originY = self.Globals.height / 2
 
         img = self.Globals.Textures.ship_inside_1
         width = img.size[0]
@@ -100,7 +95,21 @@ class IntroScreen(Screen):
         self.shipImageTexture = self.shipImageTexture1
 
 
-        Logger.info("Application: Intro Screen setup")
+        Logger.info("Application: Intro Screen vars setup")
+
+    def post_init(self):
+        self.shipLayout = self.ids["ship"]
+        self.starsLayout = self.ids["stars"]
+        self.meteorLayout = self.ids["meteor"]
+        self.tintLayout = self.ids["tint"]
+
+        self.meteorLayout.size = (0, 0)
+        self.meteorLayout.size_hint = (None, None)
+
+        self.shipLayout.originX = self.Globals.width / 2
+        self.shipLayout.originY = self.Globals.height / 2
+
+        Logger.info("Application: Intro Screen widgets setup")
 
     def post_enter(self):
         Logger.info("Application: Intro Screen entered")

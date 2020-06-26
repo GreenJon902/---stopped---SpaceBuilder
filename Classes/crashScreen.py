@@ -19,12 +19,20 @@ class CrashScreen(Screen):
         self.guideClock = None
         self.click1Clock = None
 
+        self.starLayout = None
+        self.canyonLayout = None
+        self.guideLayout1 = None
+        self.guideLayout2 = None
+
         self.currentClick = 0
 
         ratio = self.Globals.Textures.canyon_surface_stars.width / self.Globals.Textures.canyon_surface_stars.height
         self.h = self.Globals.height
         self.w = ratio * self.h
 
+        Logger.info("Application: Crash Screen vars setup")
+
+    def post_init(self):
         self.starLayout = self.ids["stars"]
         self.canyonLayout = self.ids["canyon"]
         self.guideLayout1 = self.ids["guide1"]
@@ -35,8 +43,6 @@ class CrashScreen(Screen):
         self.guideLayout1.pos = (self.Globals.width * -1, 0)
 
         self.guideLayout2.opacity = 0
-
-        Logger.info("Application: Crash Screen setup")
 
     def post_enter(self):
         Logger.info("Application: Crash Screen entered")
