@@ -2,12 +2,14 @@ from kivy.graphics import *
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.widget import Widget
 
+from Classes.globals import get_Globals
+
 
 class BaseBuilder(Widget):
     def __init__(self, *args, **kwargs):
         super(BaseBuilder, self).__init__(*args, **kwargs)
 
-        self.Globals = None
+        self.Globals = get_Globals()
 
         self.canyon = FloatLayout()
         self.baseBuilder = FloatLayout()
