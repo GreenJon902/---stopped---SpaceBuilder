@@ -9,7 +9,7 @@ class Screen(_Screen):
     def on_enter(self, *args, **kwargs):
         super(Screen, self).__init__(*args, **kwargs)
 
-        Clock.schedule_once(lambda x: self.post_init())
+        Clock.schedule_once(lambda x: self.post_enter())
 
-    def post_init(self):
+    def post_enter(self):
         pass
