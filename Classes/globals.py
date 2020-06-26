@@ -1,6 +1,7 @@
 import json
 
 from PIL import Image
+from kivy.clock import Clock
 from kivy.core.audio import SoundLoader
 from kivy.core.image import Image as CoreImage
 from kivy.event import EventDispatcher
@@ -184,7 +185,15 @@ class _Globals:
             self.star = None
             self.canyon_background = None
 
+            self._done = False
+
         def load(self):
+            Clock.schedule_once(self._load, 0)
+
+            while self._done == False:
+                pass
+
+        def _load(self, _):
             self.canyon_surface = CoreImage("resources/textures/intro/canyonSurface.png").texture
             self.canyon_surface_stars = CoreImage("resources/textures/intro/canyonSurfaceStars.png").texture
             self.meteor = CoreImage("resources/textures/intro/meteor.png").texture
@@ -194,6 +203,8 @@ class _Globals:
             self.ship_inside_2 = Image.open("resources/textures/intro/shipInside2.png")
             self.star = CoreImage("resources/textures/intro/star.png").texture
             self.canyon_background = CoreImage("resources/textures/baseBuilder/canyon_background.png").texture
+
+            self._done = True
 
     class _Audio:
         def __init__(self):
