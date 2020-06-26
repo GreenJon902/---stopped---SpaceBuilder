@@ -3,6 +3,7 @@ from kivy.uix.screenmanager import ScreenManager, FadeTransition
 
 from Classes.baseBuilderScreen import BaseBuilderScreen
 from Classes.crashScreen import CrashScreen
+from Classes.globals import get_Globals
 from Classes.introScreen import IntroScreen
 from Classes.screen import Screen
 
@@ -12,16 +13,18 @@ from Classes.betterFloatLayout import BetterFloatLayout
 
 
 class ScreenManager(ScreenManager):
-    def __init__(self, Globals):
+    def __init__(self):
         super(ScreenManager, self).__init__()
+
+        Globals = get_Globals()
 
         self.width = Globals.width
         self.height = Globals.height
 
         dumpScreen = Screen(name="Screen")
-        introScreen = IntroScreen(Globals, name="IntroScreen")
-        crashScreen = CrashScreen(Globals, name="CrashScreen")
-        baseBuildScreen = BaseBuilderScreen(Globals, name="BaseBuilderScreen")
+        introScreen = IntroScreen(name="IntroScreen")
+        crashScreen = CrashScreen(name="CrashScreen")
+        baseBuildScreen = BaseBuilderScreen(name="BaseBuilderScreen")
 
         self.add_widget(dumpScreen)
         self.add_widget(introScreen)

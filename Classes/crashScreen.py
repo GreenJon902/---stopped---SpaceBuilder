@@ -3,14 +3,15 @@ from kivy.animation import Animation
 from kivy.clock import Clock
 from kivy.graphics import *
 
+from Classes.globals import get_Globals
 from Classes.screen import Screen
 
 
 class CrashScreen(Screen):
-    def __init__(self, Globals, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super(CrashScreen, self).__init__(*args, **kwargs)
 
-        self.Globals = Globals
+        self.Globals = get_Globals()
 
         self.canyonClock = None
         self.starClock = None
@@ -29,9 +30,9 @@ class CrashScreen(Screen):
         self.guideLayout1 = self.ids["guide1"]
         self.guideLayout2 = self.ids["guide2"]
 
-        self.starLayout.pos = (Globals.width, 0)
-        self.canyonLayout.pos = (Globals.width, 0)
-        self.guideLayout1.pos = (Globals.width * -1, 0)
+        self.starLayout.pos = (self.Globals.width, 0)
+        self.canyonLayout.pos = (self.Globals.width, 0)
+        self.guideLayout1.pos = (self.Globals.width * -1, 0)
 
         self.guideLayout2.opacity = 0
 

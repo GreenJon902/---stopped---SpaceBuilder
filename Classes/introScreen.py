@@ -10,11 +10,12 @@ from kivy.graphics import *
 from shapely import affinity
 from shapely.geometry import LineString
 
+from Classes.globals import get_Globals
 from Classes.screen import Screen
 
 
 class IntroScreen(Screen):
-    def __init__(self, Globals, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super(IntroScreen, self).__init__(*args, **kwargs)
         self.starClock = None
         self.shipClock = None
@@ -31,14 +32,14 @@ class IntroScreen(Screen):
         self.shipFallSoundClock = None
         self.endClock = None
 
-        self.Globals = Globals
+        self.Globals = get_Globals()
 
         self.shakeScreenX = self.Globals.width / self.Globals.GameSettings.intro_ship_shake_amount_divider * -1
         self.shakeScreenY = self.Globals.height / self.Globals.GameSettings.intro_ship_shake_amount_divider * -1
         self.shakeDistanceX = self.shakeScreenX * -1
         self.shakeDistanceY = self.shakeScreenX * -1
-        self.shakeScreenWidth = Globals.width - (self.shakeScreenX * 2)
-        self.shakeScreenHeight = Globals.height - (self.shakeScreenY * 2)
+        self.shakeScreenWidth = self.Globals.width - (self.shakeScreenX * 2)
+        self.shakeScreenHeight = self.Globals.height - (self.shakeScreenY * 2)
         self.shipLayout = self.ids["ship"]
         self.starsLayout = self.ids["stars"]
         self.meteorLayout = self.ids["meteor"]
@@ -50,7 +51,7 @@ class IntroScreen(Screen):
         self.shipLayout.originX = self.Globals.width / 2
         self.shipLayout.originY = self.Globals.height / 2
 
-        img = Globals.Textures.ship_inside_1
+        img = self.Globals.Textures.ship_inside_1
         width = img.size[0]
         height = img.size[1]
 
@@ -73,7 +74,7 @@ class IntroScreen(Screen):
         data.seek(0)
         self.shipImageTexture1 = CoreImage(BytesIO(data.read()), ext='png').texture
 
-        img = Globals.Textures.ship_inside_2
+        img = self.Globals.Textures.ship_inside_2
         width = img.size[0]
         height = img.size[1]
 

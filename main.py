@@ -5,6 +5,7 @@ from kivy.clock import Clock
 from kivy.core.window import Window
 
 from Classes.baseScreenManager import BaseScreenManager
+from Classes.globals import get_Globals
 from Classes.loadingScreen import LoadingScreen
 from Classes.screenManager import ScreenManager
 from loadFunctions import create_Globals, add_save_paths, load_kv, load_textures, load_audio
@@ -15,7 +16,6 @@ class SpaceBuilder(App):
         super(SpaceBuilder, self).__init__()
         Window.size = 1000, 500
 
-        self.Globals = None
         self.baseScreenManager = None
 
 
@@ -34,13 +34,14 @@ class SpaceBuilder(App):
 
         Clock.schedule_once(loadingScreen.start_bus, 0)
 
-        self.baseScreenManager = BaseScreenManager(loadingScreen, lambda: ScreenManager(self.Globals))
+        self.baseScreenManager = BaseScreenManager(loadingScreen, ScreenManager)
 
         return self.baseScreenManager
 
     def on_stop(self):
-        self.Globals.User_data.save()
-        self.Globals.Settings_data.save()
+        Globals = get_Globals()
+        Globals.User_data.save()
+        Globals.Settings_data.save()
 
         sys.exit()
 

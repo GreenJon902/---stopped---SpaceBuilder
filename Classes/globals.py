@@ -8,7 +8,7 @@ from kivy.logger import Logger
 from kivy.properties import StringProperty
 
 
-class Globals:
+class _Globals:
     width = 0
     height = 0
 
@@ -172,7 +172,6 @@ class Globals:
         crash_click_1_delay = 4
         crash_click_transition_speed = 0.5
 
-
     class _Textures:
         def __init__(self):
             self.canyon_surface = None
@@ -193,7 +192,7 @@ class Globals:
             self.guide_intro_2 = CoreImage("resources/textures/guide/intro2.png").texture
             self.ship_inside_1 = Image.open("resources/textures/intro/shipInside1.png")
             self.ship_inside_2 = Image.open("resources/textures/intro/shipInside2.png")
-            self.star = CoreImage("resources/textures/intro/star.png")
+            self.star = CoreImage("resources/textures/intro/star.png").texture
             self.canyon_background = CoreImage("resources/textures/baseBuilder/canyon_background.png").texture
 
     class _Audio:
@@ -206,3 +205,15 @@ class Globals:
             self.meteorHit = SoundLoader.load("resources/audio/intro/meteorHit.wav")
             self.alarm = SoundLoader.load("resources/audio/intro/alarm.wav")
             self.shipFall = SoundLoader.load("resources/audio/intro/shipFall.wav")
+
+
+Globals = None
+
+
+def init():
+    global Globals
+    Globals = _Globals()
+
+
+def get_Globals():
+    return Globals
