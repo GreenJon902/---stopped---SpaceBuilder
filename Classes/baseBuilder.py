@@ -5,7 +5,7 @@ from kivy.uix.widget import Widget
 
 class BaseBuilder(Widget):
     def __init__(self, *args, **kwargs):
-        super(self, BaseBuilder).__init__(*args, **kwargs)
+        super(BaseBuilder, self).__init__(*args, **kwargs)
 
         self.Globals = None
 
