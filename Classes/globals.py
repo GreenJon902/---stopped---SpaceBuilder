@@ -172,6 +172,9 @@ class _Globals:
         crash_click_1_delay = 4
         crash_click_transition_speed = 0.5
 
+        max_zoom = 10
+        min_zoom = 1
+
     class _Textures:
         def __init__(self):
             self.canyon_surface = None
