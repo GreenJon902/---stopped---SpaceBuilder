@@ -15,6 +15,8 @@ class BaseBuilder(Widget):
         self.baseBuilder = FloatLayout()
         self.defences = FloatLayout()
 
+        self.draw()
+
 
     def draw(self):
         self.canyon.canvas.clear()
