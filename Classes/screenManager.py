@@ -4,9 +4,11 @@ from kivy.uix.screenmanager import ScreenManager, FadeTransition
 from Classes.baseBuilderScreen import BaseBuilderScreen
 from Classes.crashScreen import CrashScreen
 from Classes.introScreen import IntroScreen
-
-from Classes.betterFloatLayout import BetterFloatLayout
 from Classes.screen import Screen
+
+from Classes.baseBuilder import BaseBuilder
+from Classes.betterFloatLayout import BetterFloatLayout
+
 
 
 class ScreenManager(ScreenManager):

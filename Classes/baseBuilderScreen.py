@@ -11,6 +11,9 @@ class BaseBuilderScreen(Screen):
 
 
         self.baseBuilderHolder = self.ids["baseBuilderHolder"]
+        self.baseBuilder = self.ids["baseBuilder"]
+
+        self.baseBuilder.Globals = self.Globals
 
         self.baseBuilderHolder.pos = 0, 0
         self.baseBuilderHolder.size = self.Globals.width, self.Globals.height
