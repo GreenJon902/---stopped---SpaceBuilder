@@ -3,6 +3,7 @@
         id: image
 
         pos_hint: {"center_x":0.5,"center_y":0.5}
+        size_hint: 1, 1
 
 <IntroScreen>:
     FloatLayout:
@@ -44,4 +45,20 @@
 
         BaseBuilder:
             id: baseBuilder
+
+
+    FloatLayout:
+        pos: 0, 0
+        size_hint: 1, 1
+
+        AnchorLayout:
+            anchor_x: "right"
+            anchor_y: "bottom"
+
+            BoxLayout:
+                orientation: "vertical"
+
+                SizedButton:
+                    isBig: True
+                    texture: "build"
 
