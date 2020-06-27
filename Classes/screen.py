@@ -1,13 +1,10 @@
 from kivy.clock import Clock
 from kivy.uix.screenmanager import Screen as _Screen
 
+from Classes.postInitClass import PostInitClass
 
-class Screen(_Screen):
-    def __init__(self, *args, **kwargs):
-        super(Screen, self).__init__(*args, **kwargs)
 
-        Clock.schedule_once(lambda x: self.post_init(), 0)
-
+class Screen(_Screen, PostInitClass):
     def on_enter(self, *args, **kwargs):
         super(Screen, self).__init__(*args, **kwargs)
 
@@ -16,5 +13,4 @@ class Screen(_Screen):
     def post_enter(self):
         pass
 
-    def post_init(self):
-        pass
+
