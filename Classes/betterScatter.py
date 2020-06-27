@@ -10,8 +10,8 @@ class BetterScatter(Scatter):
 
         self.Globals = get_Globals()
 
-        self.scale_min = self.Globals.GameSettings.min_zoom
-        self.scale_max = self.Globals.GameSettings.max_zoom
+        self.scale_min = self.Globals.GameSettings.base_builder_min_zoom
+        self.scale_max = self.Globals.GameSettings.base_builder_max_zoom
 
     def transform_with_touch(self, touch):
         changed = False
