@@ -81,7 +81,7 @@ class _Globals:
 
     class _Settings_data(EventDispatcher):
         Default_data = {
-            "buttonSize": 10
+            "buttonSize": 4
         }
 
         save_path = StringProperty()
