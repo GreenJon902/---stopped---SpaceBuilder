@@ -23,9 +23,9 @@ class SizedButton(FloatLayout, PostInitClass):
 
         if self.isBig:
             self.size_hint = (self.Globals.Settings_data.get("buttonSize") / 100) * \
-                             self.Globals.base_builder_button_isBigger_amount, \
+                             self.Globals.GameSettings.base_builder_button_isBigger_amount, \
                              (self.Globals.Settings_data.get("buttonSize") / 100) * \
-                             self.Globals.base_builder_button_isBigger_amount
+                             self.Globals.GameSettings.base_builder_button_isBigger_amount
 
         else:
             self.size_hint = self.Globals.Settings_data.get("buttonSize") / 100, \
