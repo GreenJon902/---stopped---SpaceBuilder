@@ -10,6 +10,7 @@ from Classes.screen import Screen
 from Classes.baseBuilder import BaseBuilder
 from Classes.betterFloatLayout import BetterFloatLayout
 from Classes.betterScatter import BetterScatter
+from Classes.sizedButton import SizedButton
 
 
 
