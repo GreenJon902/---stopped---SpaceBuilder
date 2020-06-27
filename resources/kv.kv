@@ -51,14 +51,12 @@
         pos: 0, 0
         size_hint: 1, 1
 
-        AnchorLayout:
-            anchor_x: "right"
-            anchor_y: "bottom"
+        BoxLayout:
+            orientation: "vertical"
+            pos_hint: {"right": 0, "bottom": 0}
 
-            BoxLayout:
-                orientation: "vertical"
 
-                SizedButton:
-                    isBig: True
-                    texture: "build"
+            SizedButton:
+                isBig: True
+                texture: "build"
 
