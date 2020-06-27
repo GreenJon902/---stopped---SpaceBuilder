@@ -44,6 +44,8 @@ class CrashScreen(Screen):
 
         self.guideLayout2.opacity = 0
 
+        Logger.info("Application: Crash Screen widgets setup")
+
     def post_enter(self):
         Logger.info("Application: Crash Screen entered")
 
