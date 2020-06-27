@@ -19,12 +19,14 @@ class SizedButton(FloatLayout, PostInitClass):
     def post_init(self):
         self.image = self.ids["image"]
 
-        self.image.texture = self.Globals.Textures.__dict__[self.texture]
+        self.image.texture = self.Globals.Textures.__dict__[str(self.texture) + "_button"]
 
         if self.isBig:
-            self.size_hint = (self.Globals.Settings_data.get("buttonSize") / 100) * 4
+            self.size_hint = (self.Globals.Settings_data.get("buttonSize") / 100) * 4, \
+                             (self.Globals.Settings_data.get("buttonSize") / 100) * 4
 
         else:
-            self.size_hint = self.Globals.Settings_data.get("buttonSize") / 100
+            self.size_hint = self.Globals.Settings_data.get("buttonSize") / 100, \
+                             self.Globals.Settings_data.get("buttonSize") / 100
 
 
