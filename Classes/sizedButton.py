@@ -1,32 +1,31 @@
-from kivy import Logger
-from kivy.properties import StringProperty
+from kivy.core.image import Texture
+from kivy.properties import ObjectProperty, BooleanProperty
 from kivy.uix.floatlayout import FloatLayout
 
+from Classes.globals import get_Globals
 from Classes.postInitClass import PostInitClass
 
 
 class SizedButton(FloatLayout, PostInitClass):
-    buttonId = StringProperty(defaultvalue="None")
+    isBig = BooleanProperty(defaultvalue=False)
+    texture = ObjectProperty(deafaultvalue=Texture())
 
     def __init__(self, *args, **kwargs):
         super(SizedButton, self).__init__(*args, **kwargs)
 
+        self.Globals = get_Globals()
         self.image = None
 
 
     def post_init(self):
         self.image = self.ids["image"]
 
-        self.bind(buttonId=self.idChange)
-        self.idChange(None, str(self.buttonId))
+        self.image.texture = self.texture
 
-    def idChange(self, _, value):
-        print(_, value)
-        if value == "None":
-            Logger.warn("Application: SizedButton's id cannot be None")
-
-            self.opacity = 0
+        if self.isBig:
+            self.size_hint = (self.Globals.Settings_data.get("buttonSize") / 100) * 4
 
         else:
-            self.opacity = 1
+            self.size_hint = self.Globals.Settings_data.get("buttonSize") / 100
+
 
