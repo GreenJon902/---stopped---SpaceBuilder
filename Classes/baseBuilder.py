@@ -27,4 +27,4 @@ class BaseBuilder(Widget):
         self.baseBuilder.canvas.clear()
 
         with self.canyon.canvas.before:
-            Rectangle(pos=self.pos, size=self.size, texture=self.Globals.Textures.canyon_background)
+            Rectangle(pos=self.pos, size=self.size, texture=self.Globals.Textures.planetSurface)

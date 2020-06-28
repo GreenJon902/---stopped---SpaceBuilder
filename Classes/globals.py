@@ -178,28 +178,28 @@ class _Globals:
 
     class _Textures:
         def __init__(self):
-            self.canyon_surface = None
-            self.canyon_surface_stars = None
+            self.cliff_edge = None
+            self.cliff_edge_stars = None
             self.meteor = None
             self.guide_intro_1 = None
             self.guide_intro_2 = None
             self.ship_inside_1 = None
             self.ship_inside_2 = None
             self.star = None
-            self.canyon_background = None
+            self.planetSurface = None
             self.build_button = None
             self.settings_button = None
 
         def load(self):
-            self.canyon_surface = CoreImage("resources/textures/intro/canyonSurface.png").texture
-            self.canyon_surface_stars = CoreImage("resources/textures/intro/canyonSurfaceStars.png").texture
+            self.cliff_edge = CoreImage("resources/textures/intro/cliffEdge.png").texture
+            self.cliff_edge_stars = CoreImage("resources/textures/intro/cliffEdgeStars.png").texture
             self.meteor = CoreImage("resources/textures/intro/meteor.png").texture
             self.guide_intro_1 = CoreImage("resources/textures/guide/intro1.png").texture
             self.guide_intro_2 = CoreImage("resources/textures/guide/intro2.png").texture
             self.ship_inside_1 = Image.open("resources/textures/intro/shipInside1.png")
             self.ship_inside_2 = Image.open("resources/textures/intro/shipInside2.png")
             self.star = CoreImage("resources/textures/intro/star.png").texture
-            self.canyon_background = CoreImage("resources/textures/baseBuilder/canyon_background.png").texture
+            self.planetSurface = CoreImage("resources/textures/baseBuilder/planetSurface.png").texture
             self.build_button = CoreImage("resources/textures/buttons/build.png").texture
             self.settings_button = CoreImage("resources/textures/buttons/settings.png").texture
 

@@ -26,7 +26,7 @@ class CrashScreen(Screen):
 
         self.currentClick = 0
 
-        ratio = self.Globals.Textures.canyon_surface_stars.width / self.Globals.Textures.canyon_surface_stars.height
+        ratio = self.Globals.Textures.cliff_edge_stars.width / self.Globals.Textures.cliff_edge_stars.height
         self.h = self.Globals.height
         self.w = ratio * self.h
 
@@ -115,11 +115,11 @@ class CrashScreen(Screen):
 
         with self.starLayout.canvas:
             Rectangle(pos=self.starLayout.pos, size=(self.w, self.h),
-                      texture=self.Globals.Textures.canyon_surface_stars)
+                      texture=self.Globals.Textures.cliff_edge_stars)
 
         with self.canyonLayout.canvas:
             Rectangle(pos=self.canyonLayout.pos, size=(self.w, self.h),
-                      texture=self.Globals.Textures.canyon_surface)
+                      texture=self.Globals.Textures.cliff_edge)
 
         with self.guideLayout1.canvas:
             Rectangle(pos=self.guideLayout1.pos,
