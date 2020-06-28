@@ -1,10 +1,10 @@
 from kivy.graphics.transformation import Matrix
-from kivy.uix.scatter import Scatter
+from kivy.uix.scatter import ScatterPlane
 
 from Classes.globals import get_Globals
 
 
-class BetterScatter(Scatter):
+class BetterScatter(ScatterPlane):
     def __init__(self, *args, **kwargs):
         super(BetterScatter, self).__init__(*args, **kwargs)
 
