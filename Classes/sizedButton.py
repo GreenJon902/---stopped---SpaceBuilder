@@ -27,7 +27,17 @@ class SizedButton(FloatLayout, PostInitClass):
                         self.Globals.Settings_data.get("buttonSize") * \
                         self.Globals.GameSettings.base_builder_button_isBigger_amount
 
+            self.image.size = self.Globals.Settings_data.get("buttonSize") * \
+                              self.Globals.GameSettings.base_builder_button_isBigger_amount, \
+                              self.Globals.Settings_data.get("buttonSize") * \
+                              self.Globals.GameSettings.base_builder_button_isBigger_amount
+
 
 
         else:
-            self.size = self.Globals.Settings_data.get("buttonSize"), self.Globals.Settings_data.get("buttonSize")
+            self.image.size = self.Globals.Settings_data.get("buttonSize") * \
+                              self.Globals.GameSettings.base_builder_button_isBigger_amount, \
+                              self.Globals.Settings_data.get("buttonSize")
+
+            self.image.size = self.Globals.Settings_data.get("buttonSize"), self.Globals.Settings_data.get("buttonSize")
+

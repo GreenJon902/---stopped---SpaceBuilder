@@ -2,8 +2,8 @@
     Image:
         id: image
 
-        pos_hint: {"center_x":0.5,"center_y":0.5}
-        size_hint: 1, 1
+        pos_hint: {"right":0,"y":0}
+        size_hint: None, None
 
 <IntroScreen>:
     FloatLayout:
@@ -59,9 +59,13 @@
                 size_hint: None, None
 
                 orientation: "vertical"
-                right: 1
+                right: 0
                 y: 0
 
+
+                SizedButton:
+                    isBig: False
+                    texture: "build"
 
                 SizedButton:
                     isBig: True
