@@ -18,6 +18,10 @@ class SizedButton(FloatLayout, PostInitClass):
 
     def post_init(self):
         self.image = self.ids["image"]
+        self.image.pos = self.pos
+
+        self.parent.width = self.Globals.Settings_data.get("buttonSize") * \
+            self.Globals.GameSettings.base_builder_button_isBigger_amount
 
         self.image.texture = self.Globals.Textures.__dict__[str(self.texture) + "_button"]
 
@@ -28,9 +32,9 @@ class SizedButton(FloatLayout, PostInitClass):
                         self.Globals.GameSettings.base_builder_button_isBigger_amount
 
             self.image.size = self.Globals.Settings_data.get("buttonSize") * \
-                              self.Globals.GameSettings.base_builder_button_isBigger_amount, \
-                              self.Globals.Settings_data.get("buttonSize") * \
-                              self.Globals.GameSettings.base_builder_button_isBigger_amount
+                self.Globals.GameSettings.base_builder_button_isBigger_amount, \
+                self.Globals.Settings_data.get("buttonSize") * \
+                self.Globals.GameSettings.base_builder_button_isBigger_amount
 
 
 
