@@ -188,6 +188,7 @@ class _Globals:
             self.star = None
             self.canyon_background = None
             self.build_button = None
+            self.settings_button = None
 
         def load(self):
             self.canyon_surface = CoreImage("resources/textures/intro/canyonSurface.png").texture
@@ -200,6 +201,7 @@ class _Globals:
             self.star = CoreImage("resources/textures/intro/star.png").texture
             self.canyon_background = CoreImage("resources/textures/baseBuilder/canyon_background.png").texture
             self.build_button = CoreImage("resources/textures/buttons/build.png").texture
+            self.settings_button = CoreImage("resources/textures/buttons/settings.png").texture
 
     class _Audio:
         def __init__(self):
