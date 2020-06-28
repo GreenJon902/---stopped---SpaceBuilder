@@ -14,11 +14,12 @@ class SizedButton(FloatLayout, PostInitClass):
 
         self.Globals = get_Globals()
         self.image = None
+        self.imageHolder = None
         self.size_hint = None, None
 
     def post_init(self):
         self.image = self.ids["image"]
-        self.image.pos = self.pos
+        self.imageHolder = self.ids["imageHolder"]
 
         self.parent.width = self.Globals.Settings_data.get("buttonSize") * \
             self.Globals.GameSettings.base_builder_button_isBigger_amount
@@ -31,6 +32,11 @@ class SizedButton(FloatLayout, PostInitClass):
                         self.Globals.Settings_data.get("buttonSize") * \
                         self.Globals.GameSettings.base_builder_button_isBigger_amount
 
+            self.imageHolder.size = self.Globals.Settings_data.get("buttonSize") * \
+                self.Globals.GameSettings.base_builder_button_isBigger_amount, \
+                self.Globals.Settings_data.get("buttonSize") * \
+                self.Globals.GameSettings.base_builder_button_isBigger_amount
+
             self.image.size = self.Globals.Settings_data.get("buttonSize") * \
                 self.Globals.GameSettings.base_builder_button_isBigger_amount, \
                 self.Globals.Settings_data.get("buttonSize") * \
@@ -39,9 +45,10 @@ class SizedButton(FloatLayout, PostInitClass):
 
 
         else:
-            self.image.size = self.Globals.Settings_data.get("buttonSize") * \
+            self.size = self.Globals.Settings_data.get("buttonSize") * \
                               self.Globals.GameSettings.base_builder_button_isBigger_amount, \
                               self.Globals.Settings_data.get("buttonSize")
 
+            self.imageHolder.size = self.Globals.Settings_data.get("buttonSize"), self.Globals.Settings_data.get("buttonSize")
             self.image.size = self.Globals.Settings_data.get("buttonSize"), self.Globals.Settings_data.get("buttonSize")
 
