@@ -75,7 +75,7 @@ class CrashScreen(Screen):
         elif self.currentClick == 2:
             self.Globals.User_data.set("introFinished", 1)
 
-            self.Globals.get_screen_manager().sendTo("baseBuilderScreen")
+            self.Globals.get_screen_manager().sendTo("BaseBuilderScreen")
 
 
     def move_canyon(self, _=None):

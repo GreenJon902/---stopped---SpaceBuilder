@@ -129,7 +129,7 @@ class IntroScreen(Screen):
         self.shipFallClock = Clock.schedule_once(self.move, self.Globals.GameSettings.intro_ship_fall_delay)
         self.shipFallSoundClock = Clock.schedule_once(lambda x: self.Globals.Audio.shipFall.play(),
                                                       self.Globals.GameSettings.intro_ship_fall_sound_delay)
-        self.endClock = Clock.schedule_once(self.Globals.get_screen_manager().sendTo("crashScreen"),
+        self.endClock = Clock.schedule_once(lambda x: self.Globals.get_screen_manager().sendTo("CrashScreen"),
                                             self.Globals.GameSettings.intro_end_delay)
 
 
