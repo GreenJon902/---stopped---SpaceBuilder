@@ -20,7 +20,7 @@ class _Globals:
         self.Audio = self._Audio()
 
     def get_screen_manager(self):
-        return self.app.children[0].children[0]
+        return self.app.baseScreenManager.children[0]
 
     class _User_data(EventDispatcher):
         Default_data = {
