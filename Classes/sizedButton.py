@@ -58,5 +58,5 @@ class SizedButton(FloatLayout, PostInitClass):
 
     def on_touch_up(self, touch):
         if self.collide_point(touch.x, touch.y):
-            print(self.Globals.get_screen_manager())
+            self.Globals.get_screen_manager().sendTo(self.sendTo)
 

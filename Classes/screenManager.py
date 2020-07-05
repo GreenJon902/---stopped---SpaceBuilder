@@ -50,3 +50,7 @@ class ScreenManager(ScreenManager):
     def openBaseBuilderScreen(self, _=None):
         self.transition = FadeTransition()
         self.current = "BaseBuilderScreen"
+
+    def sendTo(self, sendTo, _=None):
+        self.transition = FadeTransition()
+        self.current = sendTo
