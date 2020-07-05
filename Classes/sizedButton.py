@@ -1,4 +1,5 @@
 from kivy.properties import BooleanProperty, StringProperty
+from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.floatlayout import FloatLayout
 
 from Classes.globals import get_Globals
@@ -8,6 +9,7 @@ from Classes.postInitClass import PostInitClass
 class SizedButton(FloatLayout, PostInitClass):
     isBig = BooleanProperty(defaultvalue=False)
     texture = StringProperty(deafaultvalue="")
+    sendTo = StringProperty(deafaultvalue="baseBuilderScreen")
 
     def __init__(self, *args, **kwargs):
         super(SizedButton, self).__init__(*args, **kwargs)
@@ -52,4 +54,7 @@ class SizedButton(FloatLayout, PostInitClass):
             self.imageHolder.size = self.Globals.Settings_data.get("buttonSize"), \
                 self.Globals.Settings_data.get("buttonSize")
             self.image.size = self.Globals.Settings_data.get("buttonSize"), self.Globals.Settings_data.get("buttonSize")
+
+    def on_touch_up(self, touch):
+        print(self.Globals.get_screen_manager())
 
