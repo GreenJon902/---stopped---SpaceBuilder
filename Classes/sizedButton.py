@@ -1,5 +1,4 @@
 from kivy.properties import BooleanProperty, StringProperty
-from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.floatlayout import FloatLayout
 
 from Classes.globals import get_Globals
@@ -55,6 +54,9 @@ class SizedButton(FloatLayout, PostInitClass):
                 self.Globals.Settings_data.get("buttonSize")
             self.image.size = self.Globals.Settings_data.get("buttonSize"), self.Globals.Settings_data.get("buttonSize")
 
+
+
     def on_touch_up(self, touch):
-        print(self.Globals.get_screen_manager())
+        if self.collide_point(touch.x, touch.y):
+            print(self.Globals.get_screen_manager())
 
