@@ -22,6 +22,7 @@ def create_Globals(app):
 
     Globals.width = Window.width
     Globals.height = Window.height
+    Globals.app = app
 
     Logger.info("Loader: Created Globals")
 

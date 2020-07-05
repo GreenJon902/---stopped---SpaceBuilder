@@ -11,12 +11,16 @@ from kivy.properties import StringProperty
 class _Globals:
     width = 0
     height = 0
+    app = None
 
     def __init__(self):
         self.User_data = self._User_data()
         self.Settings_data = self._Settings_data()
         self.Textures = self._Textures()
         self.Audio = self._Audio()
+
+    def get_screen_manager(self):
+        return self.app.children[0].children[0]
 
     class _User_data(EventDispatcher):
         Default_data = {
