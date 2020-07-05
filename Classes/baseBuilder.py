@@ -11,7 +11,7 @@ class BaseBuilder(Widget):
 
         self.Globals = get_Globals()
 
-        self.size = self.Globals.width, self.Globals.height
+        self.size = self.Globals.width, self.Globals.width
 
         self.canyon = FloatLayout()
         self.baseBuilder = FloatLayout()

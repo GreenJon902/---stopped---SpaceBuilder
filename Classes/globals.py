@@ -172,8 +172,9 @@ class _Globals:
         crash_click_1_delay = 4
         crash_click_transition_speed = 0.5
 
-        base_builder_max_zoom = 10
+        base_builder_max_zoom = 3
         base_builder_min_zoom = 1
+        base_builder_default_zoom = 2
         base_builder_button_isBigger_amount = 2
 
     class _Textures:
