@@ -26,6 +26,10 @@ class BaseBuilderScreen(Screen):
         self.baseBuilderHolder.pos = 0, 0
         self.baseBuilderHolder.size = self.Globals.width, self.Globals.height
 
+        self.baseBuilderHolder.scale_min = self.Globals.GameSettings.base_builder_min_zoom
+        self.baseBuilderHolder.scale_max = self.Globals.GameSettings.base_builder_max_zoom
+        self.baseBuilderHolder.scale = self.Globals.GameSettings.base_builder_default_zoom
+
         Logger.info("Application: BaseBuilder Screen widgets setup")
 
     def on_leave(self, *args):
