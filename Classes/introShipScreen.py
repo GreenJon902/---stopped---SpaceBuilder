@@ -116,21 +116,21 @@ class IntroScreen(Screen):
 
         self.starClock = Clock.schedule_interval(self.draw_star, self.Globals.GameSettings.intro_ship_star_new_frame_delay)
         self.shipClock = Clock.schedule_interval(self.draw_ship, self.Globals.GameSettings.intro_ship_ship_new_frame_delay)
-        self.meteorClock = Clock.schedule_once(self.move_meteor, self.Globals.GameSettings.intro_meteor_delay)
+        self.meteorClock = Clock.schedule_once(self.move_meteor, self.Globals.GameSettings.intro_ship_meteor_delay)
         self.meteorClock2 = Clock.schedule_interval(self.draw_meteor, 0)
         self.meteorHitSoundClock = Clock.schedule_once(lambda x: self.Globals.Audio.meteorHit.play(),
-                                                       self.Globals.GameSettings.intro_meteor_hit_sound_delay)
-        self.tintClock = Clock.schedule_once(self.start_alarm, self.Globals.GameSettings.intro_alarm_delay)
+                                                       self.Globals.GameSettings.intro_ship_meteor_hit_sound_delay)
+        self.tintClock = Clock.schedule_once(self.start_alarm, self.Globals.GameSettings.intro_ship_alarm_delay)
         self.alarmSoundClock = Clock.schedule_once(lambda x: self.alarmSoundClock2.cancel(),
-                                                   self.Globals.GameSettings.intro_alarm_sound_stop_delay)
+                                                   self.Globals.GameSettings.intro_ship_alarm_sound_stop_delay)
         self.alarmSoundClock = Clock.schedule_once(self.start_alarm_sounds,
-                                                   self.Globals.GameSettings.intro_alarm_sound_delay)
+                                                   self.Globals.GameSettings.intro_ship_alarm_sound_delay)
         self.shipShakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_ship_shake_delay)
-        self.shipFallClock = Clock.schedule_once(self.move, self.Globals.GameSettings.intro_ship_fall_delay)
+        self.shipFallClock = Clock.schedule_once(self.move, self.Globals.GameSettings.intro_ship_ship_fall_delay)
         self.shipFallSoundClock = Clock.schedule_once(lambda x: self.Globals.Audio.shipFall.play(),
-                                                      self.Globals.GameSettings.intro_ship_fall_sound_delay)
+                                                      self.Globals.GameSettings.intro_ship_ship_fall_sound_delay)
         self.endClock = Clock.schedule_once(lambda x: self.Globals.get_screen_manager().sendTo("IntroCrashScreen"),
-                                            self.Globals.GameSettings.intro_end_delay)
+                                            self.Globals.GameSettings.intro_ship_end_delay)
 
 
 
@@ -139,7 +139,7 @@ class IntroScreen(Screen):
 
     def start_alarm_sounds(self, _=None):
         self.alarmSoundClock2 = Clock.schedule_interval(lambda x: self.Globals.Audio.alarm.play(),
-                                                        self.Globals.GameSettings.intro_alarm_sound_interval)
+                                                        self.Globals.GameSettings.intro_ship_alarm_sound_interval)
 
     def move(self, _=None):
         Logger.info("Application: IntroShip Screen ship move started")
@@ -148,7 +148,7 @@ class IntroScreen(Screen):
 
         animation = Animation(pos=self.shipLayout.pos, duration=0)
         animation += Animation(pos=(self.shipLayout.pos[0], self.shakeScreenHeight * -1),
-                               duration=self.Globals.GameSettings.intro_ship_fall_speed)
+                               duration=self.Globals.GameSettings.intro_ship_ship_fall_speed)
 
         animation.start(self.shipLayout)
 
@@ -198,10 +198,10 @@ class IntroScreen(Screen):
                      mode="triangle_fan", texture=self.Globals.Textures.star)
 
     def move_meteor(self, _=None):
-        positions = self.Globals.GameSettings.intro_meteor_positions
-        sizes = self.Globals.GameSettings.intro_meteor_sizes
+        positions = self.Globals.GameSettings.intro_ship_meteor_positions
+        sizes = self.Globals.GameSettings.intro_ship_meteor_sizes
         winSize = self.Globals.width, self.Globals.height
-        times = self.Globals.GameSettings.intro_meteor_length_times
+        times = self.Globals.GameSettings.intro_ship_meteor_length_times
 
         animation = Animation(duration=0)
 
@@ -249,7 +249,7 @@ class IntroScreen(Screen):
 
     def start_alarm(self, _=None):
         self.tintClock2 = Clock.schedule_interval(self.do_alarm,
-                                                  self.Globals.GameSettings.intro_alarm_switch_interval * 2)
+                                                  self.Globals.GameSettings.intro_ship_alarm_switch_interval * 2)
         Logger.info("Application: IntroShip Screen ship alarm stated")
 
     def do_alarm(self, _=None):
@@ -258,7 +258,7 @@ class IntroScreen(Screen):
                       color=Color(*self.Globals.GameSettings.intro_ship_alarm_color))
 
         Clock.schedule_once(lambda _: self.tintLayout.canvas.clear(),
-                            self.Globals.GameSettings.intro_alarm_switch_interval)
+                            self.Globals.GameSettings.intro_ship_alarm_switch_interval)
 
     def on_leave(self, *args):
         Logger.info("Application: Intro Ship Screen exited")

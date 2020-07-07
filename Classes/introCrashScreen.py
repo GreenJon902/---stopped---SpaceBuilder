@@ -49,11 +49,11 @@ class CrashScreen(Screen):
     def post_enter(self):
         Logger.info("Application: IntroCrash Screen entered")
 
-        self.canyonClock = Clock.schedule_once(self.move_canyon, self.Globals.GameSettings.crash_move_delay)
-        self.starClock = Clock.schedule_once(self.move_stars, self.Globals.GameSettings.crash_move_delay)
+        self.canyonClock = Clock.schedule_once(self.move_canyon, self.Globals.GameSettings.intro_crash_move_delay)
+        self.starClock = Clock.schedule_once(self.move_stars, self.Globals.GameSettings.intro_crash_move_delay)
         self.drawClock = Clock.schedule_interval(self.draw, 0)
-        self.guideClock = Clock.schedule_once(self.guide_move, self.Globals.GameSettings.crash_guide_delay)
-        self.click1Clock = Clock.schedule_once(self.click1allow, self.Globals.GameSettings.crash_click_1_delay)
+        self.guideClock = Clock.schedule_once(self.guide_move, self.Globals.GameSettings.intro_crash_guide_delay)
+        self.click1Clock = Clock.schedule_once(self.click1allow, self.Globals.GameSettings.intro_crash_click_1_delay)
 
     def click1allow(self, _=None):
         self.currentClick = 1
@@ -62,10 +62,10 @@ class CrashScreen(Screen):
         if self.currentClick == 1:
 
             animation1 = Animation(opacity=1, duration=0)
-            animation1 += Animation(opacity=0, duration=self.Globals.GameSettings.crash_click_transition_speed)
+            animation1 += Animation(opacity=0, duration=self.Globals.GameSettings.intro_crash_click_transition_speed)
 
             animation2 = Animation(opacity=0, duration=0)
-            animation2 += Animation(opacity=1, duration=self.Globals.GameSettings.crash_click_transition_speed)
+            animation2 += Animation(opacity=1, duration=self.Globals.GameSettings.intro_crash_click_transition_speed)
 
             animation1.start(self.guideLayout1)
             animation2.start(self.guideLayout2)
@@ -83,7 +83,7 @@ class CrashScreen(Screen):
 
         animation = Animation(pos=self.canyonLayout.pos, duration=0)
         animation += Animation(pos=((self.w * -1) + self.Globals.width, self.canyonLayout.pos[1]),
-                               duration=self.Globals.GameSettings.crash_move_length)
+                               duration=self.Globals.GameSettings.intro_crash_move_length)
 
         animation.start(self.canyonLayout)
 
@@ -92,7 +92,7 @@ class CrashScreen(Screen):
 
         animation = Animation(pos=self.guideLayout1.pos, duration=0)
         animation += Animation(pos=(0, 0),
-                               duration=self.Globals.GameSettings.crash_guide_speed)
+                               duration=self.Globals.GameSettings.intro_crash_guide_speed)
 
         animation.start(self.guideLayout1)
 
@@ -102,8 +102,8 @@ class CrashScreen(Screen):
 
         animation = Animation(pos=self.starLayout.pos, duration=0)
         animation += Animation(pos=(((self.w * -1) + self.Globals.width) /
-                                    self.Globals.GameSettings.crash_stars_move_divider, self.starLayout.pos[1]),
-                               duration=self.Globals.GameSettings.crash_move_length)
+                                    self.Globals.GameSettings.intro_crash_stars_move_divider, self.starLayout.pos[1]),
+                               duration=self.Globals.GameSettings.intro_crash_move_length)
 
         animation.start(self.starLayout)
 
