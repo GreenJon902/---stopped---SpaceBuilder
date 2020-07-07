@@ -261,7 +261,7 @@ class IntroScreen(Screen):
                             self.Globals.GameSettings.intro_ship_alarm_switch_interval)
 
     def on_leave(self, *args):
-        Logger.info("Application: Intro Ship Screen exited")
+        Logger.info("Application: IntroShip Screen exited")
 
         self.starClock.cancel()
         self.shipClock.cancel()
