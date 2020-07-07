@@ -28,7 +28,8 @@ def create_Globals(app):
 
 
 def load_kv(app):
-    Builder.load_file('resources/kv.kv')
+    Builder.load_file('resources/kv/screens.kv')
+    Builder.load_file('resources/kv/widgets.kv')
 
     Logger.info("Loader: Loaded KV")
 
