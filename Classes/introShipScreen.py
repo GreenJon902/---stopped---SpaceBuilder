@@ -39,8 +39,8 @@ class IntroScreen(Screen):
 
         self.Globals = get_Globals()
 
-        self.shakeScreenX = self.Globals.width / self.Globals.GameSettings.intro_ship_shake_amount_divider * -1
-        self.shakeScreenY = self.Globals.height / self.Globals.GameSettings.intro_ship_shake_amount_divider * -1
+        self.shakeScreenX = self.Globals.width / self.Globals.GameSettings.intro_ship_ship_shake_amount_divider * -1
+        self.shakeScreenY = self.Globals.height / self.Globals.GameSettings.intro_ship_ship_shake_amount_divider * -1
         self.shakeDistanceX = self.shakeScreenX * -1
         self.shakeDistanceY = self.shakeScreenX * -1
         self.shakeScreenWidth = self.Globals.width - (self.shakeScreenX * 2)
@@ -114,8 +114,8 @@ class IntroScreen(Screen):
     def post_enter(self):
         Logger.info("Application: IntroShip Screen entered")
 
-        self.starClock = Clock.schedule_interval(self.draw_star, self.Globals.GameSettings.intro_star_new_frame_delay)
-        self.shipClock = Clock.schedule_interval(self.draw_ship, self.Globals.GameSettings.intro_ship_new_frame_delay)
+        self.starClock = Clock.schedule_interval(self.draw_star, self.Globals.GameSettings.intro_ship_star_new_frame_delay)
+        self.shipClock = Clock.schedule_interval(self.draw_ship, self.Globals.GameSettings.intro_ship_ship_new_frame_delay)
         self.meteorClock = Clock.schedule_once(self.move_meteor, self.Globals.GameSettings.intro_meteor_delay)
         self.meteorClock2 = Clock.schedule_interval(self.draw_meteor, 0)
         self.meteorHitSoundClock = Clock.schedule_once(lambda x: self.Globals.Audio.meteorHit.play(),
@@ -125,7 +125,7 @@ class IntroScreen(Screen):
                                                    self.Globals.GameSettings.intro_alarm_sound_stop_delay)
         self.alarmSoundClock = Clock.schedule_once(self.start_alarm_sounds,
                                                    self.Globals.GameSettings.intro_alarm_sound_delay)
-        self.shipShakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_shake_delay)
+        self.shipShakeClock = Clock.schedule_once(self.shake, self.Globals.GameSettings.intro_ship_ship_shake_delay)
         self.shipFallClock = Clock.schedule_once(self.move, self.Globals.GameSettings.intro_ship_fall_delay)
         self.shipFallSoundClock = Clock.schedule_once(lambda x: self.Globals.Audio.shipFall.play(),
                                                       self.Globals.GameSettings.intro_ship_fall_sound_delay)
@@ -158,12 +158,12 @@ class IntroScreen(Screen):
         Globals = self.Globals
 
         centerX, centerY = Globals.width / 2, Globals.height / 2
-        width = Globals.width / Globals.GameSettings.intro_star_width_divider
-        height = Globals.height / Globals.GameSettings.intro_star_height_divider
+        width = Globals.width / Globals.GameSettings.intro_ship_star_width_divider
+        height = Globals.height / Globals.GameSettings.intro_ship_star_height_divider
 
         cd_length = height
 
-        for i in range(Globals.GameSettings.intro_star_amount):
+        for i in range(Globals.GameSettings.intro_ship_star_amount):
 
 
             x, y = random.randint(0, Globals.width), random.randint(0, Globals.height / 2) + Globals.height / 2
@@ -236,7 +236,7 @@ class IntroScreen(Screen):
 
         i = 0
 
-        for pos in self.Globals.GameSettings.intro_ship_shake_positions:
+        for pos in self.Globals.GameSettings.intro_ship_ship_shake_positions:
             animation += Animation(pos=(self.shakeScreenX * pos[0], self.shakeScreenY * pos[1]),
                                    duration=self.Globals.GameSettings.intro_ship_shake_shake_length_times[i])
 
@@ -255,7 +255,7 @@ class IntroScreen(Screen):
     def do_alarm(self, _=None):
         with self.tintLayout.canvas:
             Rectangle(pos=(0, 0), size=(self.Globals.width, self.Globals.height),
-                      color=Color(*self.Globals.GameSettings.intro_alarm_color))
+                      color=Color(*self.Globals.GameSettings.intro_ship_alarm_color))
 
         Clock.schedule_once(lambda _: self.tintLayout.canvas.clear(),
                             self.Globals.GameSettings.intro_alarm_switch_interval)

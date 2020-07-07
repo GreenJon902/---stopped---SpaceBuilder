@@ -143,16 +143,16 @@ class _Globals:
                 Logger.warn("Settings_Data: \"" + str(key) + "\" is an invalid key")
 
     class GameSettings:
-        intro_star_amount = 10
-        intro_star_width_divider = 10
-        intro_star_height_divider = 100
-        intro_star_new_frame_delay = 0.1
-        intro_ship_shake_amount_divider = 5
-        intro_ship_shake_delay = 4.75
+        intro_ship_star_amount = 10
+        intro_ship_star_width_divider = 10
+        intro_ship_star_height_divider = 100
+        intro_ship_star_new_frame_delay = 0.1
+        intro_ship_ship_shake_amount_divider = 5
+        intro_ship_ship_shake_delay = 4.75
         intro_ship_shake_shake_length_times = (0.1, 0.05, 0.1)
-        intro_ship_new_frame_delay = 0.01
-        intro_ship_shake_positions = ((1, 0.5), (1, 0.5))
-        intro_alarm_color = 1, 0, 0, 0.5
+        intro_ship_ship_new_frame_delay = 0.01
+        intro_ship_ship_shake_positions = ((1, 0.5), (1, 0.5))
+        intro_ship_alarm_color = 1, 0, 0, 0.5
         intro_alarm_delay = 5.1
         intro_alarm_switch_interval = 0.6
         intro_alarm_sound_delay = 5
