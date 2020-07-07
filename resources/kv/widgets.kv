@@ -10,3 +10,17 @@
 
             size_hint: None, None
             pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+
+<ItemsWidget>:
+    AnchorLayout:
+        anchor_x: "right"
+        anchor_y: "bottom"
+
+        SizedButton:
+            isBig: False
+            texture: "settings"
+            sendTo: "BaseBuilderScreen"
+
+    BoxLayout:
+        id: content
