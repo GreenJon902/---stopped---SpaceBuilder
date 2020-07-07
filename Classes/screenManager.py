@@ -13,6 +13,7 @@ from Classes.baseBuilder import BaseBuilder
 from Classes.betterFloatLayout import BetterFloatLayout
 from Classes.betterScatter import BetterScatter
 from Classes.sizedButton import SizedButton
+from Classes.itemsWidget import ItemsWidget
 
 
 
