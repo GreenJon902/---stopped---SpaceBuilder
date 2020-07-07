@@ -238,11 +238,11 @@ class IntroScreen(Screen):
 
         for pos in self.Globals.GameSettings.intro_ship_ship_shake_positions:
             animation += Animation(pos=(self.shakeScreenX * pos[0], self.shakeScreenY * pos[1]),
-                                   duration=self.Globals.GameSettings.intro_ship_shake_shake_length_times[i])
+                                   duration=self.Globals.GameSettings.intro_ship_ship_shake_shake_length_times[i])
 
             i = i + 1
 
-        animation += Animation(pos=(0, 0), duration=self.Globals.GameSettings.intro_ship_shake_shake_length_times[i])
+        animation += Animation(pos=(0, 0), duration=self.Globals.GameSettings.intro_ship_ship_shake_shake_length_times[i])
         animation.start(self.shipLayout)
 
         Logger.info("Application: IntroShip Screen ship shake started")
