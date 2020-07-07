@@ -2,9 +2,9 @@ from kivy import Logger
 from kivy.uix.screenmanager import ScreenManager, FadeTransition
 
 from Classes.baseBuilderScreen import BaseBuilderScreen
-from Classes.crashScreen import CrashScreen
+from Classes.introCrashScreen import CrashScreen
 from Classes.globals import get_Globals
-from Classes.introScreen import IntroScreen
+from Classes.introShipScreen import IntroScreen
 from Classes.inventoryScreen import InventoryScreen
 from Classes.settingsScreen import SettingsScreen
 from Classes.screen import Screen
@@ -31,8 +31,8 @@ class ScreenManager(ScreenManager):
         self.add_widget(dumpScreen)
 
         #  Intro Screens
-        introScreen = IntroScreen(name="IntroScreen")
-        crashScreen = CrashScreen(name="CrashScreen")
+        introScreen = IntroScreen(name="IntroShipScreen")
+        crashScreen = CrashScreen(name="IntroCrashScreen")
         self.add_widget(introScreen)
         self.add_widget(crashScreen)
 
@@ -57,7 +57,7 @@ class ScreenManager(ScreenManager):
 
         else:
             Logger.info("Application: Starting in Intro")
-            self.current = "IntroScreen"
+            self.current = "IntroShipScreen"
 
         Logger.info("Application: Screen Manager setup")
 

@@ -30,7 +30,7 @@ class CrashScreen(Screen):
         self.h = self.Globals.height
         self.w = ratio * self.h
 
-        Logger.info("Application: Crash Screen vars setup")
+        Logger.info("Application: IntroCrash Screen vars setup")
 
     def post_init(self):
         self.starLayout = self.ids["stars"]
@@ -44,10 +44,10 @@ class CrashScreen(Screen):
 
         self.guideLayout2.opacity = 0
 
-        Logger.info("Application: Crash Screen widgets setup")
+        Logger.info("Application: IntroCrash Screen widgets setup")
 
     def post_enter(self):
-        Logger.info("Application: Crash Screen entered")
+        Logger.info("Application: IntroCrash Screen entered")
 
         self.canyonClock = Clock.schedule_once(self.move_canyon, self.Globals.GameSettings.crash_move_delay)
         self.starClock = Clock.schedule_once(self.move_stars, self.Globals.GameSettings.crash_move_delay)
@@ -79,7 +79,7 @@ class CrashScreen(Screen):
 
 
     def move_canyon(self, _=None):
-        Logger.info("Application: Crash Screen canyon move started")
+        Logger.info("Application: IntroCrash Screen canyon move started")
 
         animation = Animation(pos=self.canyonLayout.pos, duration=0)
         animation += Animation(pos=((self.w * -1) + self.Globals.width, self.canyonLayout.pos[1]),
@@ -88,7 +88,7 @@ class CrashScreen(Screen):
         animation.start(self.canyonLayout)
 
     def guide_move(self, _=None):
-        Logger.info("Application: Crash Screen guide move started")
+        Logger.info("Application: IntroCrash Screen guide move started")
 
         animation = Animation(pos=self.guideLayout1.pos, duration=0)
         animation += Animation(pos=(0, 0),
@@ -98,7 +98,7 @@ class CrashScreen(Screen):
 
 
     def move_stars(self, _=None):
-        Logger.info("Application: Crash Screen stars move started")
+        Logger.info("Application: IntroCrash Screen stars move started")
 
         animation = Animation(pos=self.starLayout.pos, duration=0)
         animation += Animation(pos=(((self.w * -1) + self.Globals.width) /
