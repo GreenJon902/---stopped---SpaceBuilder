@@ -5,6 +5,8 @@ from Classes.baseBuilderScreen import BaseBuilderScreen
 from Classes.crashScreen import CrashScreen
 from Classes.globals import get_Globals
 from Classes.introScreen import IntroScreen
+from Classes.inventoryScreen import InventoryScreen
+from Classes.settingsScreen import SettingsScreen
 from Classes.screen import Screen
 
 from Classes.baseBuilder import BaseBuilder
@@ -23,20 +25,31 @@ class ScreenManager(ScreenManager):
         self.width = Globals.width
         self.height = Globals.height
 
+
+        #  So things actually work
         dumpScreen = Screen(name="DumpScreen")
+        self.add_widget(dumpScreen)
 
         #  Intro Screens
         introScreen = IntroScreen(name="IntroScreen")
         crashScreen = CrashScreen(name="CrashScreen")
-
-        # Main Screen
-        baseBuildScreen = BaseBuilderScreen(name="BaseBuilderScreen")
-
-
-        self.add_widget(dumpScreen)
         self.add_widget(introScreen)
         self.add_widget(crashScreen)
+
+        # Main Screens
+        baseBuildScreen = BaseBuilderScreen(name="BaseBuilderScreen")
         self.add_widget(baseBuildScreen)
+
+        #  Settings Screens
+        settingsScreen = SettingsScreen(name="SettingsScreen")
+        self.add_widget(settingsScreen)
+
+        #  Inventory Screens
+        inventoryScreen = InventoryScreen(name="InventoryScreen")
+        self.add_widget(inventoryScreen)
+
+
+
 
         if Globals.User_data.get("introFinished"):
             self.current = "BaseBuilderScreen"
