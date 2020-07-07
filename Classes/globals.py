@@ -143,6 +143,8 @@ class _Globals:
                 Logger.warn("Settings_Data: \"" + str(key) + "\" is an invalid key")
 
     class GameSettings:
+        # Where_Screen_What
+
         intro_ship_star_amount = 10
         intro_ship_star_width_divider = 10
         intro_ship_star_height_divider = 100
