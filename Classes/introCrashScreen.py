@@ -73,8 +73,6 @@ class CrashScreen(Screen):
             self.currentClick = 2
 
         elif self.currentClick == 2:
-            self.Globals.User_data.set("introFinished", 1)
-
             self.Globals.get_screen_manager().sendTo("BaseBuilderScreen")
 
 
@@ -134,3 +132,6 @@ class CrashScreen(Screen):
                                                    self.Globals.Textures.guide_intro_2.height), self.Globals.height),
                       texture=self.Globals.Textures.guide_intro_2,
                       color=Color(1, 1, 1))
+
+    def on_leave(self, *args):
+        self.Globals.User_data.set("introFinished", 1)
