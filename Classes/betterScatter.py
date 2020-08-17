@@ -19,7 +19,7 @@ class BetterScatter(ScatterPlane):
             if touch.button == 'scrolldown':
                 if self.scale < self.Globals.GameSettings.base_builder_max_zoom:
 
-                    nextScale = self.scale * 1.1
+                    nextScale = self.scale * (1 + self.Globals.GameSettings.base_builder_zoom_per_scroll)
                     if nextScale < self.Globals.GameSettings.base_builder_max_zoom:
                         self.scale = nextScale
 
@@ -29,7 +29,7 @@ class BetterScatter(ScatterPlane):
             elif touch.button == 'scrollup':
                 if self.scale > self.Globals.GameSettings.base_builder_min_zoom:
 
-                    nextScale = self.scale * 0.8
+                    nextScale = self.scale * (1 - self.Globals.GameSettings.base_builder_zoom_per_scroll)
                     if nextScale > self.Globals.GameSettings.base_builder_min_zoom:
                         self.scale = nextScale
 
