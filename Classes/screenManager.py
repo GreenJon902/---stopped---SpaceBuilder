@@ -5,7 +5,7 @@ from Classes.baseBuilderScreen import BaseBuilderScreen
 from Classes.introCrashScreen import CrashScreen
 from Classes.globals import get_Globals
 from Classes.introShipScreen import IntroScreen
-from Classes.inventoryScreen import InventoryScreen
+from Classes.buildingScreen import BuildingScreen
 from Classes.settingsScreen import SettingsScreen
 from Classes.screen import Screen
 
@@ -46,8 +46,8 @@ class ScreenManager(ScreenManager):
         self.add_widget(settingsScreen)
 
         #  Inventory Screens
-        inventoryScreen = InventoryScreen(name="InventoryScreen")
-        self.add_widget(inventoryScreen)
+        buildingScreen = BuildingScreen(name="BuildingScreen")
+        self.add_widget(buildingScreen)
 
 
 
