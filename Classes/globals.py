@@ -26,7 +26,19 @@ class _Globals:
         Default_data = {
             "introFinished": 0,
             "timesCrashed": 0,
-            "layout": {}
+            "layout": {
+                "0": {
+                    "name": "rocket",
+                    "data": {
+                        "isBuilt": False
+                    },
+                    "center": [
+                        50,
+                        50
+                    ],
+                    "rotation": 0
+                }
+            }
         }
 
         save_path = StringProperty()
