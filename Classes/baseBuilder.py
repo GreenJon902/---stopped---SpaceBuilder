@@ -23,7 +23,7 @@ class BaseBuilder(Widget):
 
 
     def draw(self):
-        self.gb.canvas.before.clear()
+        self.bg.canvas.before.clear()
         self.baseBuilder.canvas.clear()
 
         with self.bg.canvas.before:
