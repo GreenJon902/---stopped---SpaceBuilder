@@ -2,8 +2,7 @@ from PIL import Image
 from kivy.core.audio import SoundLoader
 from kivy.core.image import Image as CoreImage
 
-from Classes.settings_data import Settings_data
-from Classes.user_data import User_data
+from Classes.user_and_settings_data_base import user_and_settings_data_base
 
 
 class _Globals:
@@ -12,14 +11,39 @@ class _Globals:
     app = None
 
     def __init__(self):
-        self.User_data = User_data()
-        self.Settings_data = Settings_data()
+        self.User_data = self._User_data()
+        self.Settings_data = self._Settings_data()
         self.Textures = self._Textures()
         self.Audio = self._Audio()
 
     def get_screen_manager(self):
         return self.app.baseScreenManager.children[0]
 
+    class User_data(user_and_settings_data_base):
+        name = "User_Data"
+        Default_data = {
+            "introFinished": 0,
+            "timesCrashed": 0,
+            "building_layout": {
+                "0": {
+                    "name": "rocket",
+                    "data": {
+                        "isBuilt": False
+                    },
+                    "center": [
+                        50,
+                        50
+                    ],
+                    "rotation": 0
+                }
+            }
+        }
+
+    class Settings_data(user_and_settings_data_base):
+        name = "Settings_data"
+        Default_data = {
+            "buttonSize": 100
+        }
 
     class GameSettings:
         # Where_Screen_What
