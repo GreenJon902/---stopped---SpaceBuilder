@@ -13,18 +13,18 @@ class BaseBuilder(Widget):
 
         self.size = self.Globals.width, self.Globals.width
 
-        self.canyon = FloatLayout()
+        self.bg = FloatLayout()
         self.baseBuilder = FloatLayout()
 
         self.draw()
 
-        self.add_widget(self.canyon)
+        self.add_widget(self.bg)
         self.add_widget(self.baseBuilder)
 
 
     def draw(self):
-        self.canyon.canvas.before.clear()
+        self.gb.canvas.before.clear()
         self.baseBuilder.canvas.clear()
 
-        with self.canyon.canvas.before:
+        with self.bg.canvas.before:
             Rectangle(pos=self.pos, size=self.size, texture=self.Globals.Textures.planetSurface)
