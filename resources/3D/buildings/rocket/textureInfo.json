@@ -4,6 +4,7 @@
           "isBuilt": false
         },
         "animated": false,
+        "rotatable": false,
         "rotations": {
             "0": "0"
         }
@@ -13,6 +14,7 @@
         "isBuilt": true
       },
       "animated": false,
+      "rotatable": false,
       "rotations": {
           "0": "1"
       }

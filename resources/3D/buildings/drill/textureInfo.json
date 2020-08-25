@@ -2,6 +2,7 @@
     "0": {
         "data": {},
         "animated": true,
+        "rotatable": true,
         "rotations": {
             "0": "0",
             "45": "45",
