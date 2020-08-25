@@ -14,22 +14,19 @@ class BaseBuilder(Widget):
         self.size = self.Globals.width, self.Globals.width
 
         self.bg = FloatLayout()
-        self.baseBuilder = FloatLayout()
+        self.buildings = FloatLayout()
 
         self.draw()
 
         self.add_widget(self.bg)
-        self.add_widget(self.baseBuilder)
+        self.add_widget(self.buildings)
 
 
     def draw(self):
         self.bg.canvas.before.clear()
-        self.baseBuilder.canvas.clear()
 
         with self.bg.canvas.before:
             Rectangle(pos=self.pos, size=self.size, texture=self.Globals.Textures.planetSurface)
 
-        with self.baseBuilder.canvas.before:
-            building_layout = self.Globals.User_data.get("building_layout")
-            for buildingId in building_layout:
-                print(buildingId, building_layout[buildingId])
+        for building in self.buildings.children:
+            building.draw()
