@@ -26,7 +26,7 @@ class _Globals:
         Default_data = {
             "introFinished": 0,
             "timesCrashed": 0,
-            "layout": {
+            "building_layout": {
                 "0": {
                     "name": "rocket",
                     "data": {

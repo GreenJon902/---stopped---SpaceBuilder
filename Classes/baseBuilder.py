@@ -30,6 +30,6 @@ class BaseBuilder(Widget):
             Rectangle(pos=self.pos, size=self.size, texture=self.Globals.Textures.planetSurface)
 
         with self.baseBuilder.canvas.before:
-            layout = self.Globals.User_data.get("layout")
-            for buildingId in layout:
-                print(buildingId, layout[buildingId])
+            building_layout = self.Globals.User_data.get("building_layout")
+            for buildingId in building_layout:
+                print(buildingId, building_layout[buildingId])
