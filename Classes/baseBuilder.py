@@ -28,3 +28,8 @@ class BaseBuilder(Widget):
 
         with self.bg.canvas.before:
             Rectangle(pos=self.pos, size=self.size, texture=self.Globals.Textures.planetSurface)
+
+        with self.baseBuilder.canvas.before:
+            layout = self.Globals.User_data.get("layout")
+            for buildingId in layout:
+                print(buildingId, layout[buildingId])
