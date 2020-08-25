@@ -19,7 +19,7 @@ class _Globals:
     def get_screen_manager(self):
         return self.app.baseScreenManager.children[0]
 
-    class User_data(user_and_settings_data_base):
+    class _User_data(user_and_settings_data_base):
         name = "User_Data"
         Default_data = {
             "introFinished": 0,
@@ -39,7 +39,7 @@ class _Globals:
             }
         }
 
-    class Settings_data(user_and_settings_data_base):
+    class _Settings_data(user_and_settings_data_base):
         name = "Settings_data"
         Default_data = {
             "buttonSize": 100
