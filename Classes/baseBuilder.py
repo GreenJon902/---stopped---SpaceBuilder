@@ -18,7 +18,7 @@ class BaseBuilder(Widget):
         self.bg = FloatLayout()
         self.buildings = FloatLayout()
 
-        self.draw()
+        self.create()
 
         self.add_widget(self.bg)
         self.add_widget(self.buildings)
@@ -35,3 +35,6 @@ class BaseBuilder(Widget):
 
         for building in self.buildings.children:
             building.draw()
+
+    def create(self):
+        pass
