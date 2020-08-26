@@ -1,4 +1,5 @@
 import json
+import os
 
 from PIL import Image
 from kivy.core.audio import SoundLoader
@@ -7,7 +8,6 @@ from kivy.event import EventDispatcher
 from kivy.properties import StringProperty
 from kivy.logger import Logger
 
-from Classes.buildingtextures import BuildingTextures
 
 
 class _user_and_settings_data_base(EventDispatcher):
@@ -78,7 +78,7 @@ class _Globals:
         self.Settings_data = self._Settings_data()
         self.Textures = self._Textures()
         self.Audio = self._Audio()
-        self.BuildingTextures = BuildingTextures()
+        self.BuildingTextures = self._BuildingTextures()
 
     def get_screen_manager(self):
         return self.app.baseScreenManager.children[0]
@@ -177,6 +177,43 @@ class _Globals:
             self.planetSurface = CoreImage("resources/textures/baseBuilder/planetSurface.png").texture
             self.build_button = CoreImage("resources/textures/buttons/build.png").texture
             self.settings_button = CoreImage("resources/textures/buttons/settings.png").texture
+
+    class _BuildingTextures:
+        _loaded_textures = {}
+        _loaded_texture_infos = {}
+
+        def __init__(self):
+            self.Globals = get_Globals()
+
+        def _load_texture_infos(self, name):
+            with open(str(os.path.join(str(os.path.split(str(self.Globals.app.directory))[0]), "resources", "3D", name,
+                                       "textureInfo.json")), "r") as file:
+                self._loaded_textures[name] = json.load(file)
+
+        def _load_texture(self, name, state, frame):
+            self._loaded_textures[name + "/" + state + "/" + frame] = CoreImage(
+                str(os.path.join(str(os.path.split(str(self.Globals.app.directory))[0]), "resources", "3D", name, state,
+                                 frame)))
+
+        def get_texture_infos(self, name):
+            if name not in self._loaded_texture_infos:
+                self._load_texture_infos(name)
+
+            return self._loaded_textures_infos[name]
+
+        def get_texture(self, name, data, frame):
+            textureInfo = self.get_texture_infos(name)
+            state = 0
+
+            for s in textureInfo:
+                if textureInfo[s]["data"] == data:
+                    state = s
+                    break
+
+            if (name + "/" + state + "/" + frame) not in self._loaded_texture_infos:
+                self._load_texture(name, state, frame)
+
+            return self._loaded_textures[(name + "/" + state + "/" + frame)]
 
     class _Audio:
         def __init__(self):
