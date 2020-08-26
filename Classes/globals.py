@@ -1,8 +1,69 @@
+import json
+
 from PIL import Image
 from kivy.core.audio import SoundLoader
 from kivy.core.image import Image as CoreImage
+from kivy.event import EventDispatcher
+from kivy.properties import StringProperty
+from kivy.logger import Logger
 
-from Classes.user_and_settings_data_base import user_and_settings_data_base
+
+class _user_and_settings_data_base(EventDispatcher):
+    Default_data = {}
+    save_path = StringProperty()
+    data = {}
+    name = ""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.bind(save_path=self.load)
+
+    def load(self, _, callback):
+        Logger.info(self.name + ": Save path: " + str(callback))
+
+        try:
+            with open(callback, "r") as file:
+                self.data = json.load(file)
+
+        except FileNotFoundError:
+            Logger.warn(self.name + ": Save file not found, creating new one")
+            self.create_new()
+
+            with open(callback, "r") as file:
+                self.data = json.load(file)
+
+        Logger.info(self.name + ": Loaded data")
+
+    def _save(self, out):
+        with open(self.save_path, "w", encoding='utf-8') as file:
+            json.dump(out, file, ensure_ascii=True, indent=4)
+
+        Logger.info(self.name + ": Saved data")
+
+    def save(self):
+        self._save(self.data)
+
+    def create_new(self):
+        open(self.save_path, "a").close()
+        Logger.info(self.name + ": Created new data file")
+        self._save(self.Default_data)
+
+    def set(self, key, value):
+        if key in self.data:
+            self.data[key] = value
+
+            Logger.info(self.name + ": Set " + str(key) + " to " + str(value))
+
+        else:
+            Logger.warn(self.name + ": \"" + str(key) + "\" is an invalid key")
+
+    def get(self, key):
+        if key in self.data:
+            return self.data[key]
+
+        else:
+            Logger.warn(self.name + ": \"" + str(key) + "\" is an invalid key")
 
 
 class _Globals:
@@ -19,7 +80,7 @@ class _Globals:
     def get_screen_manager(self):
         return self.app.baseScreenManager.children[0]
 
-    class _User_data(user_and_settings_data_base):
+    class _User_data(_user_and_settings_data_base):
         name = "User_Data"
         Default_data = {
             "introFinished": 0,
@@ -39,7 +100,7 @@ class _Globals:
             }
         }
 
-    class _Settings_data(user_and_settings_data_base):
+    class _Settings_data(_user_and_settings_data_base):
         name = "Settings_data"
         Default_data = {
             "buttonSize": 100
