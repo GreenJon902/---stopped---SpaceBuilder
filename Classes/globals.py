@@ -119,7 +119,7 @@ class _Globals:
         intro_ship_ship_shake_amount_divider = 5
         intro_ship_ship_shake_delay = 4.75
         intro_ship_ship_shake_shake_length_times = (0.1, 0.05, 0.1)
-        intro_ship_ship_new_frame_delay = 0.01
+        intro_ship_ship_new_frame_delay = 0
         intro_ship_ship_shake_positions = ((1, 0.5), (1, 0.5))
         intro_ship_alarm_color = 1, 0, 0, 0.5
         intro_ship_alarm_delay = 5.1
@@ -150,6 +150,7 @@ class _Globals:
         base_builder_zoom_per_scroll = 0.1
         base_builder_default_zoom = 2
         base_builder_button_isBigger_amount = 2
+        base_builder_new_frame_delay = 0
 
     class _Textures:
         def __init__(self):
