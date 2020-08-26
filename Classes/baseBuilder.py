@@ -27,7 +27,7 @@ class BaseBuilder(Widget):
         self.drawClock = Clock.schedule_interval(self.draw, self.Globals.GameSettings.base_builder_new_frame_delay)
 
 
-    def draw(self):
+    def draw(self, _=None):
         self.bg.canvas.before.clear()
 
         with self.bg.canvas.before:
