@@ -6,7 +6,7 @@ from kivy.core.image import Image as CoreImage
 from Classes.globals import get_Globals
 
 
-class Textures:
+class BuildingTextures:
     _loaded_textures = {}
     _loaded_texture_infos = {}
 
