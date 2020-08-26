@@ -7,6 +7,8 @@ from kivy.event import EventDispatcher
 from kivy.properties import StringProperty
 from kivy.logger import Logger
 
+from Classes.buildingtextures import BuildingTextures
+
 
 class _user_and_settings_data_base(EventDispatcher):
     Default_data = {}
@@ -76,6 +78,7 @@ class _Globals:
         self.Settings_data = self._Settings_data()
         self.Textures = self._Textures()
         self.Audio = self._Audio()
+        self.BuildingTextures = BuildingTextures()
 
     def get_screen_manager(self):
         return self.app.baseScreenManager.children[0]
