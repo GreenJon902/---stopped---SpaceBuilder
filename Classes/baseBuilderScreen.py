@@ -18,6 +18,7 @@ class BaseBuilderScreen(Screen):
 
     def post_enter(self):
         Logger.info("Application: BaseBuilder Screen entered")
+        self.baseBuilder.post_enter()
 
     def post_init(self):
         self.baseBuilderHolder = self.ids["baseBuilderHolder"]
