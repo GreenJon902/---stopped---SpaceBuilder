@@ -114,8 +114,10 @@ class IntroScreen(Screen):
     def post_enter(self):
         Logger.info("Application: IntroShip Screen entered")
 
-        self.starClock = Clock.schedule_interval(self.draw_star, self.Globals.GameSettings.intro_ship_star_new_frame_delay)
-        self.shipClock = Clock.schedule_interval(self.draw_ship, self.Globals.GameSettings.intro_ship_ship_new_frame_delay)
+        self.starClock = Clock.schedule_interval(self.draw_star,
+                                                 self.Globals.GameSettings.intro_ship_star_new_frame_delay)
+        self.shipClock = Clock.schedule_interval(self.draw_ship,
+                                                 self.Globals.GameSettings.intro_ship_ship_new_frame_delay)
         self.meteorClock = Clock.schedule_once(self.move_meteor, self.Globals.GameSettings.intro_ship_meteor_delay)
         self.meteorClock2 = Clock.schedule_interval(self.draw_meteor, 0)
         self.meteorHitSoundClock = Clock.schedule_once(lambda x: self.Globals.Audio.meteorHit.play(),
