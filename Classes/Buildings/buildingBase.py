@@ -1,6 +1,6 @@
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.widget import Widget
-from kivy.properties import NumericProperty, StringProperty, DictProperty
+from kivy.properties import NumericProperty, StringProperty, DictProperty, BooleanProperty
 from kivy.graphics import *
 
 from Classes.globals import get_Globals
@@ -9,8 +9,11 @@ from Classes.globals import get_Globals
 class BuildingBase(Widget, ButtonBehavior):
     rotation = NumericProperty(0)
     frame = NumericProperty(0)
+    lastFrame = NumericProperty(0)
     name = StringProperty("BuildingBase")
     data = DictProperty({})
+    animated = BooleanProperty(False)
+    rotatable = BooleanProperty(False)
 
     def __init__(self, *args, **kwargs):
         super(BuildingBase, self).__init__(*args, **kwargs)
@@ -27,5 +30,13 @@ class BuildingBase(Widget, ButtonBehavior):
 
 
     def draw(self):
+        print(self.name, self.data, self.frame, self.animated)
         with self.canvas:
-            Rectangle(pos=self.pos, size=(100, 100), texture=self.Globals.BuildingTextures.get_texture(self.name, self.data, self.frame))
+            Rectangle(pos=self.pos, size=(100, 100),
+                      texture=self.Globals.BuildingTextures.get_texture(self.name, self.data, self.frame))
+
+        if self.animated:
+            self.frame += 1
+
+            if self.frame > self.lastFrame:
+                self.frame = 0

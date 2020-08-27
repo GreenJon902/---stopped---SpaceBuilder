@@ -42,10 +42,4 @@ class BaseBuilder(Widget, PostInitClass):
     def create(self):
         building_layout = self.Globals.User_data.get("building_layout")
 
-        b = BuildingBase(pos=(50, 50))
-        self.buildings.add_widget(b)
-
-        def foo(a):
-            b.rotation = 45
-
-        Clock.schedule_once(foo, 5)
+        self.buildings.add_widget(BuildingBase(pos=(50, 50), rotation=45, name="Drill", animated=True, lastFrame=500))
