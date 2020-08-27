@@ -119,11 +119,16 @@ class _Globals:
         def select_me(self, building):
             self.unselect_all()
 
-            self.selected = zip(self.buildings.values(), self.buildings.keys())[building]
-            print(self.selected)
+            tmpBuildings = {}
+
+            for i, b in self.buildings.items():
+                tmpBuildings[b] = i
+
+            self.selected = tmpBuildings[building]
 
         def unselect_all(self):
-            self.buildings[self.selected].unselect()
+            if self.selected is not None:
+                self.buildings[self.selected].unselect()
 
     class GameSettings:
         # Where_Screen_What
@@ -230,7 +235,7 @@ class _Globals:
 
             if (str(name) + "/" + str(state) + "/" + str(("000" + str(frame))[-4:]) + "/" +
                 str(rotation)) not in self._loaded_texture_infos:
-                    self._load_texture(name, state, frame, rotation)
+                self._load_texture(name, state, frame, rotation)
 
             return self._loaded_textures[(str(name) + "/" + str(state) + "/" + str(("000" + str(frame))[-4:]) + "/" +
                                           str(rotation))]
