@@ -186,7 +186,7 @@ class _Globals:
         def _load_texture_infos(self, name):
             with open(str(os.path.join(str(os.path.split(str(get_Globals().app.directory))[0]), "resources", "3D", name,
                                        "textureInfo.json")), "r") as file:
-                self._loaded_textures[name] = json.load(file)
+                self._loaded_texture_infos[name] = json.load(file)
 
         def _load_texture(self, name, state, frame):
             self._loaded_textures[name + "/" + state + "/" + frame] = CoreImage(
