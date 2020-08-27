@@ -22,11 +22,11 @@ class Building(Widget, ButtonBehavior):
 
         self.bind(rotation=self.rotate)
 
-        state = 0
+        state = str(0)
         textureInfo = self.Globals.BuildingTextures.get_texture_info(self.name)
         for s in textureInfo:
             if textureInfo[s]["data"] == self.data:
-                state = s
+                state = str(s)
                 break
 
         self.frameStep = textureInfo[state]["frameStep"]
