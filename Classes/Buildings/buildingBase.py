@@ -31,7 +31,7 @@ class BuildingBase(Widget, ButtonBehavior):
 
 
     def draw(self):
-        print(self.name, self.data, self.frame, self.animated)
+        self.canvas.clear()
         with self.canvas:
             Rectangle(pos=self.pos, size=(100, 100),
                       texture=self.Globals.BuildingTextures.get_texture(self.name, self.data, self.frame))
