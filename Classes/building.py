@@ -20,6 +20,9 @@ class Building(Widget, ButtonBehavior):
         super(Building, self).__init__(*args, **kwargs)
         self.Globals = get_Globals()
 
+        size = self.Globals.width / self.Globals.GameSettings.base_builder_building_size_divider
+        self.size = size, size
+
         state = str(0)
         textureInfo = self.Globals.BuildingTextures.get_texture_info(self.name)
         for s in textureInfo:
@@ -35,7 +38,7 @@ class Building(Widget, ButtonBehavior):
     def draw(self):
         self.canvas.clear()
         with self.canvas:
-            Rectangle(pos=self.pos, size=(100, 100),
+            Rectangle(pos=self.pos, size=self.size,
                       texture=self.Globals.BuildingTextures.get_texture(self.name, self.data, self.frame,
                                                                         self.rotation))
 

@@ -150,6 +150,7 @@ class _Globals:
         base_builder_default_zoom = 2
         base_builder_button_isBigger_amount = 2
         base_builder_new_frame_delay = 0.03
+        base_builder_building_size_divider = 0.05
 
     class _Textures:
         def __init__(self):
