@@ -189,9 +189,11 @@ class _Globals:
                 self._loaded_texture_infos[name] = json.load(file)
 
         def _load_texture(self, name, state, frame):
+            frame = ("000" + str(frame))[-4:]
+
             self._loaded_textures[name + "/" + state + "/" + frame] = CoreImage(
                 str(os.path.join(str(os.path.split(str(get_Globals().app.directory))[0]), "resources", "3D", str(name),
-                                 str(state), str(frame))))
+                                 str(state), str(frame) + ".png")))
 
         def get_texture_infos(self, name):
             if name not in self._loaded_texture_infos:
@@ -208,10 +210,16 @@ class _Globals:
                     state = s
                     break
 
-            if (str(name) + "/" + str(state) + "/" + str(frame)) not in self._loaded_texture_infos:
+            if (str(name) + "/" + str(state) + "/" + str(("000" + str(frame))[-4:])) not in self._loaded_texture_infos:
+                print(self._loaded_textures)
                 self._load_texture(name, state, frame)
+                print("1")
 
-            return self._loaded_textures[(str(name) + "/" + str(state) + "/" + str(frame) )]
+            print(self._loaded_textures)
+
+            print(2)
+
+            return self._loaded_textures[(str(name) + "/" + str(state) + "/" + str(("000" + str(frame))[-4:]))]
 
     class _Audio:
         def __init__(self):
