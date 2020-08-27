@@ -42,4 +42,9 @@ class BaseBuilder(Widget, PostInitClass):
     def create(self):
         building_layout = self.Globals.User_data.get("building_layout")
 
-        self.buildings.add_widget(BuildingBase(pos=(50, 50), rotation=45, name="Drill", animated=True, lastFrame=300, frameStep=2))
+        for buildingId in building_layout:
+            buildingInfo = building_layout[buildingId]
+            building = Building(center=buildingInfo["center"], name=buildingInfo["name"])
+            building.rotation = buildingInfo["rotation"]
+
+            self.buildings.add_widget(building)

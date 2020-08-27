@@ -22,6 +22,19 @@ class Building(Widget, ButtonBehavior):
 
         self.bind(rotation=self.rotate)
 
+        state = 0
+        textureInfo = self.Globals.BuildingTextures.get_texture_info(self.name)
+        for s in textureInfo:
+            if textureInfo[s]["data"] == self.data:
+                state = s
+                break
+
+        self.frameStep = textureInfo[state]["frameStep"]
+        self.lastFrame = textureInfo[state]["lastFrame"]
+        self.animated = textureInfo[state]["animated"]
+        self.rotatable = textureInfo[state]["rotatable"]
+
+
     def rotate(self, _, rotation):
         with self.canvas.before:
             PushMatrix()

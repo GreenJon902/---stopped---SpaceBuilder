@@ -183,7 +183,7 @@ class _Globals:
         _loaded_textures = {}
         _loaded_texture_infos = {}
 
-        def _load_texture_infos(self, name):
+        def _load_texture_info(self, name):
             with open(str(os.path.join(str(os.path.split(str(get_Globals().app.directory))[0]), "resources", "3D", name,
                                        "textureInfo.json")), "r") as file:
                 self._loaded_texture_infos[name] = json.load(file)
@@ -195,14 +195,14 @@ class _Globals:
                 str(os.path.join(str(os.path.split(str(get_Globals().app.directory))[0]), "resources", "3D", str(name),
                                  str(state), str(frame) + ".png"))).texture
 
-        def get_texture_infos(self, name):
+        def get_texture_info(self, name):
             if name not in self._loaded_texture_infos:
                 self._load_texture_infos(name)
 
             return self._loaded_texture_infos[name]
 
         def get_texture(self, name, data, frame):
-            textureInfo = self.get_texture_infos(name)
+            textureInfo = self.get_texture_info(name)
             state = 0
 
             for s in textureInfo:
