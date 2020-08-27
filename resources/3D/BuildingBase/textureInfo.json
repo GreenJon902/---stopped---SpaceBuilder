@@ -4,6 +4,7 @@
         "animated": false,
         "rotatable": true,
         "frameStep": 1,
+        "lastFrame": 0,
         "rotations": {
             "0": "0",
             "45": "0",
