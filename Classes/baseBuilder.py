@@ -29,7 +29,6 @@ class BaseBuilder(Widget, PostInitClass):
     def post_init(self):
         self.create()
 
-
     def draw(self, _=None):
         self.bg.canvas.before.clear()
 
@@ -44,7 +43,5 @@ class BaseBuilder(Widget, PostInitClass):
 
         for buildingId in building_layout:
             buildingInfo = building_layout[buildingId]
-            building = Building(center=buildingInfo["center"], name=buildingInfo["name"])
-            building.rotation = buildingInfo["rotation"]
-
-            self.buildings.add_widget(building)
+            self.buildings.add_widget(Building(center=buildingInfo["center"], rotation=buildingInfo["rotation"],
+                                               name=buildingInfo["name"], data=buildingInfo["data"]))
