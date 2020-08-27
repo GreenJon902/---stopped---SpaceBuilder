@@ -78,6 +78,7 @@ class _Globals:
         self.Textures = self._Textures()
         self.Audio = self._Audio()
         self.BuildingTextures = self._BuildingTextures()
+        self.BuildingSelectionHandler = self._BuildingSelectionHandler()
 
     def get_screen_manager(self):
         return self.app.baseScreenManager.children[0]
@@ -107,6 +108,22 @@ class _Globals:
         Default_data = {
             "buttonSize": 100
         }
+
+    class _BuildingSelectionHandler:
+        buildings = {}
+        selected = None
+
+        def register_building(self, building):
+            self.buildings[len(self.buildings)] = building
+
+        def select_me(self, building):
+            self.unselect_all()
+
+            self.selected = zip(self.buildings.values(), self.buildings.keys())[building]
+            print(self.selected)
+
+        def unselect_all(self):
+            self.buildings[self.selected].unselect()
 
     class GameSettings:
         # Where_Screen_What

@@ -34,6 +34,8 @@ class Building(Widget):
         self.animated = textureInfo[state]["animated"]
         self.rotatable = textureInfo[state]["rotatable"]
 
+        self.Globals.BuildingSelectionHandler.register_building(self)
+
     def draw(self):
         self.canvas.clear()
         with self.canvas:
@@ -51,5 +53,10 @@ class Building(Widget):
         if touch.is_mouse_scrolling:
             return False
         if not self.collide_point(touch.x, touch.y):
-            print("noCollide")
-        print("frawf", self.name)
+            return False
+
+        self.Globals.BuildingSelectionHandler.select_me(self)
+        return True
+
+    def unselect(self):
+        pass
