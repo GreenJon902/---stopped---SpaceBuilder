@@ -197,7 +197,7 @@ class _Globals:
             if name not in self._loaded_texture_infos:
                 self._load_texture_infos(name)
 
-            return self._loaded_textures_infos[name]
+            return self._loaded_texture_infos[name]
 
         def get_texture(self, name, data, frame):
             textureInfo = self.get_texture_infos(name)
