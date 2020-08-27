@@ -130,6 +130,17 @@ class _Globals:
             if self.selected is not None:
                 self.buildings[self.selected].unselect()
 
+        def am_i_selected(self, building):
+            tmpBuildings = {}
+
+            for i, b in self.buildings.items():
+                tmpBuildings[b] = i
+
+            if tmpBuildings[building] == self.selected:
+                return True
+            else:
+                return False
+
     class GameSettings:
         # Where_Screen_What
 
