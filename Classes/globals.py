@@ -90,7 +90,7 @@ class _Globals:
             "timesCrashed": 0,
             "building_layout": {
                 "0": {
-                    "name": "rocket",
+                    "name": "Rocket",
                     "data": {
                         "isBuilt": False
                     },
