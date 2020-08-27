@@ -3,7 +3,7 @@ from kivy.graphics import *
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.widget import Widget
 
-from Classes.Buildings.buildingBase import BuildingBase
+from Classes.building import Building
 from Classes.globals import get_Globals
 from Classes.postInitClass import PostInitClass
 

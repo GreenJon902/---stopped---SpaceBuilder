@@ -6,7 +6,7 @@ from kivy.graphics import *
 from Classes.globals import get_Globals
 
 
-class BuildingBase(Widget, ButtonBehavior):
+class Building(Widget, ButtonBehavior):
     rotation = NumericProperty(0)
     frame = NumericProperty(0)
     frameStep = NumericProperty(1)
@@ -17,7 +17,7 @@ class BuildingBase(Widget, ButtonBehavior):
     rotatable = BooleanProperty(False)
 
     def __init__(self, *args, **kwargs):
-        super(BuildingBase, self).__init__(*args, **kwargs)
+        super(Building, self).__init__(*args, **kwargs)
         self.Globals = get_Globals()
 
         self.bind(rotation=self.rotate)
