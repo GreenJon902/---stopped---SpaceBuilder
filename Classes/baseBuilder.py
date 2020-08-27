@@ -3,10 +3,12 @@ from kivy.graphics import *
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.widget import Widget
 
+from Classes.Buildings.buildingBase import BuildingBase
 from Classes.globals import get_Globals
+from Classes.postInitClass import PostInitClass
 
 
-class BaseBuilder(Widget):
+class BaseBuilder(Widget, PostInitClass):
     def __init__(self, *args, **kwargs):
         super(BaseBuilder, self).__init__(*args, **kwargs)
         self.drawClock = None
@@ -18,13 +20,14 @@ class BaseBuilder(Widget):
         self.bg = FloatLayout()
         self.buildings = FloatLayout()
 
-        self.create()
-
         self.add_widget(self.bg)
         self.add_widget(self.buildings)
 
     def post_enter(self):
         self.drawClock = Clock.schedule_interval(self.draw, self.Globals.GameSettings.base_builder_new_frame_delay)
+
+    def post_init(self):
+        self.create()
 
 
     def draw(self, _=None):
@@ -37,4 +40,6 @@ class BaseBuilder(Widget):
             building.draw()
 
     def create(self):
-        pass
+        building_layout = self.Globals.User_data.get("building_layout")
+
+        self.buildings.add_widget(BuildingBase())
