@@ -20,8 +20,6 @@ class Building(Widget, ButtonBehavior):
         super(Building, self).__init__(*args, **kwargs)
         self.Globals = get_Globals()
 
-        self.bind(rotation=self.rotate)
-
         state = str(0)
         textureInfo = self.Globals.BuildingTextures.get_texture_info(self.name)
         for s in textureInfo:
@@ -33,15 +31,6 @@ class Building(Widget, ButtonBehavior):
         self.lastFrame = textureInfo[state]["lastFrame"]
         self.animated = textureInfo[state]["animated"]
         self.rotatable = textureInfo[state]["rotatable"]
-
-
-    def rotate(self, _, rotation):
-        with self.canvas.before:
-            PushMatrix()
-            Rotate(angle=rotation, origin=self.center)
-        with self.canvas.after:
-            PopMatrix()
-
 
     def draw(self):
         self.canvas.clear()
