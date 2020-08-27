@@ -211,13 +211,7 @@ class _Globals:
                     break
 
             if (str(name) + "/" + str(state) + "/" + str(("000" + str(frame))[-4:])) not in self._loaded_texture_infos:
-                print(self._loaded_textures)
                 self._load_texture(name, state, frame)
-                print("1")
-
-            print(self._loaded_textures)
-
-            print(2)
 
             return self._loaded_textures[(str(name) + "/" + str(state) + "/" + str(("000" + str(frame))[-4:]))]
 
