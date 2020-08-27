@@ -190,8 +190,8 @@ class _Globals:
 
         def _load_texture(self, name, state, frame):
             self._loaded_textures[name + "/" + state + "/" + frame] = CoreImage(
-                str(os.path.join(str(os.path.split(str(get_Globals().app.directory))[0]), "resources", "3D", name, state,
-                                 frame)))
+                str(os.path.join(str(os.path.split(str(get_Globals().app.directory))[0]), "resources", "3D", str(name),
+                                 str(state), str(frame))))
 
         def get_texture_infos(self, name):
             if name not in self._loaded_texture_infos:
@@ -208,10 +208,10 @@ class _Globals:
                     state = s
                     break
 
-            if (name + "/" + state + "/" + frame) not in self._loaded_texture_infos:
+            if (str(name) + "/" + str(state) + "/" + str(frame)) not in self._loaded_texture_infos:
                 self._load_texture(name, state, frame)
 
-            return self._loaded_textures[(name + "/" + state + "/" + frame)]
+            return self._loaded_textures[(str(name) + "/" + str(state) + "/" + str(frame) )]
 
     class _Audio:
         def __init__(self):
