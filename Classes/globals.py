@@ -193,7 +193,7 @@ class _Globals:
 
             self._loaded_textures[name + "/" + state + "/" + frame] = CoreImage(
                 str(os.path.join(str(os.path.split(str(get_Globals().app.directory))[0]), "resources", "3D", str(name),
-                                 str(state), str(frame) + ".png")))
+                                 str(state), str(frame) + ".png"))).texture
 
         def get_texture_infos(self, name):
             if name not in self._loaded_texture_infos:
