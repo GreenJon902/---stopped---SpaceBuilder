@@ -9,6 +9,7 @@ from Classes.globals import get_Globals
 class BuildingBase(Widget, ButtonBehavior):
     rotation = NumericProperty(0)
     frame = NumericProperty(0)
+    frameStep = NumericProperty(1)
     lastFrame = NumericProperty(0)
     name = StringProperty("BuildingBase")
     data = DictProperty({})
@@ -36,7 +37,7 @@ class BuildingBase(Widget, ButtonBehavior):
                       texture=self.Globals.BuildingTextures.get_texture(self.name, self.data, self.frame))
 
         if self.animated:
-            self.frame += 1
+            self.frame += self.frameStep
 
             if self.frame > self.lastFrame:
                 self.frame = 0

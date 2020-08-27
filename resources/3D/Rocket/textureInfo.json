@@ -5,6 +5,7 @@
         },
         "animated": false,
         "rotatable": false,
+        "frameStep": 1,
         "rotations": {
             "0": "0"
         }
@@ -15,6 +16,7 @@
       },
       "animated": false,
       "rotatable": false,
+      "frameStep": 1,
       "rotations": {
           "0": "1"
       }

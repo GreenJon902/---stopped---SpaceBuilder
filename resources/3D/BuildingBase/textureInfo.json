@@ -3,6 +3,7 @@
         "data": {},
         "animated": false,
         "rotatable": true,
+        "frameStep": 1,
         "rotations": {
             "0": "0",
             "45": "0",
