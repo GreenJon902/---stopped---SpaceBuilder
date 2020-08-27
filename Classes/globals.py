@@ -183,17 +183,14 @@ class _Globals:
         _loaded_textures = {}
         _loaded_texture_infos = {}
 
-        def __init__(self):
-            self.Globals = get_Globals()
-
         def _load_texture_infos(self, name):
-            with open(str(os.path.join(str(os.path.split(str(self.Globals.app.directory))[0]), "resources", "3D", name,
+            with open(str(os.path.join(str(os.path.split(str(get_Globals().app.directory))[0]), "resources", "3D", name,
                                        "textureInfo.json")), "r") as file:
                 self._loaded_textures[name] = json.load(file)
 
         def _load_texture(self, name, state, frame):
             self._loaded_textures[name + "/" + state + "/" + frame] = CoreImage(
-                str(os.path.join(str(os.path.split(str(self.Globals.app.directory))[0]), "resources", "3D", name, state,
+                str(os.path.join(str(os.path.split(str(get_Globals().app.directory))[0]), "resources", "3D", name, state,
                                  frame)))
 
         def get_texture_infos(self, name):
