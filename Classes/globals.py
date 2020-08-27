@@ -9,7 +9,6 @@ from kivy.properties import StringProperty
 from kivy.logger import Logger
 
 
-
 class _user_and_settings_data_base(EventDispatcher):
     Default_data = {}
     save_path = StringProperty()
@@ -188,20 +187,21 @@ class _Globals:
                                        "textureInfo.json")), "r") as file:
                 self._loaded_texture_infos[name] = json.load(file)
 
-        def _load_texture(self, name, state, frame):
+        def _load_texture(self, name, state, frame, rotation):
             frame = ("000" + str(frame))[-4:]
 
-            self._loaded_textures[name + "/" + state + "/" + frame] = CoreImage(
+            self._loaded_textures[(str(name) + "/" + str(state) + "/" + str(("000" + str(frame))[-4:]) + "/" + str(
+                rotation))] = CoreImage(
                 str(os.path.join(str(os.path.split(str(get_Globals().app.directory))[0]), "resources", "3D", str(name),
-                                 str(state), str(frame) + ".png"))).texture
+                                 str(state), str(rotation), str(frame) + ".png"))).texture
 
         def get_texture_info(self, name):
             if name not in self._loaded_texture_infos:
-                self._load_texture_infos(name)
+                self._load_texture_info(name)
 
             return self._loaded_texture_infos[name]
 
-        def get_texture(self, name, data, frame):
+        def get_texture(self, name, data, frame, rotation):
             textureInfo = self.get_texture_info(name)
             state = 0
 
@@ -210,10 +210,12 @@ class _Globals:
                     state = s
                     break
 
-            if (str(name) + "/" + str(state) + "/" + str(("000" + str(frame))[-4:])) not in self._loaded_texture_infos:
-                self._load_texture(name, state, frame)
+            if (str(name) + "/" + str(state) + "/" + str(("000" + str(frame))[-4:]) + "/" +
+                str(rotation)) not in self._loaded_texture_infos:
+                    self._load_texture(name, state, frame, rotation)
 
-            return self._loaded_textures[(str(name) + "/" + str(state) + "/" + str(("000" + str(frame))[-4:]))]
+            return self._loaded_textures[(str(name) + "/" + str(state) + "/" + str(("000" + str(frame))[-4:]) + "/" +
+                                          str(rotation))]
 
     class _Audio:
         def __init__(self):

@@ -47,7 +47,8 @@ class Building(Widget, ButtonBehavior):
         self.canvas.clear()
         with self.canvas:
             Rectangle(pos=self.pos, size=(100, 100),
-                      texture=self.Globals.BuildingTextures.get_texture(self.name, self.data, self.frame))
+                      texture=self.Globals.BuildingTextures.get_texture(self.name, self.data, self.frame,
+                                                                        self.rotation))
 
         if self.animated:
             self.frame += self.frameStep
