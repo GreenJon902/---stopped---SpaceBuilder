@@ -1,3 +1,4 @@
+from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.widget import Widget
 from kivy.properties import NumericProperty, StringProperty, DictProperty
 from kivy.graphics import *
@@ -5,7 +6,7 @@ from kivy.graphics import *
 from Classes.globals import get_Globals
 
 
-class BuildingBase(Widget):
+class BuildingBase(Widget, ButtonBehavior):
     rotation = NumericProperty(0)
     frame = NumericProperty(0)
     name = StringProperty("BuildingBase")
@@ -14,6 +15,16 @@ class BuildingBase(Widget):
     def __init__(self, *args, **kwargs):
         super(BuildingBase, self).__init__(*args, **kwargs)
         self.Globals = get_Globals()
+
+        self.bind(rotation=self.rotate)
+
+    def rotate(self, _, rotation):
+        with self.canvas.before:
+            PushMatrix()
+            Rotate(angle=rotation, origin=self.center)
+        with self.canvas.after:
+            PopMatrix()
+
 
     def draw(self):
         with self.canvas:
