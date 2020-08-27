@@ -1,12 +1,11 @@
-from kivy.uix.behaviors import ButtonBehavior
-from kivy.uix.widget import Widget
-from kivy.properties import NumericProperty, StringProperty, DictProperty, BooleanProperty
 from kivy.graphics import *
+from kivy.properties import NumericProperty, StringProperty, DictProperty, BooleanProperty
+from kivy.uix.widget import Widget
 
 from Classes.globals import get_Globals
 
 
-class Building(Widget, ButtonBehavior):
+class Building(Widget):
     rotation = NumericProperty(0)
     frame = NumericProperty(0)
     frameStep = NumericProperty(1)
@@ -47,3 +46,10 @@ class Building(Widget, ButtonBehavior):
 
             if self.frame > self.lastFrame:
                 self.frame = 0
+
+    def on_touch_up(self, touch):
+        if touch.is_mouse_scrolling:
+            return False
+        if not self.collide_point(touch.x, touch.y):
+            print("noCollide")
+        print("frawf", self.name)
