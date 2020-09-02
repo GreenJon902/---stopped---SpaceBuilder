@@ -10,6 +10,7 @@ class Building(Widget):
     frame = NumericProperty(0)
     frameStep = NumericProperty(1)
     lastFrame = NumericProperty(0)
+    buildingId = NumericProperty(0)
     name = StringProperty("BuildingBase")
     data = DictProperty({})
     animated = BooleanProperty(False)
@@ -58,6 +59,8 @@ class Building(Widget):
         self.Globals.BuildingSelectionHandler.select_me(self)
 
         if touch.grab_current is self:
+            self.Globals.User_data.get("building_layout")[str(int(self.buildingId))]["center"] = self.center
+
             touch.ungrab(self)
 
         return True
@@ -81,7 +84,7 @@ class Building(Widget):
             return False
 
         if touch.grab_current is self:
-            self.pos = touch.pos
+            self.center = touch.pos
 
         return True
 

@@ -95,8 +95,8 @@ class _Globals:
                         "isBuilt": False
                     },
                     "center": [
-                        50,
-                        50
+                        500,
+                        250
                     ],
                     "rotation": 0
                 }

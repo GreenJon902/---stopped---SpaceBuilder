@@ -44,4 +44,5 @@ class BaseBuilder(Widget, PostInitClass):
         for buildingId in building_layout:
             buildingInfo = building_layout[buildingId]
             self.buildings.add_widget(Building(center=buildingInfo["center"], rotation=buildingInfo["rotation"],
-                                               name=buildingInfo["name"], data=buildingInfo["data"]))
+                                               name=buildingInfo["name"], data=buildingInfo["data"],
+                                               buildingId=buildingId))
