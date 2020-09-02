@@ -51,20 +51,39 @@ class Building(Widget):
 
     def on_touch_up(self, touch):
         if touch.is_mouse_scrolling:
-            return
+            return False
         if not self.collide_point(touch.x, touch.y):
-            return
+            return False
 
         self.Globals.BuildingSelectionHandler.select_me(self)
 
+        if touch.grab_current is self:
+            touch.ungrab(self)
+
+        return True
+
+
+
     def on_touch_down(self, touch):
         if touch.is_mouse_scrolling:
-            return
+            return False
         if not self.collide_point(touch.x, touch.y):
-            return
+            return False
         if not self.Globals.BuildingSelectionHandler.am_i_selected(self):
-            return
-        print("mehehemove")
+            return False
+        touch.grab(self)
+
+        return True
+
+
+    def on_touch_move(self, touch):
+        if not self.Globals.BuildingSelectionHandler.am_i_selected(self):
+            return False
+
+
+
+        return True
+
 
 
 
