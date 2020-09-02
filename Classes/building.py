@@ -80,7 +80,8 @@ class Building(Widget):
         if not self.Globals.BuildingSelectionHandler.am_i_selected(self):
             return False
 
-
+        if touch.grab_current is self:
+            self.pos = touch.pos
 
         return True
 
