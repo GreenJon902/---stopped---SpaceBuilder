@@ -198,6 +198,7 @@ class _Globals:
             self.planetSurface = None
             self.build_button = None
             self.settings_button = None
+            self.back_button = None
 
         def load(self):
             self.cliff_edge = CoreImage("resources/textures/intro/cliffEdge.png").texture
@@ -211,6 +212,7 @@ class _Globals:
             self.planetSurface = CoreImage("resources/textures/baseBuilder/planetSurface.png").texture
             self.build_button = CoreImage("resources/textures/buttons/build.png").texture
             self.settings_button = CoreImage("resources/textures/buttons/settings.png").texture
+            self.back_button = CoreImage("resources/textures/buttons/back.png").texture
 
     class _BuildingTextures:
         _loaded_textures = {}
