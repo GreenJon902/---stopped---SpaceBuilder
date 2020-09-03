@@ -11,6 +11,18 @@
             size_hint: None, None
             pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
+<HeightBasedButton>:
+    FloatLayout:
+        id: imageHolder
+
+        size_hint: None, None
+
+        Image:
+            id: image
+
+            size_hint: None, None
+            pos_hint: {"x": 0.5, "y": 0.5}
+
 
 <ItemsWidget>:
     AnchorLayout:
@@ -21,6 +33,3 @@
             isBig: False
             texture: "back"
             sendTo: "BaseBuilderScreen"
-
-    BoxLayout:
-        id: content
